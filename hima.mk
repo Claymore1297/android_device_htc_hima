@@ -247,3 +247,7 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# Recovery
+PRODUCT_PACKAGES += \
+    librecovery_updater_hima
