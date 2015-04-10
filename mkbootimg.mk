@@ -11,11 +11,10 @@ KERNEL_CONFIG := $(KERNEL_OUT)/.config
 M9_DTS_NAMES ?= $(shell $(PERL) -e 'while (<>) {$$a = $$1 if /CONFIG_ARCH_((?:MSM|QSD|MPQ)[a-zA-Z0-9]+)=y/; $$r = $$1 if /CONFIG_MSM_SOC_REV_(?!NONE)(\w+)=y/; $$arch = $$arch.lc("$$a$$r ") if /CONFIG_ARCH_((?:MSM|QSD|MPQ)[a-zA-Z0-9]+)=y/} print $$arch;' $(KERNEL_CONFIG))
 M9_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm64/boot/dts/$(M9_DTS_NAME)*.dts)
 M9_DTS_FILE = $(lastword $(subst /, ,$(1)))
-DTB_FILE = $(addprefix $(KERNEL_OUT)/arch/arm64/boot/,$(patsubst %.dts,%.dtb,$(call M9_DTS_FILE,$(1))))
-ZIMG_FILE = $(addprefix $(KERNEL_OUT)/arch/arm64/boot/,$(patsubst %.dts,%-zImage,$(call M9_DTS_FILE,$(1))))
+DTB_FILE = $(addprefix $(KERNEL_OUT)/arch/arm64/boot/dts/,$(patsubst %.dts,%.dtb,$(call M9_DTS_FILE,$(1))))
+ZIMG_FILE = $(addprefix $(KERNEL_OUT)/arch/arm64/boot/dts/,$(patsubst %.dts,%-zImage,$(call M9_DTS_FILE,$(1))))
 KERNEL_ZIMG = $(KERNEL_OUT)/arch/arm64/boot/zImage
 DTC = $(KERNEL_OUT)/scripts/dtc/dtc
-DTBTAGNAME := "htc,project-id = <"
 
 define append-m9-dtb
 $(foreach M9_DTS_NAME, $(M9_DTS_NAMES), \
@@ -33,7 +32,7 @@ $(INSTALLED_DTIMAGE_TARGET): $(DTBTOOL) $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/u
 	@echo -e ${CL_CYN}"Start DT image: $@"${CL_RST}
 	$(call append-m8-dtb)
 	$(call pretty,"Target dt image: $(INSTALLED_DTIMAGE_TARGET)")
-	$(hide) $(DTBTOOL) -o $(INSTALLED_DTIMAGE_TARGET) -s $(BOARD_KERNEL_PAGESIZE) -d $(DTBTAGNAME) -p $(KERNEL_OUT)/scripts/dtc/ $(KERNEL_OUT)/arch/arm64/boot/
+	$(hide) $(DTBTOOL) -o $(INSTALLED_DTIMAGE_TARGET) -s $(BOARD_KERNEL_PAGESIZE) -p $(KERNEL_OUT)/scripts/dtc/ $(KERNEL_OUT)/arch/arm64/boot/dts/
 	@echo -e ${CL_CYN}"Made DT image: $@"${CL_RST}
 
 
