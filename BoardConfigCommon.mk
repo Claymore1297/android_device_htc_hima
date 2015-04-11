@@ -49,7 +49,8 @@ TARGET_NO_BOOTLOADER := true
 BOARD_CUSTOM_BOOTIMG_MK := device/htc/m9-common/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=htc_hima user_debug=31 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_RAMDISK_OFFSET := 0x02000000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0008000 --ramdisk_offset 0x2000000
 TARGET_KERNEL_ARCH := arm64
@@ -59,7 +60,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 30777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2164260864
@@ -69,7 +70,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12297699328
 TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.htc_hima
 
 # Audio
-BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_GENERIC_AUDIO := true
+TARGET_NO_RPC := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -134,6 +136,17 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
+
+# Force camera module to be compiled only in 32-bit mode on 64-bit systems
+# Once camera module can run in the native mode of the system (either
+# 32-bit or 64-bit), the following line should be deleted
+BOARD_QTI_CAMERA_32BIT_ONLY := true
+
+# Added to indicate that protobuf-c is supported in this build
+PROTOBUF_SUPPORTED := true
+
+#Disable HW based full disk encryption
+TARGET_HW_DISK_ENCRYPTION := false
 
 # inherit from the proprietary version
 -include vendor/htc/m9-common/BoardConfigVendor.mk
