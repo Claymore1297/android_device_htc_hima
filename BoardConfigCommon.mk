@@ -89,7 +89,7 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/fw_bcmdhd.bin"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # NFC
-BOARD_NFC_CHIPSET := pn547
+BOARD_NFC_CHIPSET := pn544
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
