@@ -75,7 +75,6 @@ BOARD_USES_ALSA_AUDIO := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/m9-common/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/htc/m9-common/bluetooth/vnd_z2.txt
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
