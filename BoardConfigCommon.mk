@@ -66,7 +66,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2164260864
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12297699328
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.htc_hima
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true

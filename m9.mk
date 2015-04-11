@@ -124,6 +124,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf
 
+# Init
+PRODUCT_PACKAGES += \
+    fstab.htc_hima \
+    ueventd.htc_hima.rc
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8994
