@@ -1,0 +1,252 @@
+###########################
+# init.hosd.common.rc #
+###########################
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+
+on init
+    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+    export EXTERNAL_STORAGE /sdcard
+
+    mkdir /sdcard
+    mkdir /misc
+    mount /tmp /tmp tmpfs
+    mkdir /system
+    mkdir /data
+    mkdir /cache
+
+    symlink /sys/kernel/debug /d
+
+    # Right now vendor lives on the same filesystem as system,
+    # but someday that may change.
+    symlink /system/vendor /vendor
+
+    # pstore/ramoops previous console log
+    mount pstore pstore /sys/fs/pstore
+    chown system log /sys/fs/pstore/console-ramoops
+    chmod 0440 /sys/fs/pstore/console-ramoops
+
+on fs
+    mkdir /firmware 0771 system system
+    mkdir /firmware/image 0771 system system
+
+    mkdir /persist 0771 system system
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1,errors=continue
+
+    # Mount radio image
+    mkdir /firmware/radio 0771 system system
+    wait /dev/block/bootdevice/by-name/radio
+    mount vfat /dev/block/bootdevice/by-name/radio /firmware/radio ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+    # Mount adsp image
+    mkdir /firmware/adsp 0771 system system
+    wait /dev/block/bootdevice/by-name/adsp
+    mount vfat /dev/block/bootdevice/by-name/adsp /firmware/adsp ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+    mkdir /devlog 0700 root root
+    wait /dev/block/bootdevice/by-name/devlog
+    e2fsck /dev/block/bootdevice/by-name/devlog
+    mount ext4 /dev/block/bootdevice/by-name/devlog /devlog nosuid nodev barrier=1,errors=continue
+
+    mkdir /fataldevlog 0700 root root
+    wait /dev/block/bootdevice/by-name/fataldevlog
+    e2fsck /dev/block/bootdevice/by-name/fataldevlog
+    mount ext4 /dev/block/bootdevice/by-name/fataldevlog /fataldevlog nosuid nodev barrier=1,errors=continue
+
+service fwnk-adsp  /system/bin/sh /init.qcom.firmware_links.sh /firmware/adsp /firmware/image "adsp*" adsp
+    class firmware-link
+    oneshot
+
+service fwnk-radio /system/bin/sh /init.qcom.firmware_links.sh /firmware/radio /firmware/image "modem* mba*" radio
+    class firmware-link
+    oneshot
+
+service logd /system/bin/logd
+    socket logd stream 0666 logd logd
+    socket logdr seqpacket 0666 logd logd
+    socket logdw dgram 0222 logd logd
+    seclabel u:r:logd:s0
+    disabled
+
+service console /system/bin/sh
+    console
+    disabled
+    user shell
+    group shell log
+    seclabel u:r:shell:s0
+
+#
+# Main function: start services for specific modes
+#
+
+on property:ro.boot.mode=offmode_charging
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu4/online 0
+
+on property:ro.boot.mode=ftm
+# FIXME: set the same serail number to prevent reinstalling PC driver
+    write /sys/class/android_usb/android0/iSerial 000000000000
+#++ 2014.10.29 USB Team, PCN00008 ++
+    setprop sys.usb.config adb,acm
+#-- 2014.10.29 USB Team, PCN00008 --
+    trigger late-ftm
+
+on late-ftm
+    mount_all /hosd.fstab
+    wait /system/bin/sh
+    start console
+    start logd
+    class_start firmware-link
+    wait /firmware/image/.adsp_done
+    wait /firmware/image/.radio_done
+#++ Audio Team, load adsp
+    write /sys/kernel/boot_adsp/boot 1
+    # FTM BT PCM test
+    chmod 666 /dev/aud_ftm
+#-- Audio Team, load adsp
+    setprop ro.baseband.arch msm
+    start diagloader
+    start rmt_storage
+    write /d/msm_subsys/modem get
+    start qseecomd
+    mkdir /persist/tee 0700 system system
+    mkdir /data/app 0660 system system
+    mkdir /data/app/mcRegistry 0660 system system
+    # load kernel modules
+    insmod /system/lib/modules/mcDrvModule.ko
+    insmod /system/lib/modules/mcKernelApi.ko
+    # set device node permissions for TLC apps
+    chmod 0600 /dev/mobicore
+    chown system system /dev/mobicore
+    chmod 0666 /dev/mobicore-user
+    chown system system /dev/mobicore-user
+    # MobiCore Daemon Paths
+    export MC_AUTH_TOKEN_PATH /data/app/mcRegistry
+    start mobicore
+
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 960000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 960000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 960000
+
+on property:init.svc.diagloader=running
+    stop hosd
+
+service diagloader /sbin/diagloader --diag=htc58diag@#sdcard,#otg,/data --diag=htcmodulediag@#tooldiag_partition,/data --show-ui
+    user root
+    group root
+    disabled
+    oneshot
+
+service rmt_storage /system/bin/rmt_storage
+    class core
+    user root
+    disabled
+
+service qseecomd /system/bin/qseecomd
+    class core
+    user root
+    group root
+    disabled
+
+service htc_dlmode /sbin/htc_dlmode
+    disabled
+
+service htc_fastbootd /sbin/htc_fastbootd
+    socket fastbootd stream 660 system system
+    socket fastbootd_dz stream 660 system system
+    disabled
+
+on property:sys.usb.config=fastboot
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+#++ 2014.09.30 USB Team, PCN00013 ++
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0ff0
+#-- 2014.09.30 USB Team, PCN00013 --
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
+    start htc_fastbootd
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:ro.bootmode=download
+    start htc_dlmode
+    setprop sys.usb.config fastboot
+
+on property:ro.bootmode=RUU
+    start htc_dlmode
+    setprop sys.usb.config fastboot
+
+on property:ro.boot.mode=ramdump
+    stop recovery
+    mount rootfs rootfs / rw remount
+    mkdir /system/bin
+    symlink /sbin/memory-dump /system/bin/sh
+    setprop sys.usb.config adb
+
+on property:ro.boot.ramdump.mode=storage
+    start crashdump
+
+on property:ro.boot.ramdump.mode=pc
+    start crashdump_pc
+
+service crashdump /sbin/crashdump
+    class core
+    oneshot
+    disabled
+
+service crashdump_pc /sbin/crashdump --adb
+    class core
+    oneshot
+    disabled
+
+on property:ro.boot.mode=ftm
+# Motion Sensors ++
+    chmod 660 /dev/iio:device0
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
+
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/ap_calibrator_data_acc_rl
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc_rl
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_barometer
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_gyro
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_light
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_mag
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_en
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_acc
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/flush
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/hall_sensor
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/sensor_hub_rdata
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/facedown_enabled
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/gesture_motion
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/mcu_wakeup
+# Motion Sensors --
+
+service mobicore /system/bin/sh /system/bin/mobicore-startup.sh
+    class late_start
+    user root
+    oneshot
+    disabled

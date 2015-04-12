@@ -47,7 +47,7 @@ TARGET_NO_BOOTLOADER := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/htc/m9-common/mkbootimg.mk
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=htc_hima user_debug=31 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x02000000
@@ -67,7 +67,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2164260864
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12297699328
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.htc_hima
+TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.qcom
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := true

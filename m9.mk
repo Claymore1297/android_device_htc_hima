@@ -126,8 +126,16 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.htc_hima \
-    ueventd.htc_hima.rc
+    fstab.qcom \
+    init.hosd.common.rc \
+    init.hosd.qcom.rc \
+    init.hosd.usb.rc \
+    init.htc.usb.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd.qcom.rc
 
 # Keystore
 PRODUCT_PACKAGES += \
