@@ -70,8 +70,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12297699328
 TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.qcom
 
 # Audio
-BOARD_USES_GENERIC_AUDIO := true
-TARGET_NO_RPC := true
+BOARD_USES_ALSA_AUDIO := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
