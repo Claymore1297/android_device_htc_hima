@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGET_OTA_ASSERT_DEVICE := htc_m9,htc_m9whl,htc_m9wl,m9,m9gsm,m9att,m9tmo,m9wl,m9wlv,m9vzw,m9whl,m9spr
-
 BOARD_VENDOR := htc
 
 LOCAL_PATH := device/htc/m9-common
