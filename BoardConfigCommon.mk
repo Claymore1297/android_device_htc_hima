@@ -119,6 +119,9 @@ BOARD_PROVIDES_LIBRIL := true
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Logging
 TARGET_USES_LOGD=false
 
