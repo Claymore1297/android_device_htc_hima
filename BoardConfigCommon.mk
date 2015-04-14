@@ -142,14 +142,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Flags
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
-# Force camera module to be compiled only in 32-bit mode on 64-bit systems
-# Once camera module can run in the native mode of the system (either
-# 32-bit or 64-bit), the following line should be deleted
-BOARD_QTI_CAMERA_32BIT_ONLY := true
-
-# Added to indicate that protobuf-c is supported in this build
-PROTOBUF_SUPPORTED := true
-
 #Disable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
 
