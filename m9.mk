@@ -101,9 +101,11 @@ PRODUCT_PACKAGES += \
     memtrack.msm8994 \
     liboverlay
 
-# Filesystem
+# Filesystem management tools
 PRODUCT_PACKAGES += \
-    e2fsck
+    e2fsck \
+    make_ext4fs \
+    setup_fs
 
 # GPS
 PRODUCT_PACKAGES += \
