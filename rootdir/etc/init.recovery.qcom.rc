@@ -24,6 +24,9 @@ on boot
     # Enable it here for projects w/o choice_fn.
     start recovery
 
+    # start chargeles service
+    start chargeled
+
 ###########################
 # init.recovery.qcom.rc #
 ###########################
@@ -42,3 +45,7 @@ on property:ro.build.tags=test-keys
 on property:ro.build.tags=release-keys
     start htc_ebdlogd
 # HTC Embedded Log ---
+
+service chargeled /sbin/chargeled
+    disabled
+    seclabel u:r:healthd:s0

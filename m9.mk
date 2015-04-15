@@ -139,9 +139,13 @@ PRODUCT_PACKAGES += \
     init.htc.usb.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
+
+# Recovery
+PRODUCT_PACKAGES += \
+    chargeled \
+    init.recovery.qcom.rc
 
 # Keystore
 PRODUCT_PACKAGES += \
