@@ -133,6 +133,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf
 
+# NFC
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    NfcNci \
+    Tag
+
 # Qualcomm
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
