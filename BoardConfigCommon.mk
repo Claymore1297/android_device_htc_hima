@@ -75,6 +75,7 @@ TARGET_LIBINIT_DEFINES_FILE := device/htc/hima/init/init_hima.c
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
+AUDIO_FEATURE_ENABLED_FM := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
