@@ -68,6 +68,10 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Recovery
 TARGET_RECOVERY_FSTAB := device/htc/m9-common/rootdir/etc/fstab.qcom
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_hima
+TARGET_LIBINIT_DEFINES_FILE := device/htc/hima/init/init_hima.c
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 
