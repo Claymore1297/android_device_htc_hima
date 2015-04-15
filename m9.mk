@@ -107,6 +107,13 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
+# FM radio
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8994
