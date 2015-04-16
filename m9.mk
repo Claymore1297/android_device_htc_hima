@@ -60,6 +60,9 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk
 
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
+# Dot View Case
+PRODUCT_PACKAGES += Dotcase
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
