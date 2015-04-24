@@ -19,6 +19,30 @@ $(call inherit-product-if-exists, vendor/htc/m9-common/m9-common-vendor.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/root/fstab.htc_hima:root/fstab.htc_hima \
+    $(LOCAL_PATH)/root/init.class_main.sh:root/init.class_main.sh \
+    $(LOCAL_PATH)/root/init.hosd.common.rc:root/init.hosd.common.rc \
+    $(LOCAL_PATH)/root/init.hosd_fusion.usb.rc:root/init.hosd_fusion.usb.rc \
+    $(LOCAL_PATH)/root/init.hosd.htc_hima.rc:root/init.hosd.htc_hima.rc \
+    $(LOCAL_PATH)/root/init.hosd.usb.rc:root/init.hosd.usb.rc \
+    $(LOCAL_PATH)/root/init.htc.common.rc:root/init.htc.common.rc \
+    $(LOCAL_PATH)/root/init.htc_hima.rc:root/init.htc_hima.rc \
+    $(LOCAL_PATH)/root/init.htc_hima.usb.rc:root/init.htc_hima.usb.rc \
+    $(LOCAL_PATH)/root/init.htc_storage.rc:root/init.htc_storage.rc \
+    $(LOCAL_PATH)/root/init.htc.usb.rc:root/init.htc.usb.rc \
+    $(LOCAL_PATH)/root/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+    $(LOCAL_PATH)/root/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+    $(LOCAL_PATH)/root/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/root/init.qcom.sh:root/init.qcom.sh \
+    $(LOCAL_PATH)/root/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
+    $(LOCAL_PATH)/root/init.qcom.usb.sh:root/init.qcom.usb.sh \
+    $(LOCAL_PATH)/root/init.recovery.common.rc:root/init.recovery.common.rc \
+    $(LOCAL_PATH)/root/init.recovery.htc_hima.rc:root/init.recovery.htc_hima.rc \
+    $(LOCAL_PATH)/root/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/root/ueventd.htc_hima.rc:root/ueventd.htc_hima.rc
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -149,25 +173,39 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
 # Init
+#PRODUCT_PACKAGES += \
+#    fstab.qcom \
+#    init.hosd.common.rc \
+#    init.hosd.qcom.rc \
+#    init.hosd.usb.rc \
+#    init.htc.usb.rc \
+#    init.qcom.rc \
+#    init.qcom.usb.rc \
+#    init.target.rc \
+#    ueventd.qcom.rc
+
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.hosd.common.rc \
-    init.hosd.qcom.rc \
-    init.hosd.usb.rc \
-    init.htc.usb.rc \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    init.target.rc \
-    ueventd.qcom.rc
+    init.crda.sh \
+    init.qcom.audio.sh \
+    init.qcom.bt.sh \
+    init.qcom.coex.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.fm.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.rootagent.sh \
+    init.qcom.sdio.sh \
+    init.qcom.uicc.sh \
+    init.qcom.wifi.sh \
+    init.qcom.zram.sh
 
 # Recovery
-PRODUCT_PACKAGES += \
-    chargeled \
-    init.recovery.qcom.rc
+#PRODUCT_PACKAGES += \
+#    chargeled \
+#    init.recovery.qcom.rc
 
 # Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8994
+#PRODUCT_PACKAGES += \
+#    keystore.msm8994
 
 # Lights
 PRODUCT_PACKAGES += \

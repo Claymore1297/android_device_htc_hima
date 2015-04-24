@@ -1,0 +1,84 @@
+########################
+# # init.htc.common.rc #
+########################
+
+#++ 2014.10.29 USB Team, PCN00026 ++
+import init.htc.usb.rc
+#-- 2014.10.29 USB Team, PCN00026 --
+
+on fs
+    mkdir /firmware 0771 system system
+    mkdir /firmware/image 0771 system system
+
+    # Mount radio image
+    mkdir /firmware/radio 0771 system system
+    wait /dev/block/bootdevice/by-name/radio
+    mount vfat /dev/block/bootdevice/by-name/radio /firmware/radio ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+    # Mount adsp image
+    mkdir /firmware/adsp 0771 system system
+    wait /dev/block/bootdevice/by-name/adsp
+    mount vfat /dev/block/bootdevice/by-name/adsp /firmware/adsp ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+    # Mount cpe image
+    mkdir /firmware/cpe 0771 system system
+    wait /dev/block/bootdevice/by-name/cpe
+    mount vfat /dev/block/bootdevice/by-name/cpe /firmware/cpe ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+    # Mount carrier partition
+    mkdir /carrier 0770 system carrier
+    wait /dev/block/bootdevice/by-name/carrier
+    mount ext4 /dev/block/bootdevice/by-name/carrier /carrier nosuid nodev noatime barrier=1,grpid
+    chown system carrier /carrier
+    chmod 0770 /carrier
+    # restorecon carrier partition.
+    restorecon_recursive /carrier
+
+    wait /system/bin/sh
+    class_start firmware-link
+    wait /firmware/image/.adsp_done
+    wait /firmware/image/.radio_done
+    wait /firmware/image/.cpe_done
+#SSD_DISP start
+    chown system graphics /sys/class/leds/lcd-backlight/cabc_level_ctl
+    chown system system /sys/class/leds/lcd-backlight-nits/brightness
+#SSD_DISP end
+
+# maintain the list of processes name for kernel monitoring usage
+    chown system /sys/process/task_comm_list
+
+service fwnk-adsp  /system/bin/sh /init.qcom.firmware_links.sh /firmware/adsp /firmware/image "adsp*" adsp
+    class firmware-link
+    oneshot
+
+service fwnk-radio /system/bin/sh /init.qcom.firmware_links.sh /firmware/radio /firmware/image "modem* mba*" radio
+    class firmware-link
+    oneshot
+
+service fwnk-cpe /system/bin/sh /init.qcom.firmware_links.sh /firmware/cpe /firmware/image "cpe*" cpe
+    class firmware-link
+    oneshot
+
+on property:sys.boot_completed=1
+    start mocana-startup
+    start wv-prov
+
+service mocana-startup /system/bin/sh /system/etc/init.mocana.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+service wv-prov /system/bin/hcheck-v2
+    class late_start
+    user root
+    disabled
+    oneshot
+
+# bugreport is triggered by the KEY_VOL-UP and KEY_VOL-DOWN keycodes
+service bugreport /system/bin/dumpstate -d -p -B \
+ -o /data/data/com.android.shell/files/bugreports/bugreport
+    disabled
+    cgroup bg
+    oneshot
+    keycodes 114 115
