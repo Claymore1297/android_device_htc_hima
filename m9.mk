@@ -32,6 +32,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/init.htc_hima.usb.rc:root/init.htc_hima.usb.rc \
     $(LOCAL_PATH)/root/init.htc_storage.rc:root/init.htc_storage.rc \
     $(LOCAL_PATH)/root/init.htc.usb.rc:root/init.htc.usb.rc \
+    $(LOCAL_PATH)/root/init.power.rc:root/init.power.rc \
     $(LOCAL_PATH)/root/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
     $(LOCAL_PATH)/root/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
     $(LOCAL_PATH)/root/init.qcom.rc:root/init.qcom.rc \
@@ -41,6 +42,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/init.recovery.common.rc:root/init.recovery.common.rc \
     $(LOCAL_PATH)/root/init.recovery.htc_hima.rc:root/init.recovery.htc_hima.rc \
     $(LOCAL_PATH)/root/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/root/init.rc:root/init.rc \
     $(LOCAL_PATH)/root/ueventd.htc_hima.rc:root/ueventd.htc_hima.rc
 
 # Permissions
