@@ -38,6 +38,7 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/fstab.htc_hima:root/fstab.htc_hima \
+    $(LOCAL_PATH)/root/fstab.qcom:root/fstab.qcom \
     $(LOCAL_PATH)/root/init.class_main.sh:root/init.class_main.sh \
     $(LOCAL_PATH)/root/init.hosd.common.rc:root/init.hosd.common.rc \
     $(LOCAL_PATH)/root/init.hosd_fusion.usb.rc:root/init.hosd_fusion.usb.rc \
@@ -59,7 +60,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/init.recovery.htc_hima.rc:root/init.recovery.htc_hima.rc \
     $(LOCAL_PATH)/root/init.target.rc:root/init.target.rc \
     $(LOCAL_PATH)/root/init.rc:root/init.rc \
-    $(LOCAL_PATH)/root/ueventd.htc_hima.rc:root/ueventd.htc_hima.rc
+    $(LOCAL_PATH)/root/ueventd.htc_hima.rc:root/ueventd.htc_hima.rc \
+    $(LOCAL_PATH)/root/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
