@@ -168,10 +168,13 @@ PRODUCT_COPY_FILES += \
 # Init scripts
 PRODUCT_PACKAGES += \
     init.crda.sh \
+    init.mdm.sh \
     init.qcom.audio.sh \
     init.qcom.bt.sh \
     init.qcom.coex.sh \
     init.qcom.efs.sync.sh \
+    init.qcom.factory.sh \
+    init.qcom.firmware_links.sh \
     init.qcom.fm.sh \
     init.qcom.post_boot.sh \
     init.qcom.rootagent.sh \
