@@ -1,5 +1,5 @@
 #
-# System Properties for HTC M9
+# System Properties for HTC One M9 (hima)
 #
 
 # MTP and USB-OTG

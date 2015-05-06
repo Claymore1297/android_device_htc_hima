@@ -14,10 +14,26 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/htc/m9-common/m9-common-vendor.mk)
+# Inherit proprietary blobs
+$(call inherit-product-if-exists, vendor/htc/hima-common/hima-common-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
+
+# Screen density
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
+
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # Init
 PRODUCT_COPY_FILES += \
@@ -71,24 +87,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
-
-# Screen density
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
-# Dot View Case
-PRODUCT_PACKAGES += Dotcase
-
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -136,13 +134,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8994
@@ -174,18 +165,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
     $(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
-# Init
-#PRODUCT_PACKAGES += \
-#    fstab.qcom \
-#    init.hosd.common.rc \
-#    init.hosd.qcom.rc \
-#    init.hosd.usb.rc \
-#    init.htc.usb.rc \
-#    init.qcom.rc \
-#    init.qcom.usb.rc \
-#    init.target.rc \
-#    ueventd.qcom.rc
-
+# Init scripts
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.audio.sh \
@@ -199,15 +179,6 @@ PRODUCT_PACKAGES += \
     init.qcom.uicc.sh \
     init.qcom.wifi.sh \
     init.qcom.zram.sh
-
-# Recovery
-#PRODUCT_PACKAGES += \
-#    chargeled \
-#    init.recovery.qcom.rc
-
-# Keystore
-#PRODUCT_PACKAGES += \
-#    keystore.msm8994
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -227,10 +198,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
-
-# pn544 NFC chips don't support HCE. Don't copy the file (yet, or maybe never).
-#PRODUCT_COPY_FILES += \
-#    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 
 # OMX
 PRODUCT_PACKAGES += \

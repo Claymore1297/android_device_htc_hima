@@ -3,7 +3,7 @@
 set -e
 
 export VENDOR=htc
-export DEVICE=m9-common
+export DEVICE=hima-common
 
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do

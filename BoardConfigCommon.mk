@@ -15,7 +15,7 @@
 
 BOARD_VENDOR := htc
 
-LOCAL_PATH := device/htc/m9-common
+LOCAL_PATH := device/htc/hima-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -44,7 +44,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8994
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/htc/m9-common/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/htc/hima-common/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlyprintk=msm_hsl_uart,0xf991e000 androidboot.hardware=htc_hima androidusb.pid=0x065d androidkey.dummy=1 androidtouch.htc_event=1 disk_mode_enable=1 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00078000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -64,24 +64,18 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2164260864
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12297699328
-#TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/htc/m9-common/root/fstab.htc_hima
-
-# Init
-#TARGET_INIT_VENDOR_LIB := libinit_hima
-#TARGET_LIBINIT_DEFINES_FILE := device/htc/hima/init/init_hima.c
+TARGET_RECOVERY_FSTAB := device/htc/hima-common/root/fstab.htc_hima
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
-AUDIO_FEATURE_ENABLED_FM := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/m9-common/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/hima-common/bluetooth
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -110,9 +104,6 @@ TARGET_USES_NEW_ION_API :=true
 TARGET_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
-# Allocator
-MALLOC_IMPL := dlmalloc
-
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
@@ -130,6 +121,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Logging
 TARGET_USES_LOGD=false
+COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Offmode Charging
 COMMON_GLOBAL_CFLAGS += \
@@ -148,11 +140,8 @@ include device/qcom/sepolicy/sepolicy.mk
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
-# Flags
-COMMON_GLOBAL_CFLAGS += -DHTCLOG
-
 #Disable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
 
 # inherit from the proprietary version
--include vendor/htc/m9-common/BoardConfigVendor.mk
+-include vendor/htc/hima-common/BoardConfigVendor.mk
