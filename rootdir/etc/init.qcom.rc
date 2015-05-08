@@ -459,17 +459,6 @@ service dmagent /system/bin/dmagent
     user root
 #-- DMAgent
 
-# HTC Automotive - BEGIN
-service cand /system/bin/cand
-    class main
-    user root
-# HTC Automotive - END
-
-# Security Tamper Detection
-service tpd_daemon /system/bin/tpd_daemon
-    class core
-    user root
-
 # +SSD_RIL: TMO trustonic daemon
 service tsdaemon /system/bin/tsdaemon
     class main
