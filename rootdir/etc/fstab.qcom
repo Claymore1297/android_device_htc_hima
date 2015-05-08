@@ -6,10 +6,10 @@
 # Currently we dont have e2fsck compiled. So fs check would failed.
 
 #<src>                                                <mnt_point>       <type>  <mnt_flags and options>                                                                                         <fs_mgr_flags>
-/dev/block/mmcblk0p63                                 /boot             emmc    defaults                                                                                                        defaults
-/dev/block/mmcblk0p64                                 /recovery         emmc    defaults                                                                                                        defaults
-/dev/block/mmcblk0p66                                 /system           ext4    ro,barrier=1,data=ordered                                                                                       wait
-/dev/block/mmcblk0p67                                 /data             ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard,errors=panic                                                     wait,check,encryptable=/dev/block/mmcblk0p39
+/dev/block/bootdevice/by-name/boot                    /boot             emmc    defaults                                                                                                        defaults
+/dev/block/bootdevice/by-name/recovery                /recovery         emmc    defaults                                                                                                        defaults
+/dev/block/bootdevice/by-name/system                  /system           ext4    ro,barrier=1,data=ordered                                                                                       wait
+/dev/block/bootdevice/by-name/userdata                /data             ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard,errors=panic                                                     wait,check,encryptable=/dev/block/mmcblk0p39
 #/dev/block/bootdevice/by-name/cache                   /cache            ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard,errors=panic                                                     wait
 #/dev/block/bootdevice/by-name/persist                 /persist          ext4    nosuid,nodev,barrier=1                                                                                          wait
 
