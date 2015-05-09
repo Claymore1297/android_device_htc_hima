@@ -1,0 +1,3 @@
+http://review.cyanogenmod.org/#/c/97010/1
+http://review.cyanogenmod.org/#/c/96771/1
+revert system/core 4ec3924dc9502be092a11f40535c92ada335d88a (https://github.com/CyanogenMod/android_system_core/commit/4ec3924dc9502be092a11f40535c92ada335d88a)
