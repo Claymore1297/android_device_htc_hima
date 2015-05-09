@@ -34,17 +34,33 @@ on early-init
 on fs
     mount_all fstab.qcom
 
+    wait /dev/block/bootdevice/by-name/cache
+    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
+
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
 
     mkdir /devlog 0700 root root
+    wait /dev/block/bootdevice/by-name/devlog
+    e2fsck emmc@devlog
+    mount ext4 emmc@devlog /devlog nosuid nodev barrier=1,errors=continue
 
     mkdir /fataldevlog 0700 root root
+    wait /dev/block/bootdevice/by-name/fataldevlog
+    e2fsck emmc@fataldevlog
+    mount ext4 emmc@fataldevlog /fataldevlog nosuid nodev barrier=1,errors=continue
 
     # Load Mocana FIPS module. Add here since it can make sure system is mounted
     #insmod /system/lib/modules/moc_platform_mod.ko
     #insmod /system/lib/modules/moc_crypto.ko
     #insmod /system/lib/modules/moc_crypto_api_tmpl.ko
+
+    # mount cota partition
+    mkdir /cota 0771 root cw_access
+    wait /dev/block/bootdevice/by-name/cota
+    mount ext4 /dev/block/bootdevice/by-name/cota /cota nosuid nodev noatime barrier=1,grpid
 
     # mount preload data partition
     mkdir /preload 0771 system system
