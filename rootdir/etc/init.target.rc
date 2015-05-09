@@ -42,9 +42,9 @@ on fs
     mkdir /fataldevlog 0700 root root
 
     # Load Mocana FIPS module. Add here since it can make sure system is mounted
-    insmod /system/lib/modules/moc_platform_mod.ko
-    insmod /system/lib/modules/moc_crypto.ko
-    insmod /system/lib/modules/moc_crypto_api_tmpl.ko
+    #insmod /system/lib/modules/moc_platform_mod.ko
+    #insmod /system/lib/modules/moc_crypto.ko
+    #insmod /system/lib/modules/moc_crypto_api_tmpl.ko
 
     # mount preload data partition
     mkdir /preload 0771 system system
