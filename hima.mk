@@ -160,6 +160,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.mdm.sh \
+    init.qcom.sh \
     init.qcom.audio.sh \
     init.qcom.bt.sh \
     init.qcom.coex.sh \
