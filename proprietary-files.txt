@@ -750,6 +750,7 @@ vendor/lib64/libOmxWmaDec.so
 vendor/lib64/lib-imsrcscmclient.so
 vendor/lib64/lib-imsdpl.so
 vendor/lib64/lib-imsrcscmservice.so
+etc/calibration
 etc/cir.img
 etc/otp.bin
 etc/Headset_cal.acdb
