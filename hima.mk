@@ -149,31 +149,18 @@ PRODUCT_COPY_FILES += \
 # Init configuration
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.htc.usb.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.recovery.qcom.rc \
-    init.target.rc \
     ueventd.qcom.rc
 
 # Init scripts
 PRODUCT_PACKAGES += \
-    init.crda.sh \
-    init.mdm.sh \
     init.qcom.sh \
-    init.qcom.audio.sh \
     init.qcom.bt.sh \
     init.qcom.coex.sh \
-    init.qcom.efs.sync.sh \
-    init.qcom.factory.sh \
-    init.qcom.firmware_links.sh \
     init.qcom.fm.sh \
     init.qcom.post_boot.sh \
-    init.qcom.rootagent.sh \
-    init.qcom.sdio.sh \
-    init.qcom.uicc.sh \
-    init.qcom.wifi.sh \
-    init.qcom.zram.sh
+    init.qcom.uicc.sh
 
 # Lights
 PRODUCT_PACKAGES += \
