@@ -26,11 +26,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    av.offload.enable=false \
-    av.streaming.offload.enable=false
+    av.offload.enable=true \
+    av.streaming.offload.enable=false \
+    audio.offload.gapless.enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    mm.enable.smoothstreaming=true
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=3183219
 
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 PRODUCT_PROPERTY_OVERRIDES += \
