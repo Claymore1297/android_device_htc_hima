@@ -99,7 +99,11 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    hostapd_default.conf
+    hostapd \
+    dhcpcd.conf \
+    libwpa_client \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -169,14 +173,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8994
-
-# WPA Supplicant
-PRODUCT_PACKAGES += \
-    hostapd \
-    dhcpcd.conf \
-    libwpa_client \
-    wpa_supplicant \
-    wpa_supplicant.conf
 
 # Media
 PRODUCT_COPY_FILES += \
