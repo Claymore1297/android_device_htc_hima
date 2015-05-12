@@ -100,11 +100,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     bdAddrLoader
 
+# WiFi cal NVRAM file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
+
 # Wifi
 PRODUCT_PACKAGES += \
+    libwpa_client \
     hostapd \
     dhcpcd.conf \
-    libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
 
