@@ -138,6 +138,17 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += device/htc/hima-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    cir_fw_update.te \
+    device.te \
+    file_contexts \
+    kernel.te \
+    system_app.te \
+    system_server.te \
+    ueventd.te \
+    vold.te
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
