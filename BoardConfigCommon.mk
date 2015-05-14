@@ -156,5 +156,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 #Disable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
 
+# CM Hardware
+BOARD_HARDWARE_CLASS := device/htc/hima-common/cmhw
+
 # inherit from the proprietary version
 -include vendor/htc/hima-common/BoardConfigVendor.mk

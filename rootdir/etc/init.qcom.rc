@@ -869,6 +869,10 @@ on post-fs-data
     restorecon_recursive /cota
     mkdir /data/usf 0700 system system
 
+    # PCC Calibration
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+
 # HTC HRDUMP - BEGIN
 service hrdump /system/bin/hrdump -s
     disabled
