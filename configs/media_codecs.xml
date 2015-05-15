@@ -100,6 +100,8 @@ Only the three quirks included above are recognized at this point:
 -->
 
 <MediaCodecs>
+	<Include href="media_codecs_google_audio.xml" />
+    <Include href="media_codecs_google_telephony.xml" />
     <Encoders>
         <!-- Audio Hardware  -->
 <!--
@@ -352,7 +354,6 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-esdp" />
 -->
     </Decoders>
-    <Include href="media_codecs_google_audio.xml" />
-    <Include href="media_codecs_google_telephony.xml" />
     <Include href="media_codecs_google_video.xml" />
+    <Include href="media_codecs_ffmpeg.xml" />
 </MediaCodecs>
