@@ -17,7 +17,7 @@ BOARD_VENDOR := htc
 
 LOCAL_PATH := device/htc/hima-common
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := device/htc/hima-common/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8994
