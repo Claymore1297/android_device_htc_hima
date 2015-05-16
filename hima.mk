@@ -68,7 +68,6 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
     audio.primary.msm8994 \
     audio.r_submix.default \
@@ -124,6 +123,11 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# IPv6
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
 
 # Camera
 PRODUCT_PACKAGES += \
