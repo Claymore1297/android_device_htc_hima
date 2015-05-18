@@ -736,8 +736,11 @@ on post-fs
     chown root system /proc/driver/hdf
     chmod 0664 /proc/driver/hdf
 
+# msm specific files that need to be created on /data
 on post-fs-data
     start hrdump
+
+    mkdir /data/media 0770 media_rw media_rw
 
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
@@ -746,8 +749,10 @@ on post-fs-data
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
 
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    #Create folder for mm-qcamera-daemon
+    # Create folder for mm-qcamera-daemon
+    mkdir /data/camera 0770 media camera
+
+    # Create folder for camera sockets
     mkdir /data/misc/camera 0770 camera camera
 
     mkdir /data/media 0770 media_rw media_rw
@@ -809,7 +814,7 @@ on post-fs-data
 
     #Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
-   mkdir /data/misc/location/mq 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
     mkdir /data/misc/location/gpsone_d 0770 system gps
     mkdir /data/misc/location/quipc 0770 gps system
@@ -823,8 +828,14 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
+    # Make sure the default firmware is loaded
+    write /sys/module/bcmdhd/parameters/firmware_path "/system/etc/firmware/fw_bcmdhd.bin"
+
     #Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
+
+    # Provide the access to hostapd.conf only to root and group
+    chmod 0660 /data/hostapd/hostapd.conf
 
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
@@ -873,15 +884,12 @@ on post-fs-data
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
-# HTC HRDUMP - BEGIN
 service hrdump /system/bin/hrdump -s
     disabled
     oneshot
 
 on property:ro.boot.htc.hrdump=detected
-        setprop debug.htc.hrdump "detected"
-
-# HTC HRDUMP - END
+    setprop debug.htc.hrdump "detected"
 
 service ssr_setup /system/bin/ssr_setup
     oneshot
