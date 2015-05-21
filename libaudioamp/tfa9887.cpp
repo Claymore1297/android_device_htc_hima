@@ -16,6 +16,7 @@
 
 #include <errno.h>
 #include <fcntl.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -82,7 +83,7 @@ static int tfa9887_read_reg(int fd, uint8_t reg, uint16_t *val) {
     uint8_t buf[2];
 
     reg_val[0] = 2;
-    reg_val[1] = (unsigned int) &buf;
+    reg_val[1] = (uint64_t) &buf;
     /* unsure why the first byte is skipped */
     buf[0] = 0;
     buf[1] = reg;
@@ -92,7 +93,7 @@ static int tfa9887_read_reg(int fd, uint8_t reg, uint16_t *val) {
     }
 
     reg_val[0] = 2;
-    reg_val[1] = (unsigned int) &buf;
+    reg_val[1] = (uint64_t) &buf;
     if ((ret = ioctl(fd, TPA9887_READ_CONFIG, &reg_val)) != 0) {
         ALOGE("ioctl %d failed, ret = %d", TPA9887_READ_CONFIG, ret);
         goto read_reg_err;
@@ -111,7 +112,7 @@ static int tfa9887_write_reg(int fd, uint8_t reg, uint16_t val) {
     uint8_t buf[4];
 
     reg_val[0] = 4;
-    reg_val[1] = (unsigned int) &buf;
+    reg_val[1] = (uint64_t) &buf;
     /* unsure why the first byte is skipped */
     buf[0] = 0;
     buf[1] = reg;
@@ -133,7 +134,7 @@ static int tfa9887_read(int fd, int addr, uint8_t buf[], int len) {
     uint8_t kernel_buf[len];
 
     reg_val[0] = 2;
-    reg_val[1] = (unsigned int) &reg_buf;
+    reg_val[1] = (uint64_t) &reg_buf;
     /* unsure why the first byte is skipped */
     reg_buf[0] = 0;
     reg_buf[1] = (0xFF & addr);
@@ -143,7 +144,7 @@ static int tfa9887_read(int fd, int addr, uint8_t buf[], int len) {
     }
 
     reg_val[0] = len;
-    reg_val[1] = (unsigned int) &kernel_buf;
+    reg_val[1] = (uint64_t) &kernel_buf;
     if ((ret = ioctl(fd, TPA9887_READ_CONFIG, &reg_val)) != 0) {
         ALOGE("ioctl %d failed, ret = %d", TPA9887_READ_CONFIG, ret);
         goto read_err;
@@ -161,7 +162,7 @@ static int tfa9887_write(int fd, int addr, const uint8_t buf[], int len) {
     uint8_t ioctl_buf[len + 2];
 
     reg_val[0] = len + 2;
-    reg_val[1] = (unsigned int) &ioctl_buf;
+    reg_val[1] = (uint64_t) &ioctl_buf;
     /* unsure why the first byte is skipped */
     ioctl_buf[0] = 0;
     ioctl_buf[1] = (0xFF & addr);
