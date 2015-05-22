@@ -74,7 +74,7 @@ TARGET_RECOVERY_FSTAB := device/htc/hima-common/rootdir/etc/fstab.qcom
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
-BOARD_AUDIO_AMPLIFIER := device/htc/hima-common/libaudioamp
+#BOARD_AUDIO_AMPLIFIER := device/htc/hima-common/libaudioamp
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 #AUDIO_FEATURE_ENABLED_FM := true
 #AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
