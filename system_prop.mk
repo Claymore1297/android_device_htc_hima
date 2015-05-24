@@ -43,6 +43,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     use.voice.path.for.pcm.voip=false
 
+# System props for Dolby
+PRODUCT_PROPERTY_OVERRIDES += \
+    dmid=-1286820014 \
+    audio.ds1.metainfo.key=273
+
 # Display
 #
 # OpenGLES:
