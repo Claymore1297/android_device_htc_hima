@@ -487,7 +487,6 @@ vendor/lib/libchromatix_ov8825_cpp_video.so
 vendor/lib/libmmcamera_isp_mce40.so
 vendor/lib/libmmcamera2_imglib_modules.so
 vendor/lib/libchromatix_ov4688_front_cpp_video_24fps.so
-vendor/lib/libbt-vendor.so
 vendor/lib/libchromatix_ov13850_front_cpp_hdr.so
 vendor/lib/libchromatix_imx135_preview.so
 vendor/lib/libchromatix_ov8825_liveshot.so
@@ -725,7 +724,6 @@ vendor/lib64/libizat_core.so
 vendor/lib64/libqmi_client_helper.so
 vendor/lib64/lib-rcsjni.so
 vendor/lib64/libsi.so
-vendor/lib64/libbt-vendor.so
 vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libtime_genoff.so
 vendor/lib64/libadreno_utils.so
