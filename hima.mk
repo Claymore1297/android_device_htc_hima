@@ -169,13 +169,10 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    nfc.msm8994 \
-    libnfc \
-    libnfc_ndef \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    NfcNci \
+    nfc_nci.pn54x.default \
+    Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
