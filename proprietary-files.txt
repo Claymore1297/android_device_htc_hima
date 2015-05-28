@@ -20,6 +20,9 @@ bin/qmuxd
 bin/fm_qsoc_patches
 bin/energy-awareness
 bin/imscmservice
+bin/downloadsensorhub
+bin/htc_dlmode
+bin/shub_dbg
 lib/libcnefeatureconfig.so
 lib/libHtcVteEngine.so
 lib/librmnetctl.so
@@ -34,6 +37,8 @@ lib/libmmjpeg_interface.so
 lib/libqomx_core.so
 lib/libc2dcolorconvertgpu.so
 lib/libcamerapp.so
+lib/libhtc_sensorhub.so
+lib/libhtcmfg.so
 vendor/bin/sound_trigger_test
 vendor/bin/audioflacapp
 vendor/bin/qti
@@ -887,3 +892,5 @@ lib64/libcnefeatureconfig.so
 lib64/librmnetctl.so
 lib64/hw/nfc_nci_pn547.default.so
 lib64/hw/sensors.msm8994.so
+lib64/libhtc_sensorhub.so
+lib64/libhtcmfg.so

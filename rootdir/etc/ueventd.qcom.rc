@@ -219,3 +219,29 @@
 
 # Ramdump devices
 /dev/ramdump*             0640   system     system
+
+# CIR
+/dev/ttyHSL2              0660   system      system
+
+# HtcCarGPS
+/dev/ttyHSUSB1                                 0600    system  system
+
+# for autobot car pc
+/dev/ttyHSUSB3              0660   root       mtp
+
+# MirrorLink
+/sys/devices/virtual/android_usb/android0/f_projector2    client_context_info    0664  system mtp
+/sys/devices/virtual/android_usb/android0/f_projector2    client_uuid           0644  system system
+/sys/devices/virtual/android_usb/android0/f_projector2    client_width          0644  system system
+/sys/devices/virtual/android_usb/android0/f_projector2    client_height         0644  system system
+
+# sensor hub
+/dev/shub_dload       0660   system     system
+/dev/shub_log       0660   system     system
+/dev/shub_event       0660   system     system
+
+# set the owner of partition control's block node to media and system for MFG disable camera feature.
+/dev/block/bootdevice/by-name/control   0660    media   system
+
+#HTC Debug
+/dev/block/bootdevice/by-name/misc      0660    root    system
