@@ -1527,7 +1527,13 @@
     </path>
 
     <path name="handset-mic">
-        <path name="dmic1" />
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="MIC_BIAS1_Bypass Cap" value="0" />
+        <ctl name="ADC4 Volume" value="13" />
+        <ctl name="DEC3 Volume" value="88" />
     </path>
 
     <path name="handset-mic-cdp">
