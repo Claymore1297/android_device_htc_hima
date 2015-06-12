@@ -10,7 +10,7 @@ namespace android {
 class CameraParameters_EXT: public CameraParameters
 {
 public:
-    CameraParameters_EXT();
+    CameraParameters_EXT(CameraParameters *parent);
     CameraParameters_EXT(const String8 &params): CameraParameters(params) {};
     ~CameraParameters_EXT();
 

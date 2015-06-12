@@ -102,6 +102,7 @@ const char CameraParameters_EXT::KEY_SLOW_MOTION_VERSION[] = "slow-motion-versio
 const char CameraParameters_EXT::KEY_SAVE_MIRROR[] = "save-mirror" ; \
 const char CameraParameters_EXT::DENOISE_ON[] = "denoise-on" ; \
 const char CameraParameters_EXT::DENOISE_OFF[] = "denoise-off" ; \
+CameraParameters_EXT::CameraParameters_EXT(CameraParameters *parent) {}; \
 void CameraParameters_EXT::check_flashlight_restriction() {}; \
 void CameraParameters_EXT::getBrightnessLumaTargetSet(int *magic, int *sauce) const{}; \
 void CameraParameters_EXT::setBrightnessLumaTargetSet(int brightness, int luma) { \
