@@ -149,6 +149,9 @@ TARGET_POWERHAL_VARIANT := qcom
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 
+# Init
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/htc/hima-common/sepolicy
