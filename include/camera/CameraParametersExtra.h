@@ -102,14 +102,15 @@ const char CameraParameters_EXT::KEY_SLOW_MOTION_VERSION[] = "slow-motion-versio
 const char CameraParameters_EXT::KEY_SAVE_MIRROR[] = "save-mirror" ; \
 const char CameraParameters_EXT::DENOISE_ON[] = "denoise-on" ; \
 const char CameraParameters_EXT::DENOISE_OFF[] = "denoise-off" ; \
-CameraParameters_EXT::CameraParameters_EXT(CameraParameters *parent) {}; \
 void CameraParameters_EXT::check_flashlight_restriction() {}; \
 void CameraParameters_EXT::getBrightnessLumaTargetSet(int *magic, int *sauce) const{}; \
 void CameraParameters_EXT::setBrightnessLumaTargetSet(int brightness, int luma) { \
     char str[32]; \
     snprintf(str, sizeof(str),"%d,%d", brightness, luma); \
     set("brightness-luma-target-set", str); \
-};
+}; \
+CameraParameters_EXT::CameraParameters_EXT(CameraParameters *parent) {}; \
+CameraParameters_EXT::~CameraParameters_EXT() {};
 
 #define CAMERA_PARAMETERS_EXTRA_H \
     static const char KEY_TIME_CONS_POST_PROCESSING[]; \

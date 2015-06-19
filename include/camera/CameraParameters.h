@@ -12,7 +12,7 @@ class CameraParameters_EXT: public CameraParameters
 public:
     CameraParameters_EXT(CameraParameters *parent);
     CameraParameters_EXT(const String8 &params): CameraParameters(params) {};
-    ~CameraParameters_EXT();
+    virtual ~CameraParameters_EXT();
 
     String8 flatten() const;
     void unflatten(const String8 &params);
