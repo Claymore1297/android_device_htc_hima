@@ -32,7 +32,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # fluencetype can be "fluence" or "fluencepro" or "none"
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=none \
+    ro.qc.sdk.audio.fluencetype=fluence \
     ro.qc.sdk.audio.ssr=false
 
 PRODUCT_PROPERTY_OVERRIDES += \

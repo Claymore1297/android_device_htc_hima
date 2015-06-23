@@ -2011,6 +2011,10 @@
         <ctl name="DEC6 Volume" value="84" />
         <ctl name="DEC4 Volume" value="84" />
     </path>
+
+    <path name="voice-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
     
     <path name="dmic-hac-endfire-sidetone">
         <path name="dual-mic" />
@@ -2035,6 +2039,10 @@
         <ctl name="ADC1 Volume" value="13" />
         <ctl name="DEC4 Volume" value="84" />
         <ctl name="DEC6 Volume" value="84" />
+    </path>
+
+    <path name="voice-speaker-dmic-ef">
+        <path name="speaker-dmic-endfire" />
     </path>
 
     <path name="headphones-voice-generic">
