@@ -332,7 +332,7 @@
     <!-- anc headset end-->
     <!-- aanc handset mic -->
     <ctl name="AIF1_CAP Mixer SLIM TX9" value="0" />
-    <ctl name="SLIM_0_RX AANC MUX" value="ZERO" />
+    <ctl name="AANC_SLIM_0_RX MUX" value="ZERO" />
     <!-- aanc handset mic end -->
     <!-- ssr qmic -->
     <ctl name="AIF1_CAP Mixer SLIM TX10" value="0" />
@@ -1420,6 +1420,14 @@
         <ctl name="IIR1 INP1 MUX" value="DEC2" />
     </path>
 
+    <path name="adc6">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC1" />
+        <ctl name="DEC1 MUX" value="ADC6" />
+        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+    </path>
+
     <path name="dmic1">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM_0_TX Channels" value="One" />
@@ -1544,6 +1552,15 @@
         <ctl name="DEC3 Volume" value="88" />
     </path>
 
+    <path name="handset-mic-db">
+        <path name="adc6" />
+    </path>
+
+    <path name="handset-mic-ext-db">
+        <path name="adc5" />
+        <path name="adc1" />
+    </path>
+
     <path name="handset-mic-cdp">
         <path name="adc1" />
         <ctl name="ADC1 Volume" value="20" />
@@ -1600,6 +1617,10 @@
 
     <path name="voice-speaker-mic">
         <path name="speaker-mic" />
+    </path>
+
+    <path name="voice-speaker-mic-db">
+        <path name="handset-mic-db" />
     </path>
 
     <path name="voice-headphones">
@@ -1793,7 +1814,7 @@
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX9" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Three" />
-        <ctl name="SLIM_0_RX AANC MUX" value="SLIMBUS_0_TX" />
+        <ctl name="AANC_SLIM_0_RX MUX" value="SLIMBUS_0_TX" />
         <ctl name="SLIM TX9 MUX" value="DEC7" />
         <ctl name="DEC7 MUX" value="DMIC1" />
         <ctl name="SLIM TX8 MUX" value="DEC8" />
