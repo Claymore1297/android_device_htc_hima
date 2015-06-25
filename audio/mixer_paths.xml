@@ -1525,14 +1525,6 @@
     <path name="speaker-fm">
     </path>
 
-    <path name="speaker-fluid">
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="One" />
-        <ctl name="RX8 MIX1 INP1" value="RX1" />
-        <ctl name="RX8 Digital Volume" value="84" />
-        <ctl name="COMP0 Switch" value="1" />
-    </path>
-
     <path name="speaker-liquid">
         <path name="speaker" />
     </path>
@@ -1616,21 +1608,7 @@
         <ctl name="RX7 Digital Volume" value="84" />
     </path>
 
-    <path name="speaker-protected-fluid">
-        <ctl name="AIF4_VI Mixer SPKR_VI_1" value="1" />
-        <path name="speaker-fluid" />
-        <ctl name="VI_FEED_TX Channels" value="One" />
-        <ctl name="SLIM0_RX_VI_FB_LCH_MUX"  value="SLIM4_TX" />
-    </path>
-
     <path name="vi-feedback">
-    </path>
-
-    <path name="voice-speaker-protected-fluid">
-        <ctl name="AIF4_VI Mixer SPKR_VI_1" value="1" />
-        <path name="speaker-fluid" />
-        <ctl name="VI_FEED_TX Channels" value="One" />
-        <ctl name="SLIM0_RX_VI_FB_LCH_MUX"  value="SLIM4_TX" />
     </path>
 
     <path name="handset">
@@ -1724,10 +1702,6 @@
         <path name="speaker" />
     </path>
 
-    <path name="voice-speaker-fluid">
-        <path name="speaker-fluid" />
-    </path>
-
     <path name="voice-speaker-db">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
@@ -1763,12 +1737,6 @@
         <path name="headphones" />
         <ctl name="DAC1 Switch" value="1" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
-        <ctl name="COMP0 Switch" value="1" />
-    </path>
-
-    <path name="speaker-and-headphones-fluid">
-        <path name="headphones" />
-        <ctl name="RX8 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
     </path>
 
@@ -1840,12 +1808,6 @@
         <ctl name="COMP0 Switch" value="1" />
     </path>
 
-    <path name="speaker-and-anc-headphones-fluid">
-        <path name="anc-headphones" />
-        <ctl name="RX8 MIX1 INP1" value="RX1" />
-        <ctl name="COMP0 Switch" value="1" />
-    </path>
-
     <path name="anc-fb-headphones">
         <path name="anc-headphones" />
         <ctl name="ANC Slot" value="1" />
@@ -1854,12 +1816,6 @@
     <path name="speaker-and-anc-fb-headphones">
         <path name="anc-fb-headphones" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
-        <ctl name="COMP0 Switch" value="1" />
-    </path>
-
-    <path name="speaker-and-anc-fb-headphones-fluid">
-        <path name="anc-fb-headphones" />
-        <ctl name="RX8 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
     </path>
 
@@ -1944,18 +1900,8 @@
         <path name="usb-headphones" />
     </path>
 
-    <path name="speaker-and-usb-headphones-fluid">
-        <path name="speaker-fluid" />
-        <path name="usb-headphones" />
-    </path>
-
     <path name="speaker-and-hdmi">
         <path name="speaker" />
-        <path name="hdmi" />
-    </path>
-
-    <path name="speaker-and-hdmi-fluid">
-        <path name="speaker-fluid" />
         <path name="hdmi" />
     </path>
 
