@@ -2058,7 +2058,7 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="dmic3" />
+        <path name="speaker-dmic-endfire" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -2092,13 +2092,7 @@
     </path>
 
     <path name="handset-mic">
-        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
-        <ctl name="SLIM TX7 MUX" value="DEC6" />
-        <ctl name="DEC6 MUX" value="ADC1" />
-        <ctl name="MIC_BIAS1_Bypass Cap" value="0" />
-        <ctl name="SLIM_0_TX Channels" value="One" />
-        <ctl name="ADC1 Volume" value="13" />
-        <ctl name="DEC6 Volume" value="88" />
+        <path name="line-vr" />
     </path>
 
     <path name="handset-mic-db">
