@@ -1586,12 +1586,12 @@
 
     <path name="handset-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
-        <ctl name="SLIM_0_TX Channels" value="One" />
-        <ctl name="SLIM TX7 MUX" value="DEC3" />
-        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="SLIM TX7 MUX" value="DEC6" />
+        <ctl name="DEC6 MUX" value="ADC1" />
         <ctl name="MIC_BIAS1_Bypass Cap" value="0" />
-        <ctl name="ADC4 Volume" value="13" />
-        <ctl name="DEC3 Volume" value="88" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="ADC1 Volume" value="13" />
+        <ctl name="DEC6 Volume" value="88" />
     </path>
 
     <path name="handset-mic-db">
@@ -1868,6 +1868,7 @@
 
     <!-- These are actual sound device specific mixer settings -->
     <!-- htc device start -->
+    <!-- microphone in the bottom grille -->
     <path name="main-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM TX7 MUX" value="DEC6" />
@@ -1876,6 +1877,7 @@
         <ctl name="SLIM_0_TX Channels" value="One" />
     </path>
 
+    <!-- microphone on the back -->
     <path name="2nd-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM TX7 MUX" value="DEC4" />
@@ -1884,14 +1886,16 @@
         <ctl name="SLIM_0_TX Channels" value="One" />
     </path>
     
+    <!-- microphone in the top grille -->
     <path name="3rd-mic">
-    <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
-    <ctl name="SLIM TX7 MUX" value="DEC3" />
-    <ctl name="DEC3 MUX" value="ADC4" />
-    <ctl name="MIC_BIAS4_Bypass Cap" value="0" />
-    <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
+        <ctl name="SLIM TX7 MUX" value="DEC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="MIC_BIAS4_Bypass Cap" value="0" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
     </path>
 
+    <!-- microphones in the bottom grille and back -->
     <path name="dual-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1"/>
@@ -1904,6 +1908,7 @@
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
+    <!-- microphones in the back and bottom grille -->
     <path name="dual-mic-inverse">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1"/>
@@ -1916,6 +1921,7 @@
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
+    <!-- microphones in the top grille and back -->
     <path name="dual-mic-with3rd">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1"/>
@@ -1935,9 +1941,9 @@
     </path>
     
     <path name="thirdmic">
-    <path name="3rd-mic" />
-    <ctl name="ADC4 Volume" value="19" />
-    <ctl name="DEC3 Volume" value="84" />
+        <path name="3rd-mic" />
+        <ctl name="ADC4 Volume" value="19" />
+        <ctl name="DEC3 Volume" value="84" />
     </path>
 
     <path name="line">
@@ -2016,11 +2022,11 @@
     </path>
     
     <path name="dmic-hac-endfire">
-    		<path name="dual-mic" />
-    		<ctl name="ADC1 Volume" value="12" />
-    		<ctl name="ADC3 Volume" value="12" />
-    		<ctl name="DEC6 Volume" value="84" />
-    		<ctl name="DEC4 Volume" value="84" />
+        <path name="dual-mic" />
+        <ctl name="ADC1 Volume" value="12" />
+        <ctl name="ADC3 Volume" value="12" />
+        <ctl name="DEC6 Volume" value="84" />
+        <ctl name="DEC4 Volume" value="84" />
     </path>
 
     <path name="speaker-dmic-endfire">
