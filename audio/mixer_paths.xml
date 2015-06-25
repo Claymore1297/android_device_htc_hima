@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- version: 20150305-modifyHACsidetone-->
+<!-- version: 20150407-fix-mixerpath-->
 <mixer>
     <!-- These are the initial mixer settings -->
     <ctl name="Voice Rx Device Mute" id="0" value="0" />
@@ -186,8 +186,21 @@
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia2" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia7" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia10" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia11" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia12" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia13" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia14" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia15" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia16" value="0" />
     <ctl name="VOC_EXT_EC MUX" value="NONE" />
+    <ctl name="VOICE2_EXT_EC MUX" value="NONE" />
+    <ctl name="VOLTE_EXT_EC MUX" value="NONE" />
+    <ctl name="VOIP_EXT_EC MUX" value="NONE" />
+    <ctl name="VOWLAN_EXT_EC MUX" value="NONE" />
     <!-- usb headset end -->
     <!-- fm -->
     <ctl name="SLIMBUS_0_RX Port Mixer PRI_MI2S_TX" value="0" />
@@ -276,6 +289,7 @@
     <ctl name="VoWLAN_Tx Mixer SEC_AUX_PCM_TX_VoWLAN" value="0" />
     <ctl name="AFE_PCM_RX_Voice Mixer VoWLAN" value="0" />
     <ctl name="VoWLAN_Tx Mixer AFE_PCM_TX_VoWLAN" value="0" />
+    <ctl name="QUAT_MI2S_RX_Voice Mixer VoWLAN" value="0" />
     <!-- VoWLAN end-->
 
     <!-- Audio BTSCO -->
@@ -967,7 +981,7 @@
     </path>
 
     <path name="voice2-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <ctl name="VOICE2_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer Voice2" value="1" />
         <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
     </path>
@@ -1207,7 +1221,7 @@
     </path>
 
     <path name="volte-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <ctl name="VOLTE_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer VoLTE" value="1" />
         <ctl name="VoLTE_Tx Mixer SLIM_0_TX_VoLTE" value="1" />
     </path>
@@ -1251,7 +1265,7 @@
     </path>
 
     <path name="compress-voip-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <ctl name="VOIP_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer Voip" value="1" />
         <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
     </path>
@@ -1347,7 +1361,7 @@
     </path>
 
     <path name="vowlan-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <ctl name="VOWLAN_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer VoWLAN" value="1" />
         <ctl name="VoWLAN_Tx Mixer SLIM_0_TX_VoWLAN" value="1" />
     </path>
@@ -1393,6 +1407,11 @@
 
     <path name="htc-dummy-ctrl speaker">
         <ctl name="QUAT_MI2S_DL_COMPR_STUB Switch" value="1" />
+    </path>
+
+    <path name="htc-dummy-ctrl speaker-headset">
+        <ctl name="QUAT_MI2S_DL_COMPR_STUB Switch" value="1" />
+        <ctl name="SLIMBUS_DL_COMPR_STUB Switch" value="1" />
     </path>
     <!-- htc route end -->
 
