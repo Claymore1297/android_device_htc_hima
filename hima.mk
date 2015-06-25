@@ -73,7 +73,8 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8994 \
     audio.r_submix.default \
     audio.usb.default \
-    audio_policy.msm8994
+    audio_policy.msm8994 \
+    tinymix
 
 PRODUCT_PACKAGES += \
     libaudio-resampler \

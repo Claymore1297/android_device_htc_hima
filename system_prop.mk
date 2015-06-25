@@ -17,31 +17,28 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.pcm.16bit.enable=true \
-    audio.offload.pcm.24bit.enable=true \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
-    audio.offload.pcm.enable=true \
-    media.aac_51_output_enabled=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=3314291 \
+    audio.offload.buffer.size.kb=1024 \
     av.offload.enable=true \
     av.streaming.offload.enable=true \
-    audio.offload.gapless.enabled=true
+    use.voice.path.for.pcm.voip=true \
+    audio.offload.multiple.enabled=false \
+    audio.offload.gapless.enabled=true \
+    tunnel.audio.encode=true \
+    media.aac_51_output_enabled=true \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.24bit.enable=true
+
+# fluencetype can be "fluence" or "fluencepro" or "none"
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.audio.fluencetype=none \
+    ro.qc.sdk.audio.ssr=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    mm.enable.smoothstreaming=true
-
-##fluencetype can be "fluence" or "fluencepro" or "none"
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=none
-
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    persist.audio.fluence.voicecall=true \
-#    persist.audio.fluence.speaker=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    use.voice.path.for.pcm.voip=false
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true
 
 # System props for Dolby
 PRODUCT_PROPERTY_OVERRIDES += \
