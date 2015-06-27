@@ -961,16 +961,16 @@
         <ctl name="Voice_Tx Mixer AFE_PCM_TX_Voice" value="1" />
     </path>
 
-    <path name="voice-call speaker">
+    <path name="voice-call voice-speaker">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
     </path>
 
-    <path name="voice-call speaker-protected">
+    <path name="voice-call voice-speaker-protected">
     </path>
 
-    <path name="voice-call speaker-headset">
+    <path name="voice-call voice-speaker-headset">
         <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
     </path>
@@ -2083,12 +2083,7 @@
     </path>
 
     <path name="handset">
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="One" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="DAC1 Switch" value="1" />
-        <ctl name="RX1 Digital Volume" value="84" />
+        <path name="earpiece" />
     </path>
 
     <path name="handset-mic">
@@ -2138,16 +2133,15 @@
     </path>
 
     <path name="voice-handset">
-        <path name="sidetone-handset" />
-        <path name="handset" />
+        <path name="earpiece-voice" />
     </path>
 
     <path name="voice-handset-tmus">
-        <path name="handset" />
+        <path name="earpiece-voice" />
     </path>
 
     <path name="voice-speaker">
-        <path name="speaker" />
+        <path name="voice-call voice-speaker" />
     </path>
     
     <path name="speaker-voice">
@@ -2159,7 +2153,7 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="speaker-mic" />
+        <path name="speaker-dmic-endfire" />
     </path>
 
     <path name="voice-speaker-mic-db">
