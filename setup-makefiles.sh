@@ -133,7 +133,7 @@ LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_MODULE_TAGS   := optional
 LOCAL_CERTIFICATE   := platform
 LOCAL_SRC_FILES     := proprietary/app/com.qualcomm.services.location/com.qualcomm.services.location.apk
-include $(BUILD_PREBUILT)
+include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE        := TimeService
