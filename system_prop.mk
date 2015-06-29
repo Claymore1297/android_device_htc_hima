@@ -23,11 +23,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     av.offload.enable=true \
     av.streaming.offload.enable=true \
     use.voice.path.for.pcm.voip=true \
-    audio.offload.multiple.enabled=false \
+    audio.offload.multiple.enabled=true \
     audio.offload.gapless.enabled=true \
-    tunnel.audio.encode=true \
     media.aac_51_output_enabled=true \
-    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.16bit.enable=false \
     audio.offload.pcm.24bit.enable=true
 
 # fluencetype can be "fluence" or "fluencepro" or "none"
