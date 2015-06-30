@@ -710,6 +710,9 @@ on boot
     setprop debug.nfc.fw_boot_download "false"
     # NFC --
 
+    # HAL looks for pn54x but kernel driver uses pn544
+    symlink /dev/pn544 /dev/pn54x
+
     # exfat
     insmod /system/lib/modules/texfat.ko
 
