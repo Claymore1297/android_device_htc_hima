@@ -2,7 +2,6 @@ lib64/libril.so
 lib64/libcnefeatureconfig.so
 lib64/libHtcVteEngine.so
 lib64/libgps.utils.so
-lib64/hw/nfc_nci_pn547.default.so
 lib64/hw/gps.default.so
 lib64/hw/sensors.msm8994.so
 lib64/libhtc_sensorhub.so
