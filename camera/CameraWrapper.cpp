@@ -168,10 +168,8 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.set("preview-frame-rate-mode", "frame-rate-fixed");
 
     if (!isVideo && id == 0) {
-        /* Disable OIS, set continuous burst to prevent crash */
-        params.set(android::CameraParameters::KEY_CONTIBURST_TYPE, "unlimited");
-        params.set(android::CameraParameters::KEY_OIS_SUPPORT, "false");
-        params.set(android::CameraParameters::KEY_OIS_MODE, "off");
+        /* Set continuous burst to prevent crash */
+        params.set(android::CameraParameters_EXT::KEY_CONTIBURST_TAKE, "unlimited");
     }
 
     if (isVideo && id == 1) {
