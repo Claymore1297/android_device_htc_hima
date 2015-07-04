@@ -173,9 +173,11 @@ BOARD_SEPOLICY_UNION += \
     healthd.te \
     file_contexts \
     kernel.te \
+    mediaserver.te \
     qmuxd.te \
     system_app.te \
     system_server.te \
+    thermal-engine.te \
     ueventd.te \
     vold.te
 
