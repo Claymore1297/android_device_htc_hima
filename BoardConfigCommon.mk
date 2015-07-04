@@ -173,6 +173,7 @@ BOARD_SEPOLICY_UNION += \
     healthd.te \
     file_contexts \
     kernel.te \
+    qmuxd.te \
     system_app.te \
     system_server.te \
     ueventd.te \
