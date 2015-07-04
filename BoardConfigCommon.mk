@@ -170,6 +170,7 @@ BOARD_SEPOLICY_DIRS += device/htc/hima-common/sepolicy
 BOARD_SEPOLICY_UNION += \
     cir_fw_update.te \
     device.te \
+    healthd.te \
     file_contexts \
     kernel.te \
     system_app.te \
