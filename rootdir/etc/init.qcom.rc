@@ -887,6 +887,9 @@ on post-fs-data
     chown system system /sys/devices/virtual/graphics/fb0/rgb
     chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
 
+    # Set FIOPS block scheduler
+    write /sys/block/mmcblk0/queue/scheduler fiops
+
 service hrdump /system/bin/hrdump -s
     disabled
     oneshot
