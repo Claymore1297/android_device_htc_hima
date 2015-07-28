@@ -136,6 +136,7 @@ on post-fs-data
 
 on early-boot
     write /sys/kernel/boot_adsp/boot 1
+    exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
 
 on boot
     # Create QMUX deamon socket area

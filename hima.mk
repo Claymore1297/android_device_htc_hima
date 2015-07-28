@@ -101,6 +101,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
+    init.qcom.early_boot.sh \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
