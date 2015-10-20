@@ -97,6 +97,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
 
+# HTC Logging functions
+PRODUCT_PACKAGES += \
+    libhtc
+
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \

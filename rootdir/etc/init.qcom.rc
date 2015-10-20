@@ -40,6 +40,9 @@ on early-init
 on init
     chmod 0644 /proc/cmdline
 
+    # Preload HTC logging functions
+    export LD_PRELOAD "libhtc.so"
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     # Set permissions for persist partition
