@@ -6,7 +6,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.io.scheduler=bfq
 
-# MTP and USB-OTG
+# MTP
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
     persist.sys.isUsbOtgEnabled=true
@@ -99,10 +99,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=false \
     ro.use_data_netmgrd=true
-
-# Recovery
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.forbid_format=/boot,/firmware,/persist
 
 # Sensor debugging
 # Valid settings (and presumably what they mean):
