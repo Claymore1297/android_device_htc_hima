@@ -18,7 +18,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := \
     htc_log.c
 
-LOCAL_MODULE := libhtc
+LOCAL_MODULE := liblog_htc
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 

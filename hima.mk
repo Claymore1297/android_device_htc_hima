@@ -99,7 +99,7 @@ PRODUCT_COPY_FILES += \
 
 # HTC Logging functions
 PRODUCT_PACKAGES += \
-    libhtc
+    liblog_htc
 
 # Init
 PRODUCT_PACKAGES += \

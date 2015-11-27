@@ -38,10 +38,9 @@ on early-init
     mkdir /firmware/radio 0771 system system
 
 on init
-    chmod 0644 /proc/cmdline
+    export LD_SHIM_LIBS "/system/lib/liblog.so|/system/lib/liblog_htc.so:/system/lib64/liblog.so|/system/lib64/liblog_htc.so"
 
-    # Preload HTC logging functions
-    export LD_PRELOAD "libhtc.so"
+    chmod 0644 /proc/cmdline
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
