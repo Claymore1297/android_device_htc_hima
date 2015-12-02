@@ -306,35 +306,6 @@ on boot
     chmod 444 /sys/class/optical_sensors/proximity/p_status
     chmod 444 /sys/class/optical_sensors/proximity/ps_adc
 
-    # init PnPMgr node
-    chmod 0664 /sys/power/pnpmgr/apps/media_mode
-    chown media system /sys/power/pnpmgr/apps/media_mode
-    chown system /sys/power/pnpmgr/apps/activity_trigger
-    chown system /sys/power/pnpmgr/apps/non_activity_trigger
-    chown system /sys/power/pnpmgr/launch_event
-    chown system /sys/power/powersave
-    chown system /sys/power/pnpmgr/cluster/big/user_perf_lvl
-    chown system /sys/power/pnpmgr/cluster/big/user_lvl_to_min_freq
-    chown system /sys/power/pnpmgr/cluster/big/hotplug/user_cpunum_max
-    chown system /sys/power/pnpmgr/cluster/big/hotplug/user_cpunum_min
-    chown system /sys/power/pnpmgr/cluster/little/user_perf_lvl
-    chown system /sys/power/pnpmgr/cluster/little/user_lvl_to_min_freq
-    chown system /sys/power/pnpmgr/cluster/little/hotplug/user_cpunum_max
-    chown system /sys/power/pnpmgr/cluster/little/hotplug/user_cpunum_min
-    chown system /sys/power/pnpmgr/touch_boost
-    chown system /sys/power/pnpmgr/long_duration_touch_boost
-    chown system /sys/power/wait_for_fb_status
-    chmod 0664 /sys/power/pnpmgr/display/single_layer
-    chown system /sys/power/pnpmgr/display/single_layer
-
-    write /sys/power/pnpmgr/cluster/big/hotplug/mp_cpunum_max 4
-    write /sys/power/pnpmgr/cluster/big/hotplug/mp_cpunum_min 1
-    write /sys/power/pnpmgr/cluster/little/hotplug/mp_cpunum_max 4
-    write /sys/power/pnpmgr/cluster/little/hotplug/mp_cpunum_min 0
-    write /sys/power/pnpmgr/apps/activity_trigger "booting"
-    write /sys/power/pnpmgr/long_duration_touch_boost_duration 3000
-    write /sys/power/pnpmgr/touch_boost_duration 200
-
     chown system system /sys/class/power_supply/battery/full_level_dis_batt_chg
     chmod 0220 /sys/class/power_supply/battery/full_level_dis_batt_chg
     chown radio radio /sys/class/power_supply/battery/phone_call
