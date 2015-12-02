@@ -147,6 +147,9 @@ on boot
     mkdir /dev/socket/qmux_nfc 0770 nfc nfc
     mkdir /dev/socket/qmux_radio 0770 radio radio
 
+    # Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
+
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chmod 0660 /sys/class/rfkill/rfkill0/state
