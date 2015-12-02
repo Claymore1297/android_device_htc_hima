@@ -847,7 +847,6 @@ bin/qmuxd
 bin/radish
 bin/rfs_access
 bin/rmt_storage
-lib64/libcnefeatureconfig.so
 lib64/libhtc_rilhook.so
 lib64/libril.so
 lib64/librmnetctl.so
