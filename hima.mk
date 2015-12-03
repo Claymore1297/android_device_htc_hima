@@ -102,6 +102,10 @@ PRODUCT_PACKAGES += \
     memtrack.msm8994 \
     liboverlay
 
+# Dot View Case
+PRODUCT_PACKAGES += \
+    Dotcase
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
