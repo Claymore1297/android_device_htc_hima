@@ -90,7 +90,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib64/libhtc_rilhook.so
+    rild.libpath=/system/lib64/libhtc_rilhook.so \
+    ro.ril.telephony.mqanelements=5
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false
