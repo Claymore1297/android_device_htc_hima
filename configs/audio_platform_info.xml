@@ -42,12 +42,12 @@
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" acdb_id="4" />
 
         <!-- used for voip handset -->
-        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" acdb_id="4" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" acdb_id="4" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" acdb_id="4" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" acdb_id="4" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" acdb_id="4" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" acdb_id="4" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" acdb_id="113" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" acdb_id="113" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" acdb_id="113" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" acdb_id="113" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" acdb_id="113" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" acdb_id="113" />
 
         <!-- used for input speaker -->
         <device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="11" />
@@ -55,38 +55,38 @@
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" acdb_id="11" />
 
         <!-- used for voip speaker -->
-        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC" acdb_id="11" />
-        <device name="SND_DEVICE_IN_SPEAKER_MIC_NS" acdb_id="11" />
-        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC_NS" acdb_id="11" />
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" acdb_id="11" />
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" acdb_id="11" />
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" acdb_id="11" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC" acdb_id="504" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_NS" acdb_id="504" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC_NS" acdb_id="504" />
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" acdb_id="504" />
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" acdb_id="504" />
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" acdb_id="504" />
 
         <!-- used for input headset -->
         <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="8" />
 
         <!-- used for voip headset -->
-        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" acdb_id="8" />
+        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" acdb_id="301" />
 
         <!-- used for call headset -->
         <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" acdb_id="8" />
 
         <!-- used for camcorder -->
-        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="4" />
-        <device name="SND_DEVICE_IN_CAMCORDER_STEREO_DMIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="508" />
+        <device name="SND_DEVICE_IN_CAMCORDER_STEREO_DMIC" acdb_id="508" />
 
         <!-- used for call handset -->
         <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="41" />
 
         <!-- used for call speaker -->
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="43" />
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="43" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="42" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="42" />
 
         <!-- Used for voice recognition -->
-        <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="4" />
-        <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="4" />
-        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="4" />
-        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE" acdb_id="4" />
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="505" />
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="505" />
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="505" />
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE" acdb_id="505" />
     </acdb_ids>
 
     <backend_names>
