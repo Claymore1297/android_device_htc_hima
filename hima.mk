@@ -90,10 +90,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Snap
 
-# Compat symbols
-PRODUCT_PACKAGES += \
-    libstlport
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8994 \
