@@ -93,7 +93,6 @@ PRODUCT_PACKAGES += \
 
 # Compat symbols
 PRODUCT_PACKAGES += \
-    libboringssl-compat \
     libstlport
 
 # Display
