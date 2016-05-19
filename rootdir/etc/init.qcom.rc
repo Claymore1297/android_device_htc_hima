@@ -423,6 +423,7 @@ on property:sys.shutdown.requested=*
 service perfd /system/vendor/bin/perfd
    class main
    user root
+   group root readproc
    disabled
    writepid /dev/cpuset/system-background/tasks
 
