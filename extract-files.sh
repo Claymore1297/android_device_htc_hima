@@ -54,4 +54,4 @@ rm -rf $BASE/*
 
 extract ../../$VENDOR/$DEVICE/proprietary-files.txt $BASE
 
-./setup-makefiles.sh
+../hima-common/setup-makefiles.sh
