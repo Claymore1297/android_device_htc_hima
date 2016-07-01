@@ -35,7 +35,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.spkr.cal.duration=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.media_vol_steps=25
+    ro.config.media_vol_steps=25 \
+    ro.config.vc_call_vol_steps=7
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress \
