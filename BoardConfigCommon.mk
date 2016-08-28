@@ -80,9 +80,8 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'
 
 # Charger
-COMMON_GLOBAL_CFLAGS += \
-    -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' \
-    -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
+BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
+BOARD_CHARGING_CMDLINE_VALUE := "chargerlogo"
 
 # CM Hardware
 BOARD_HARDWARE_CLASS := $(COMMON_PATH)/cmhw
