@@ -116,6 +116,9 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
+    # Prevents permission denied error for telephony
+    chmod 0644 /proc/cmdline
+
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_audio 0770 media audio
     mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
