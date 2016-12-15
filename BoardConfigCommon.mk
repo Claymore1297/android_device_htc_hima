@@ -148,6 +148,9 @@ BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
+
 # Wifi
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := bcmdhd
