@@ -41,9 +41,6 @@ write_headers "himaul himawl himawhl"
 # The standard common blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
-# QCOM common graphic blobs
-printf '\n%s\n' "\$(call inherit-product, vendor/qcom/binaries/msm8994/graphics/graphics-vendor.mk)" >> "$PRODUCTMK"
-
 # We are done!
 write_footers
 
