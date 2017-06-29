@@ -454,6 +454,7 @@ service rfs_access /system/bin/rfs_access
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+    group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /system/vendor/bin/thermal-engine
