@@ -57,6 +57,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.use_buffer_age=false \
     persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196610 \
     ro.qualcomm.cabl=0 \
