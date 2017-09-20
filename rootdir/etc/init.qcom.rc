@@ -324,90 +324,90 @@ on boot
 
 # Services start here
 
-service adsprpcd /system/vendor/bin/adsprpcd
-   class main
-   user media
-   group media
+service vendor.adsprpcd /system/vendor/bin/adsprpcd
+    class main
+    user media
+    group media
 
-service cir_fw_update /system/vendor/bin/cir_fw_update -u cir.img
+service vendor.cir_fw_update /system/vendor/bin/cir_fw_update -u cir.img
     class main
     user system
     group system
     oneshot
 
-service ipacm /system/vendor/bin/ipacm
+service vendor.ipacm /system/vendor/bin/ipacm
     class main
     user net_admin
     group net_admin inet
 
-service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
+service vendor.irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+service vendor.msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class main
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service netmgrd /system/vendor/bin/netmgrd
+service vendor.netmgrd /system/vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
     writepid /dev/cpuset/system-background/tasks
 
-service per_mgr /system/vendor/bin/pm-service
+service vendor.per_mgr /system/vendor/bin/pm-service
     class late_start
     user system
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /system/vendor/bin/pm-proxy
+service vendor.per_proxy /system/vendor/bin/pm-proxy
     class late_start
     user system
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
     disabled
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
 
-service perfd /system/vendor/bin/perfd
-   class main
-   user root
-   group root readproc
-   disabled
-   writepid /dev/cpuset/system-background/tasks
+service vendor.perfd /system/vendor/bin/perfd
+    class main
+    user root
+    group root readproc
+    disabled
+    writepid /dev/cpuset/system-background/tasks
 
-service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service vendor.qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
 
-service qmuxd /system/vendor/bin/qmuxd
+service vendor.qmuxd /system/vendor/bin/qmuxd
     class core
     user root
     group radio audio bluetooth gps nfc oem_2950
     writepid /dev/cpuset/system-background/tasks
 
-service qseecomd /system/vendor/bin/qseecomd
+service vendor.qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service rmt_storage /system/vendor/bin/rmt_storage
+service vendor.rmt_storage /system/vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service thermal-engine /system/vendor/bin/thermal-engine -c /system/vendor/etc/thermal-engine.conf
+service vendor.thermal-engine /system/vendor/bin/thermal-engine -c /system/vendor/etc/thermal-engine.conf
     class main
     user root
     socket thermal-send-client stream 0660 system system
@@ -416,7 +416,7 @@ service thermal-engine /system/vendor/bin/thermal-engine -c /system/vendor/etc/t
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/vendor/bin/time_daemon
+service vendor.time_daemon /system/vendor/bin/time_daemon
     class late_start
     user root
     group root
