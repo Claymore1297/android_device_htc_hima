@@ -741,6 +741,8 @@ bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
 vendor/lib64/libqti-perfd-client.so
 vendor/lib/libqti-perfd-client.so
+vendor/lib/libqti-iop-client.so
+vendor/lib64/libqti-iop-client.so
 
 # Peripheral manager
 bin/pm-proxy:vendor/bin/pm-proxy
