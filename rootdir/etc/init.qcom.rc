@@ -388,7 +388,7 @@ service ipacm-diag /system/vendor/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
+    group net_admin oem_2950
 
 service ipacm /system/vendor/bin/ipacm
     class main
@@ -447,7 +447,7 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
 service qmuxd /system/vendor/bin/qmuxd
     class core
     user root
-    group radio audio bluetooth gps nfc qcom_diag
+    group radio audio bluetooth gps nfc oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service qseecomd /system/vendor/bin/qseecomd
