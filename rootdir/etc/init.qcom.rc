@@ -32,7 +32,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     symlink /data/tombstones /tombstones
 
-    mkdir /carrier 0770 system system
     mkdir /firmware 0771 system system
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/cpe 0771 system system
