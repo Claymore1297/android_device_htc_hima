@@ -115,9 +115,6 @@ DEVICE_MANIFEST_FILE := \
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
-# Keymaster app checking
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
