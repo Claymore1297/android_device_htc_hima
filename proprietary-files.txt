@@ -710,6 +710,9 @@ vendor/firmware/keymaster.b02:vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster.b03:vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster.mdt:vendor/firmware/keymaster/keymaster.mdt
 
+# Listen
+vendor/lib/hw/sound_trigger.primary.msm8994.so
+
 # Media
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmmosal.so
