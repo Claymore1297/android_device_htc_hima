@@ -796,6 +796,8 @@ bin/netmgrd:vendor/bin/netmgrd
 bin/qmuxd:vendor/bin/qmuxd
 bin/radish:vendor/bin/radish
 bin/rmt_storage:vendor/bin/rmt_storage
+vendor/lib64/com.quicinc.cne.api@1.0.so
+vendor/lib64/com.quicinc.cne.constants@1.0.so
 vendor/lib64/libhtc_rilhook.so
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libconfigdb.so
