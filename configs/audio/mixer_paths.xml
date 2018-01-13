@@ -73,16 +73,7 @@
     <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="0" />
-    <ctl name="MultiMedia4 Mixer MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia7 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia10 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia11 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia12 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia13 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia14 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia15 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia16 Mixer MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_4_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
@@ -300,9 +291,6 @@
     <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia6" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
     <!-- anc headset -->
-    <!-- speaker anc combo -->
-    <ctl name="RX4 DSM MUX" value="CIC_OUT" />
-    <ctl name="RX6 DSM MUX" value="CIC_OUT" />
     <!-- speaker anc combo end -->
     <!-- IIR/voice anc -->
     <ctl name="IIR1 Band1" id ="0" value="268435456" />
@@ -347,7 +335,6 @@
     <!-- anc headset end-->
     <!-- aanc handset mic -->
     <ctl name="AIF1_CAP Mixer SLIM TX9" value="0" />
-    <ctl name="SLIM_0_RX AANC MUX" value="ZERO" />
     <!-- aanc handset mic end -->
     <!-- ssr qmic -->
     <ctl name="AIF1_CAP Mixer SLIM TX10" value="0" />
@@ -372,8 +359,6 @@
     <!-- listen end-->
     <!-- afe-proxy -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="0" />
-    <!-- afe-proxy end-->
-    <ctl name="AFE_PCM_RX Port Mixer PRI_MI2S_TX" value="0" />
 
     <!-- ADSP testfwk -->
     <ctl name="SLIMBUS_DL_HL Switch" value="0" />
@@ -394,7 +379,6 @@
     <ctl name="RDAC5 MUX" value="DEM4" />
     <ctl name="RDAC7 MUX" value="DEM6" />
     <ctl name="RX8 MIX1 INP1" value="ZERO" />
-    <ctl name="MultiMedia5 Mixer SEC_AUX_PCM_UL_TX" value="0" />
     <!-- htc ctrl end -->
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
@@ -869,7 +853,7 @@
     </path>
 
     <path name="audio-record-compress bt-sco">
-        <ctl name="MultiMedia8 Mixer SEC_AUX_PCM_UL_TX" value="1" />
+        <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="1" />
     </path>
 
     <path name="audio-record-compress bt-sco-wb">
@@ -886,16 +870,12 @@
     </path>
 
     <path name="low-latency-record bt-sco">
-        <ctl name="MultiMedia5 Mixer SEC_AUX_PCM_UL_TX" value="1" />
+        <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="1" />
     </path>
 
     <path name="low-latency-record bt-sco-wb">
         <ctl name="AUX PCM SampleRate" value="16000" />
         <path name="low-latency-record bt-sco" />
-    </path>
-
-    <path name="low-latency-record capture-fm">
-        <ctl name="MultiMedia5 Mixer PRI_MI2S_TX" value="1" />
     </path>
 
     <path name="fm-virtual-record capture-fm">
@@ -1805,7 +1785,6 @@
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX9" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Three" />
-        <ctl name="SLIM_0_RX AANC MUX" value="SLIMBUS_0_TX" />
         <ctl name="SLIM TX9 MUX" value="DEC7" />
         <ctl name="DEC7 MUX" value="DMIC1" />
         <ctl name="SLIM TX8 MUX" value="DEC8" />
