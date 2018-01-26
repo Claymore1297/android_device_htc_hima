@@ -175,14 +175,14 @@ PRODUCT_PACKAGES += \
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/max1187x_touchscreen_0.idc:system/usr/idc/max1187x_touchscreen_0.idc \
-    $(LOCAL_PATH)/idc/projector_input.idc:system/usr/idc/projector_input.idc \
-    $(LOCAL_PATH)/idc/synaptics_dsx.idc:system/usr/idc/synaptics_dsx.idc
+    $(LOCAL_PATH)/idc/max1187x_touchscreen_0.idc:system/vendor/usr/idc/max1187x_touchscreen_0.idc \
+    $(LOCAL_PATH)/idc/projector_input.idc:system/vendor/usr/idc/projector_input.idc \
+    $(LOCAL_PATH)/idc/synaptics_dsx.idc:system/vendor/usr/idc/synaptics_dsx.idc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/usr/keylayout/AK8789_HALL_SENSOR.kl \
-    $(LOCAL_PATH)/keylayout/projector-Keypad.kl:system/usr/keylayout/projector-Keypad.kl \
-    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl
+    $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/vendor/usr/keylayout/AK8789_HALL_SENSOR.kl \
+    $(LOCAL_PATH)/keylayout/projector-Keypad.kl:system/vendor/usr/keylayout/projector-Keypad.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/vendor/usr/keylayout/synaptics_dsx.kl
 
 # IPACM
 PRODUCT_PACKAGES += \
