@@ -16,6 +16,8 @@
 
 # Inherit proprietary blobs
 $(call inherit-product-if-exists, vendor/htc/hima-common/hima-common-vendor.mk)
+# Device was launched with L
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
