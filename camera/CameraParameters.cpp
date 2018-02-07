@@ -216,14 +216,25 @@ String8 CameraParameters::flatten() const
         String8 k, v;
         k = mMap.keyAt(i);
         v = mMap.valueAt(i);
-
-        flattened += k;
-        flattened += "=";
-        flattened += v;
-        if (i != size-1)
-            flattened += ";";
+	if (k == "hfr-size-values")
+	{
+	   v = "1920x1080,720x480";
+	   ALOGD("setting value for %s\n", k.string());
+	}
+	if (v != "")
+	{
+           ALOGD("%s:- %s\n", k.string(), v.string());
+           flattened += k;
+           flattened += "=";
+           flattened += v;
+           if (i != size-1)
+              flattened += ";";
+	}
+	else
+	{
+	   ALOGE("%s has no value\n", k.string());
+	}
     }
-
     return flattened;
 }
 
