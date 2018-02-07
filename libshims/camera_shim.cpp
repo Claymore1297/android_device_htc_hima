@@ -56,3 +56,64 @@ extern "C" void _ZN7android18BufferItemConsumerC1ENS_2spINS_22IGraphicBufferCons
   _ZN7android18BufferItemConsumerC1ENS_2spINS_22IGraphicBufferConsumerEEEjib(
       consumer, consumerUsage, bufferCount, false);
 }
+
+extern "C" void _ZN7android18BufferItemConsumerC1ERKNS_2spINS_22IGraphicBufferConsumerEEEjib
+(
+     //   const sp<IGraphicBufferConsumer>&consumer, unsigned int, int, bool)
+     uint64_t consumer, uint64_t consumerUsage, int bufferCount, bool controlledByApp){
+     _ZN7android18BufferItemConsumerC1ERKNS_2spINS_22IGraphicBufferConsumerEEEjib(
+     consumer, consumerUsage, bufferCount, false);
+}
+
+/*
+sp<SurfaceControl> SurfaceComposerClient::createSurface(
+        const String8& name,
+	uint32_t w,
+	uint32_t h,
+	PixelFormat format,
+	uint32_t flags)
+sp<SurfaceControl> SurfaceComposerClient::createSurface(
+        const String8& name,
+        uint32_t w,
+        uint32_t h,
+        PixelFormat format,
+        uint32_t flags,
+        SurfaceControl* parent,
+        uint32_t windowType,
+        uint32_t ownerUid)
+*/
+/*#include <string>*/
+#include <utils/RefBase.h>
+#include <gui/SurfaceComposerClient.h>
+
+extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlEjj(
+    android::String8 const & s, uint32_t w, uint32_t h,
+    android::PixelFormat fmt, uint32_t flags, void *parent, uint32_t windowType,
+    uint32_t ownerUid);
+
+// sp<SurfaceControl> android::SurfaceComposerClient::createSurface(android::String8 const&, unsigned int, unsigned int, int, unsigned int)
+extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8Ejjij(
+    android::String8 const& s, uint32_t w, uint32_t h,
+    android::PixelFormat fmt, uint32_t flags) {
+  return _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlEjj(
+      s, w, h, fmt, flags, NULL, 0, 0);
+}
+
+//    const sp<IBinder>& token, sp<IGraphicBufferProducer> bufferProducer);
+
+#include <system/window.h>
+#include <ui/PixelFormat.h>
+#include <ui/Rect.h>
+#include <gui/SurfaceControl.h>
+
+namespace android {
+extern "C" {
+
+    status_t _ZN7android14SurfaceControl8setLayerEj( uint32_t layer)
+    {
+    return _ZN7android14SurfaceControl8setLayerEj ( (int32_t)layer);
+    }
+}
+}
+
+const char *_ZN7android20CameraParameters_EXT30KEY_SMILEINFO_BYFACE_SUPPORTEDE = "smileinfo-byface-supported";
