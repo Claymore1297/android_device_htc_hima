@@ -214,21 +214,6 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # LED
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/blink
-    chown system system /sys/class/leds/green/off_timer
-    chown system system /sys/class/leds/amber/brightness
-    chown system system /sys/class/leds/amber/blink
-    chown system system /sys/class/leds/amber/off_timer
-
-    chmod 0660 /sys/class/leds/amber/brightness
-    chmod 0660 /sys/class/leds/amber/blink
-    chmod 0660 /sys/class/leds/amber/off_timer
-    chmod 0660 /sys/class/leds/green/brightness
-    chmod 0660 /sys/class/leds/green/blink
-    chmod 0660 /sys/class/leds/green/off_timer
-
     # Flashlight
     chown system system /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/flashlight_front/brightness
