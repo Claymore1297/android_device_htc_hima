@@ -223,7 +223,7 @@ String8 CameraParameters::flatten() const
 	}
 	if (v != "")
 	{
-           ALOGD("%s:- %s\n", k.string(), v.string());
+       //    ALOGD("%s: %s\n", k.string(), v.string());
            flattened += k;
            flattened += "=";
            flattened += v;
