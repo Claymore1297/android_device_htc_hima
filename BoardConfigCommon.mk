@@ -149,7 +149,6 @@ include device/qcom/sepolicy/sepolicy.mk
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libHtcVteEngine.so|libshim_camera.so \
     /system/vendor/lib64/libril.so|libshim_ril.so \
-    /system/vendor/lib/libizat_core.so|libshim_gps.so \
     /system/vendor/lib64/libizat_core.so|libshim_gps.so
 
 # Use Snapdragon LLVM, if available
