@@ -288,7 +288,7 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal/thermal-engine.conf:system/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal/thermal-engine.conf:system/vendor/etc/thermal-engine.conf
 
 # USB
 PRODUCT_PACKAGES += \
