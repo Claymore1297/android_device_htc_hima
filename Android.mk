@@ -77,4 +77,16 @@ $(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
 
+MCV2_IMAGES := \
+    mc_v2.b00 mc_v2.b01 mc_v2.b02 mc_v2.b03 mc_v2.mdt
+
+MCV2_SYMLINKS := $(addprefix $(TARGET_ROOT_OUT)/firmware/image/,$(notdir $(MCV2_IMAGES)))
+$(MCV2_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "MCV2 firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/vendor/etc/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(MCV2_SYMLINKS)
+
 endif
