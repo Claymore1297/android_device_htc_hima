@@ -373,7 +373,7 @@ service ipacm /system/vendor/bin/ipacm
     user net_admin
     group net_admin inet
 
-service irsc_util /system/vendor/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
