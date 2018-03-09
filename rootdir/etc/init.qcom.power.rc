@@ -127,3 +127,5 @@ on property:init.svc.recovery=running
 
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler "bfq"
+    # Set perfd properties
+    setprop ro.qualcomm.perf.cores_online 2
