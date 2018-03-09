@@ -112,6 +112,13 @@ on enable-low-power
     rm /data/system/perfd/default_values
     start perfd
 
+service perfd /system/vendor/bin/perfd
+    class main
+    user root
+    group root readproc
+    disabled
+    writepid /dev/cpuset/system-background/tasks
+
 on property:sys.boot_completed=1
     trigger enable-low-power
 
