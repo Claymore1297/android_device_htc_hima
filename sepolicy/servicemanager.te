@@ -1,0 +1,6 @@
+allow servicemanager qcom_blob:dir search;
+allow servicemanager qcom_blob:file {open read};
+allow servicemanager qcom_blob:process getattr;
+allow servicemanager qcom_blob:binder {transfer};
+allow qcom_blob servicemanager:binder transfer;
+allow qcom_blob binder_per_mgr_service:service_manager {add find};

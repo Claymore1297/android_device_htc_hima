@@ -1,3 +1,7 @@
 type sysfs_cir, fs_type, sysfs_type;
 type sysfs_gesture, fs_type, sysfs_type;
 type sysfs_vibeamp, fs_type, sysfs_type;
+type debugfs_heaps_system, fs_type, debugfs_type;
+type cw_calibrator_data_file, file_type, data_file_type;
+type rpm_stats_debug_file, file_type;
+type rmt_storage_debug_file, file_type;

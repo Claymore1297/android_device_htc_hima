@@ -1,1 +1,6 @@
 allow rmt_storage self:capability net_raw;
+allow qcom_blob modem_efs_partition_device:blk_file {read open write};
+allow qcom_blob rmt_storage_debug_file:dir {search};
+allow qcom_blob rmt_storage_debug_file:file {open read write getattr};
+allow qcom_blob rmt_storage_debug_file:filesystem {associate};
+allow rmt_storage_debug_file debugfs:filesystem {associate};

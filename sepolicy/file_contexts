@@ -5,9 +5,16 @@
 /dev/tfa9887l                   u:object_r:audio_device:s0
 
 # CIR
-/dev/ttyHSL2                    u:object_r:cir_device:s0
-/system/bin/cir_fw_update       u:object_r:cir_fw_update_exec:s0
+/dev/ttyHSL2                                u:object_r:cir_device:s0
+/system/vendor/bin/cir_fw_update            u:object_r:cir_fw_update_exec:s0
 /sys/devices/virtual/htc_cir(/.*)?          u:object_r:sysfs_cir:s0
+
+# Datafiles
+/data/misc/cw_calibrator_mag.ini                  u:object_r:cw_calibrator_data_file:s0
+
+# Debugfiles
+/d/rpm_stats(/.*)?                                u:object_r:rpm_stats_debug_file:s0
+/sys/kernel/debug/rmt_storage(/.*)?               u:object_r:rmt_storage_debug_file:s0
 
 # Diag
 /dev/htc_diag                   u:object_r:diag_device:s0
@@ -18,6 +25,17 @@
 # Gesture
 /sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion    u:object_r:sysfs_gesture:s0
 
+# HALs
+/system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.hima                   u:object_r:hal_light_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.usb@1\.0-service\.hima                     u:object_r:hal_usb_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service\.hima                u:object_r:hal_vibrator_default_exec:s0
+
+#heaps
+/sys/kernel/debug/ion/heaps/system                             u:object_r:debugfs_heaps_system:s0
+
+# FRP partition
+/dev/block/platform/soc.0/f9824900.sdhci/by-name/frp           u:object_r:frp_block_device:s0
+
 # Modem partitions
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/cdma_record   u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/modem_st1     u:object_r:modem_efs_partition_device:s0
@@ -26,3 +44,18 @@
 
 # Vibrator control
 /sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:sysfs_vibeamp:s0
+
+# Vendor blobs
+/system/vendor/bin/qseecomd            u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/qmuxd               u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/rmt_storage         u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/time_daemon         u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/msm_irqbalance      u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/irsc_util           u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/ipacm-diag          u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/thermal-engine      u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/netmgrd             u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/mm-qcamera-daemon   u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/pm-service          u:object_r:qcom_blob_exec:s0
+/system/vendor/bin/pm-proxy            u:object_r:qcom_blob_exec:s0
+

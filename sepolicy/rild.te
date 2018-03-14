@@ -1,0 +1,3 @@
+allow rild qcom_blob:binder {call transfer};
+allow qcom_blob rild:binder {call};
+allow rild qcom_blob:unix_stream_socket {connectto};

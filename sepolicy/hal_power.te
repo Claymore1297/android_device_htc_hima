@@ -1,0 +1,1 @@
+allow hal_power_default perfd:unix_stream_socket connectto;
