@@ -156,7 +156,9 @@ BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libHtcVteEngine.so|libshim_camera.so \
     /system/vendor/lib64/libril.so|libshim_ril.so \
-    /system/vendor/lib64/libizat_core.so|libshim_gps.so
+    /system/vendor/lib64/libizat_core.so|libshim_gps.so \
+    /system/lib/liblog.so|/system/lib/liblog_htc.so \
+    /system/lib64/liblog.so|/system/lib64/liblog_htc.so
 
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
