@@ -1,0 +1,2 @@
+dontaudit system_server dalvikcache_data_file:file { execute write };
+
