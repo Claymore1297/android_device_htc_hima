@@ -1404,10 +1404,10 @@
 
     <path name="headphones">
         <path name="headphones-generic" />
-        <ctl name="RX3 Digital Volume" value="84" />
-        <ctl name="RX4 Digital Volume" value="84" />
-        <ctl name="RX5 Digital Volume" value="84" />
-        <ctl name="RX6 Digital Volume" value="84" />
+        <ctl name="RX3 Digital Volume" value="89" />
+        <ctl name="RX4 Digital Volume" value="89" />
+        <ctl name="RX5 Digital Volume" value="89" />
+        <ctl name="RX6 Digital Volume" value="89" />
         <ctl name="LINEOUT1 Volume" value="16" />
         <ctl name="LINEOUT2 Volume" value="16" />
         <ctl name="LINEOUT3 Volume" value="16" />
