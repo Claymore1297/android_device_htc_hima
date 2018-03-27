@@ -7,6 +7,7 @@ allow qcom_blob camera_data_file:dir {search write open read remove_name add_nam
 allow qcom_blob camera_data_file:file {read open getattr write create};
 allow qcom_blob camera_data_file:sock_file {unlink create};
 allow qcom_blob camera_prop:file {open read getattr};
+allow qcom_blob camera_socket:sock_file {unlink};
 allow qcom_blob diag_device:chr_file {open read write ioctl};
 allow qcom_blob firmware_file:dir {open read search};
 allow qcom_blob firmware_file:file {open read getattr};
