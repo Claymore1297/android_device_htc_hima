@@ -1877,6 +1877,18 @@
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
+    <path name="dual-mic-with3rd-inverse">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
+        <ctl name="AIF1_CAP Mixer SLIM TX8" value="1"/>
+        <ctl name="SLIM TX7 MUX" value="DEC3" />
+        <ctl name="SLIM TX8 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="MIC_BIAS4_Bypass Cap" value="0" />
+        <ctl name="MIC_BIAS3_Bypass Cap" value="0" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+    </path>
+
     <path name="secondmic">
         <path name="2nd-mic" />
         <ctl name="ADC3 Volume" value="19" />
@@ -1932,11 +1944,13 @@
     </path>
 
     <path name="line-portraitcam">
-        <path name="dual-mic-inverse" />
-        <ctl name="ADC1 Volume" value="9" />
-        <ctl name="ADC3 Volume" value="8" />
-        <ctl name="DEC6 Volume" value="84" />
-        <ctl name="DEC4 Volume" value="84" />
+        <path name="dual-mic-with3rd-inverse" />
+        <ctl name="ADC1 Volume" value="26" />
+        <ctl name="ADC3 Volume" value="26" />
+        <ctl name="ADC4 Volume" value="30" />
+        <ctl name="DEC6 Volume" value="120" />
+        <ctl name="DEC4 Volume" value="120" />
+        <ctl name="DEC3 Volume" value="120" />
     </path>
 
     <path name="handset-hw-voip">
