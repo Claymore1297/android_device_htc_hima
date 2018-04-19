@@ -1,0 +1,7 @@
+type pm-proxy, domain;
+type pm-proxy_exec, exec_type, file_type;
+init_daemon_domain(pm-proxy)
+
+allow pm-proxy servicemanager:binder {call};
+allow pm-proxy pm-service:binder {call transfer};
+

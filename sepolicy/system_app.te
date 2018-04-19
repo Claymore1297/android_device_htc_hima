@@ -1,5 +1,2 @@
 allow system_app sysfs_gesture:file rw_file_perms;
-allow system_app qcom_blob:unix_stream_socket {connectto};
-allow system_app qcom_blob:binder {call};
 allow system_app wificond:binder {call};
-

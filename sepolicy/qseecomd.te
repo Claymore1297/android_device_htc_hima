@@ -1,0 +1,11 @@
+allow qseecomd block_device:dir {search getattr open};
+allow qseecomd rpmb_device:blk_file {open read getattr write ioctl};
+allow qseecomd tee_device:chr_file {ioctl read write open};
+allow qseecomd firmware_file:dir {open read search};
+allow qseecomd firmware_file:file {open read getattr};
+allow qseecomd ion_device:chr_file {ioctl read open};
+allow qseecomd self:capability {setuid setgid sys_rawio};
+allow qseecomd sysfs:file {open read getattr};
+allow qseecomd ssd_device:blk_file {read write open};
+allow qseecomd property_socket:sock_file {write};
+allow qseecomd init:unix_stream_socket connectto;

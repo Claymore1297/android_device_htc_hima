@@ -1,6 +1,8 @@
-allow servicemanager qcom_blob:dir search;
-allow servicemanager qcom_blob:file {open read};
-allow servicemanager qcom_blob:process getattr;
-allow servicemanager qcom_blob:binder {transfer};
-allow qcom_blob servicemanager:binder transfer;
-allow qcom_blob binder_per_mgr_service:service_manager {add find};
+allow servicemanager pm-service:dir search;
+allow servicemanager pm-service:file {open read};
+allow servicemanager pm-service:process getattr;
+allow servicemanager pm-proxy:dir search;
+allow servicemanager pm-proxy:file {open read};
+allow servicemanager pm-proxy:process getattr;
+allow pm-proxy servicemanager:binder call;
+allow pm-service servicemanager:binder {call transfer};

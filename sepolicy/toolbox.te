@@ -1,8 +1,4 @@
 allowxperm toolbox self:udp_socket ioctl priv_sock_ioctls;
-allow toolbox qcom_blob:fifo_file {read write};
-allow toolbox qcom_blob:netlink_route_socket {read write};
-allow toolbox qcom_blob:netlink_socket {read write};
-allow toolbox qcom_blob:netlink_xfrm_socket {read write};
-allow toolbox diag_device:chr_file {read write};
 allow toolbox self:udp_socket {create ioctl};
+allow toolbox diag_device:chr_file {read write};
 allow toolbox self:capability {net_admin};

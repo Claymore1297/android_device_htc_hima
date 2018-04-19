@@ -1,3 +1,19 @@
+type mm-qcamera-daemon, domain;
+type mm-qcamera-daemon_exec, exec_type, file_type;
+init_daemon_domain(mm-qcamera-daemon)
+
 allow mm-qcamerad graphics_device:dir search;
 allow mm-qcamerad graphics_device:chr_file rw_file_perms;
 set_prop(mm-qcamerad, camera_prop)
+
+allow mm-qcamera-daemon video_device:chr_file {ioctl write open read};
+allow mm-qcamera-daemon camera_prop:file {open read getattr};
+allow mm-qcamera-daemon ion_device:chr_file {ioctl read open};
+allow mm-qcamera-daemon sysfs:file {open read getattr};
+allow mm-qcamera-daemon init:unix_stream_socket connectto;
+allow mm-qcamera-daemon mediaserver:fd {use};
+allow mm-qcamera-daemon property_socket:sock_file {write};
+allow mm-qcamera-daemon camera_data_file:sock_file {unlink create};
+allow mm-qcamera-daemon camera_data_file:dir {search write open read remove_name add_name};
+allow mm-qcamera-daemon camera_data_file:file {read open getattr write create};
+allow mm-qcamera-daemon camera_socket:sock_file {unlink};

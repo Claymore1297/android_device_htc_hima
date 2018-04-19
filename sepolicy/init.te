@@ -1,2 +1,4 @@
 set_prop(init, wcnss_prop)
 allow init debugfs:file w_file_perms;
+allow init debugfs_rmt:dir relabelfrom;
+allow init debugfs_rmt:file relabelfrom;
