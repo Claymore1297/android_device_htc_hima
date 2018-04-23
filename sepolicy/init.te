@@ -6,6 +6,7 @@ allow init debugfs_rmt:file relabelfrom;
 allow init firmware_file:dir mounton;
 allow init firmware_file:filesystem { relabelto relabelfrom associate mount };
 allow init proc:file {setattr};
+allow init socket_device:sock_file {create setattr unlink};
 allow init sysfs_class_leds:file {setattr};
 allow init sysfs_class_leds:lnk_file r_file_perms;
 allow init sysfs_graphics:file setattr;
