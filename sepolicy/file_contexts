@@ -11,7 +11,7 @@
 
 # Datafiles
 /data/misc/cw_calibrator_mag.ini                  u:object_r:cw_calibrator_data_file:s0
-/data/system/cw_calibrator_mag.ini                  u:object_r:cw_calibrator_data_file:s0
+/data/system/cw_calibrator_mag.ini                u:object_r:cw_calibrator_data_file:s0
 
 # Debugfiles
 /d/rpm_stats(/.*)?                                u:object_r:rpm_stats_debug_file:s0

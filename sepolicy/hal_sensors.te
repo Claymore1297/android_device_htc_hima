@@ -3,3 +3,4 @@ allow hal_sensors_default iio_device:chr_file {open read write};
 allow hal_sensors_default sysfs:file {open read write getattr};
 allow hal_sensors_default sysfs:dir {open read};
 allow hal_sensors_default cw_calibrator_data_file:file {open read getattr write};
+allow hal_sensors_default system_data_file:dir {write add_name};
