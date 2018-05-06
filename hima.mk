@@ -112,6 +112,9 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     Snap
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/hdrhax:$(TARGET_COPY_OUT_VENDOR)/etc/hdrhax
+
 # Consumer IR
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-impl
