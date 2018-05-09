@@ -133,7 +133,8 @@ PRODUCT_PACKAGES += \
     gralloc.msm8994 \
     hwcomposer.msm8994 \
     memtrack.msm8994 \
-    liboverlay
+    liboverlay \
+    libtinyxml
 
 # Dot View Case
 PRODUCT_PACKAGES += \
