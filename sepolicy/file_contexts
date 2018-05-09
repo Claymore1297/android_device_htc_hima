@@ -59,4 +59,5 @@
 /system/vendor/bin/mm-qcamera-daemon   u:object_r:mm-qcamera-daemon_exec:s0
 /system/vendor/bin/pm-service          u:object_r:pm-service_exec:s0
 /system/vendor/bin/pm-proxy            u:object_r:pm-proxy_exec:s0
+/system/vendor/bin/mm-pp-daemon        u:object_r:mm-pp-daemon_exec:s0
 
