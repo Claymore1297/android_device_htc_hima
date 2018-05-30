@@ -27,6 +27,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dmid=-1286820014 \
     audio.ds1.metainfo.key=273
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    use.dts_eagle=true \
+    hpx_send_params=1
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
