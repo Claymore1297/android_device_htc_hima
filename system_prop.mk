@@ -31,6 +31,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     use.dts_eagle=true \
     hpx_send_params=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.spkr.cal.duration=0
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
