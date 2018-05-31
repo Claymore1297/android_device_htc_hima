@@ -17,3 +17,4 @@ allow mm-qcamera-daemon camera_data_file:sock_file {unlink create};
 allow mm-qcamera-daemon camera_data_file:dir {search write open read remove_name add_name};
 allow mm-qcamera-daemon camera_data_file:file {read open getattr write create};
 allow mm-qcamera-daemon camera_socket:sock_file {unlink};
+allow mm-qcamera-daemon sysfs_graphics:file {read open getattr};
