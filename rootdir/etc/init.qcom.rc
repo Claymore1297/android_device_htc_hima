@@ -81,6 +81,9 @@ on post-fs-data
     # Create directory for audio
     mkdir /data/misc/audio 0770 audio audio
 
+    # Create directory for dts
+    mkdir /data/misc/dts 0770 media audio
+
     # Create directory for camera
     mkdir /data/camera 0770 media camera
 

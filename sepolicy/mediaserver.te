@@ -5,3 +5,5 @@ allow mediaserver block_device:dir search;
 allow mediaserver apk_data_file:dir search;
 allow mediaserver debugfs_heaps_system:file r_file_perms;
 allow mediaserver proc:file {open read getattr};
+allow mediaserver dts_data_file:dir rw_dir_perms;
+allow mediaserver dts_data_file:file create_file_perms;
