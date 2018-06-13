@@ -1969,12 +1969,12 @@
 
     <path name="line-portraitcam">
         <path name="dual-mic-with3rd-inverse" />
-        <ctl name="ADC1 Volume" value="26" />
-        <ctl name="ADC3 Volume" value="26" />
-        <ctl name="ADC4 Volume" value="30" />
-        <ctl name="DEC6 Volume" value="120" />
-        <ctl name="DEC4 Volume" value="120" />
-        <ctl name="DEC3 Volume" value="120" />
+        <ctl name="ADC1 Volume" value="9" />
+        <ctl name="ADC3 Volume" value="8" />
+        <ctl name="ADC4 Volume" value="8" />
+        <ctl name="DEC6 Volume" value="94" />
+        <ctl name="DEC4 Volume" value="94" />
+        <ctl name="DEC3 Volume" value="94" />
     </path>
 
     <path name="handset-hw-voip">
