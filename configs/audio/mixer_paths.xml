@@ -397,6 +397,9 @@
     <ctl name="MultiMedia5 Mixer SEC_AUX_PCM_UL_TX" value="0" />
     <!-- htc ctrl end -->
 
+    <!-- DTS eagle HPX -->
+    <ctl name="Set HPX OnOff" value="1"/>
+
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
