@@ -1,0 +1,32 @@
+# Radio
+rild.libargs=-d /dev/smd0
+ro.baseband.arch=msm
+ro.telephony.default_network=9
+telephony.lteOnGsmDevice=1
+
+persist.radio.process_sups_ind=1
+
+ro.ril.disable.cpc=1
+
+ro.ril.enable.a53=1
+ro.ril.enable.amr.wideband=0
+ro.ril.enable.dtm=1
+ro.ril.enable.managed.roaming=1
+ro.ril.enable.pre_r8fd=1
+ro.ril.enable.r8fd=1
+ro.ril.enable.sdr=1
+
+ro.ril.fd.pre_r8_tout.scr_off=2
+ro.ril.fd.pre_r8_tout.scr_on=3
+ro.ril.fd.r8_tout.scr_off=2
+ro.ril.fd.r8_tout.scr_on=3
+
+ro.ril.hsdpa.category=14
+ro.ril.hsupa.category=6
+ro.ril.hsxpa=4
+
+ro.ril.ltefgi=1561328784
+ro.ril.ltefgi.rel9=2147483648
+
+ro.ril.oem.ecclist=911
+ro.ril.oem.nosim.ecclist=911
