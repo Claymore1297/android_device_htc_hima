@@ -149,6 +149,7 @@ DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Init
+TARGET_INIT_VENDOR_LIB := libinit_hima
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # IPA

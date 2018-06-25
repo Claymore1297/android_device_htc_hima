@@ -1,0 +1,6 @@
+cc_library_static {
+    name: "libinit_hima",
+    recovery_available: true,
+    include_dirs: ["system/core/base/include", "system/core/init"],
+    srcs: ["init_hima.cpp"],
+}
