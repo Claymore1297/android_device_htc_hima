@@ -161,6 +161,9 @@ TARGET_PROVIDES_LIBLIGHT := true
 TARGET_RPM_SYSTEM_STAT := /d/rpm_stats
 TARGET_USES_INTERACTION_BOOST := true
 
+# Properties
+TARGET_SYSTEM_PROP := device/htc/hima/system.prop
+
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
 
