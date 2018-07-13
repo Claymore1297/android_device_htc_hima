@@ -14,6 +14,7 @@ allow mm-qcamera-daemon init:unix_stream_socket connectto;
 allow mm-qcamera-daemon mediaserver:fd {use};
 allow mm-qcamera-daemon untrusted_app:fd {use};
 allow mm-qcamera-daemon untrusted_app_25:fd {use};
+allow mm-qcamera-daemon priv_app:fd {use};
 allow mm-qcamera-daemon property_socket:sock_file {write};
 allow mm-qcamera-daemon camera_data_file:sock_file {unlink create};
 allow mm-qcamera-daemon camera_data_file:dir {search write open read remove_name add_name};
