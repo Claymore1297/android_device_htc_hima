@@ -15,7 +15,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence \
     ro.qc.sdk.audio.ssr=false \
-    qcom.hw.aac.encoder=true \
     use.voice.path.for.pcm.voip=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
