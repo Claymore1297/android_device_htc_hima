@@ -2,7 +2,7 @@
 vendor.audio.offload.buffer.size.kb=1024
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiple.enabled=true
-audio.offload.pcm.16bit.enable=false
+audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 av.offload.enable=true
 av.streaming.offload.enable=true
