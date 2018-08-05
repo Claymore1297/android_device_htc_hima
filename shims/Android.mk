@@ -35,7 +35,7 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-  gps_shim.cpp
+    gps_shim.cpp
 
 LOCAL_MODULE := libshim_gps
 LOCAL_MODULE_TAGS := optional
