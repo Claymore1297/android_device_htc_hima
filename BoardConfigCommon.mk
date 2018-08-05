@@ -172,10 +172,10 @@ BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/vendor/lib/libHtcVteEngine.so|libshim_camera.so \
-    /system/vendor/lib/hw/camera.msm8994.so|libshim_camera.so \
-    /system/vendor/lib64/libril.so|libshim_ril.so \
-    /system/vendor/lib64/libizat_core.so|libshim_gps.so
+    /system/vendor/lib/libHtcVteEngine.so|libshim_camera_hima.so \
+    /system/vendor/lib/libizat_core.so|libshim_gps_hima.so \
+    /system/vendor/lib64/libizat_core.so|libshim_gps_hima.so \
+    /system/vendor/lib64/libril.so|libshim_ril_hima.so
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
