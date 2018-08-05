@@ -38,7 +38,7 @@ struct Size {
     }
 };
 
-class CameraParameters : public CameraParameters_EXT
+class CameraParameters
 {
 public:
     CameraParameters();
@@ -700,6 +700,7 @@ public:
 
 private:
     DefaultKeyedVector<String8,String8>    mMap;
+    CameraParameters_EXT mParamsExt;
 };
 
 }; // namespace android

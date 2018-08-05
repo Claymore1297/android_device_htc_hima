@@ -199,7 +199,7 @@ static void replaceValueFor(DefaultKeyedVector<String8,String8> &map, String8 ke
 }
 
 CameraParameters::CameraParameters()
-    : CameraParameters_EXT(this), mMap()
+    : mMap(), mParamsExt(this)
 {
 }
 
