@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import /vendor/etc/init/hw/init.qcom.power.rc
-import /vendor/etc/init/hw/init.qcom.usb.rc
+import /vendor/etc/init/hw/init.hima.power.rc
+import /vendor/etc/init/hw/init.hima.usb.rc
 
 on early-init
     symlink /data/tombstones /tombstones
@@ -48,17 +48,17 @@ on init
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount_all /vendor/etc/fstab.qcom
+    mount_all /vendor/etc/fstab.hima
 
     wait /system/bin/sh
 
     mount tmpfs tmpfs /vendor/fwimage mode=0771,gid=2000,size=4K,context=u:object_r:vendor_file:s0
 
-    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.qcom.firmware_links.sh /vendor/firmware_mnt/adsp /vendor/fwimage "adsp*"
-    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.qcom.firmware_links.sh /vendor/firmware_mnt/cpe /vendor/fwimage "cpe*"
-    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.qcom.firmware_links.sh /vendor/firmware_mnt/radio /vendor/fwimage "modem* mba* radiover* version* qdsp6m* msadp*"
-    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.qcom.firmware_links.sh /vendor/etc/firmware /vendor/fwimage "mc*"
-    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.qcom.firmware_links.sh /vendor/firmware/keymaster /vendor/fwimage "keymaste*"
+    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.hima.firmware_links.sh /vendor/firmware_mnt/adsp /vendor/fwimage "adsp*"
+    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.hima.firmware_links.sh /vendor/firmware_mnt/cpe /vendor/fwimage "cpe*"
+    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.hima.firmware_links.sh /vendor/firmware_mnt/radio /vendor/fwimage "modem* mba* radiover* version* qdsp6m* msadp*"
+    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.hima.firmware_links.sh /vendor/etc/firmware /vendor/fwimage "mc*"
+    exec u:r:vendor_init:s0 root root -- /system/bin/sh /vendor/etc/init/hw/init.hima.firmware_links.sh /vendor/firmware/keymaster /vendor/fwimage "keymaste*"
 
     mount tmpfs tmpfs /vendor/fwimage ro remount noatime nosuid nodev noexec
 

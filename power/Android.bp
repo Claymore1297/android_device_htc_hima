@@ -18,6 +18,6 @@ cc_library_shared {
 
     cflags: ["-DINTERACTION_BOOST"],
 
-    name: "power.qcom",
+    name: "power.hima",
 
 }
