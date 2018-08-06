@@ -16,7 +16,11 @@ on boot
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/camera-daemon/cpus 0-3
 
-on enable-low-power
+on property:sys.boot_completed=1
+    setprop sys.io.scheduler "bfq"
+   # Set perfd properties
+    setprop ro.qualcomm.perf.cores_online 2
+
     # Disable retention on HTC
     write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 0
     write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 0
@@ -157,14 +161,3 @@ service perfd /system/vendor/bin/perfd
     group root readproc
     disabled
     writepid /dev/cpuset/system-background/tasks
-
-on property:sys.boot_completed=1
-    trigger enable-low-power
-
-on property:init.svc.recovery=running
-    trigger enable-low-power
-
-on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "bfq"
-    # Set perfd properties
-    setprop ro.qualcomm.perf.cores_online 2
