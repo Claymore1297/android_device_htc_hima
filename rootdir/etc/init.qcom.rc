@@ -401,11 +401,6 @@ service qseecomd /system/vendor/bin/qseecomd
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service rfs_access /system/vendor/bin/rfs_access
-   class core
-   user root
-   group system net_raw
-
 service rmt_storage /system/vendor/bin/rmt_storage
     class core
     user root
