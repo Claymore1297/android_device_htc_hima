@@ -48,7 +48,6 @@
 #include "hint-data.h"
 #include "performance.h"
 #include "power-common.h"
-#include "feature.h"
 
 #define BUS_SPEED_PATH "/sys/class/devfreq/qcom,gpubw.70/min_freq"
 #define GPU_MAX_FREQ_PATH "/sys/class/kgsl/kgsl-3d0/devfreq/max_freq"
@@ -732,7 +731,6 @@ static int power_open(const hw_module_t* module, const char* name,
             dev->init = power_init;
             dev->powerHint = power_hint;
             dev->setInteractive = set_interactive;
-            dev->setFeature = set_feature;
             dev->get_number_of_platform_modes = get_number_of_platform_modes;
             dev->get_platform_low_power_stats = get_platform_low_power_stats;
             dev->get_voter_list = get_voter_list;
@@ -766,7 +764,6 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = power_init,
     .powerHint = power_hint,
     .setInteractive = set_interactive,
-    .setFeature = set_feature,
     .get_number_of_platform_modes = get_number_of_platform_modes,
     .get_platform_low_power_stats = get_platform_low_power_stats,
     .get_voter_list = get_voter_list
