@@ -9,10 +9,6 @@
 /system/vendor/bin/cir_fw_update            u:object_r:cir_fw_update_exec:s0
 /sys/devices/virtual/htc_cir(/.*)?          u:object_r:sysfs_cir:s0
 
-# Datafiles
-/data/misc/cw_calibrator_mag.ini                  u:object_r:cw_calibrator_data_file:s0
-/data/system/cw_calibrator_mag.ini                u:object_r:cw_calibrator_data_file:s0
-
 # Debugfiles
 /d/rpm_stats(/.*)?                                u:object_r:rpm_stats_debug_file:s0
 /sys/kernel/debug/rmt_storage(/.*)?               u:object_r:rmt_storage_debug_file:s0
@@ -42,6 +38,11 @@
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/modem_st1     u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/modem_st2     u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/rfg_[0-9]*    u:object_r:modem_efs_partition_device:s0
+
+# Sensors
+/data/misc/AccOffset.txt                                            u:object_r:sensors_data_file:s0
+/data/misc/cw_calibrator_mag.ini                                    u:object_r:sensors_data_file:s0
+/data/misc/cw_calibrator_proximty.ini                               u:object_r:sensors_data_file:s0
 
 # Vibrator control
 /sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:sysfs_vibeamp:s0
