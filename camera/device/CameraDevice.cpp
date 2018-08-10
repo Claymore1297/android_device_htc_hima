@@ -436,6 +436,8 @@ void CameraDevice::sDataCb(int32_t msg_type, const camera_memory_t *data, unsign
     if (object->mDeviceCallback != nullptr) {
         CameraFrameMetadata hidlMetadata;
         if (metadata) {
+#ifdef HTC_FACE_DETECT
+            // TODO: Figure out the HTC metadata structure
             hidlMetadata.faces.resize(metadata->number_of_faces);
             for (size_t i = 0; i < hidlMetadata.faces.size(); i++) {
                 hidlMetadata.faces[i].score = metadata->faces[i].score;
@@ -453,6 +455,7 @@ void CameraDevice::sDataCb(int32_t msg_type, const camera_memory_t *data, unsign
                     hidlMetadata.faces[i].mouth[k] = metadata->faces[i].mouth[k];
                 }
             }
+#endif
         }
         CameraHeapMemory* mem = static_cast<CameraHeapMemory *>(data->handle);
         object->mDeviceCallback->dataCallback(
