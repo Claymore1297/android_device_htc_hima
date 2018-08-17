@@ -374,6 +374,12 @@ service energy-awareness /system/vendor/bin/energy-awareness
     group system
     oneshot
 
+service imscmservice /system/vendor/bin/imscmservice
+    class main
+    user system
+    group radio net_raw oem_2950 log
+    writepid /dev/cpuset/system-background/tasks
+
 service ipacm-diag /system/vendor/bin/ipacm-diag
     class main
     user system
