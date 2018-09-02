@@ -149,8 +149,7 @@ BOARD_NFC_CHIPSET := pn547
 BOARD_NFC_HAL_SUFFIX := msm8994
 
 # Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    $(COMMON_PATH)/lineagehw
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
 
 # Power
 TARGET_HAS_NO_WIFI_STATS := true
