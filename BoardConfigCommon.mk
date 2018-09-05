@@ -169,9 +169,8 @@ TARGET_RIL_VARIANT := caf
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 
 # SELinux
-#include device/qcom/sepolicy/sepolicy.mk
-#include device/qcom/sepolicy/legacy-sepolicy.mk
-#BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
+include device/qcom/sepolicy-legacy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
