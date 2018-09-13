@@ -4,35 +4,35 @@
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.buffer.size.kb=1024 \
-    audio.offload.gapless.enabled=true \
-    audio.offload.multiple.enabled=true \
+    vendor.audio.offload.buffer.size.kb=1024 \
+    vendor.audio.offload.gapless.enabled=true \
+    vendor.audio.offload.multiple.enabled=true \
     audio.offload.pcm.16bit.enable=false \
     audio.offload.pcm.24bit.enable=true \
     av.offload.enable=true \
     av.streaming.offload.enable=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    ro.qc.sdk.audio.ssr=false \
-    use.voice.path.for.pcm.voip=true
+    ro.vendor.audio.sdk.fluencetype=fluence \
+    ro.vendor.audio.sdk.ssr=false \
+    vendor.use.voice.path.for.pcm.voip=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.camcorder.stereo=true \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=true
+    persist.vendor.audio.camcorder.stereo=true \
+    persist.vendor.audio.fluence.voicecall=true \
+    persist.vendor.audio.fluence.voicerec=false \
+    persist.vendor.audio.fluence.speaker=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    dmid=-1286820014 \
+    vendor.audio.dmid=-1286820014 \
     audio.ds1.metainfo.key=273
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    use.dts_eagle=true \
+    vendor.audio.use.dts_eagle=true \
     hpx_send_params=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.spkr.cal.duration=0
+    persist.vendor.audio.spkr.cal.duration=0
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
