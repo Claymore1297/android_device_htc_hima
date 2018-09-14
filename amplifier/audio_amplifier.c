@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <sys/ioctl.h>
 
-#include <cutils/log.h>
+#include <log/log.h>
 #include <hardware/audio_amplifier.h>
 #include <msm8974/platform.h>
 

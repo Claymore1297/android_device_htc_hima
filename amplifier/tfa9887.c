@@ -27,7 +27,7 @@
 
 #include <sys/ioctl.h>
 
-#include <cutils/log.h>
+#include <log/log.h>
 
 #include <system/audio.h>
 #include <tinyalsa/asoundlib.h>
