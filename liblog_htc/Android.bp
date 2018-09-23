@@ -12,10 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+soong_namespace {
+}
+
 cc_library_shared {
 
     srcs: ["htc_log.c"],
 
     name: "liblog_htc",
 
+    vendor: true,
 }

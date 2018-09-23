@@ -169,6 +169,10 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/libril.so|libshim_ril.so \
     /system/vendor/lib64/libizat_core.so|libshim_gps.so
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    device/htc/hima-common/liblog_htc
+
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
