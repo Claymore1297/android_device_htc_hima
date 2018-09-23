@@ -283,10 +283,6 @@ PRODUCT_PACKAGES += \
     netmgr_config.xml \
     qmi_config.xml
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_hima
-
 # Renderscript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
