@@ -29,6 +29,9 @@ using android::IGraphicBufferConsumer;
 using android::IGraphicBufferProducer;
 using android::PixelFormat;
 using android::SurfaceControl;
+using android::SurfaceComposerClient;
+
+android::SurfaceComposerClient::Transaction *t;
 
 // BufferItemConsumer(const sp<IGraphicBufferConsumer& consumer,
 //                    uint64_t consumerUsage,
@@ -67,10 +70,10 @@ extern "C" void _ZN7android13GraphicBufferC1Ejjij(
       inWidth, inHeight, inFormat, inUsage, requestorName);
 }
 
-extern "C" status_t _ZN7android21SurfaceComposerClient17setDisplaySurfaceERKNS_2spINS_7IBinderEEERKNS1_INS_22IGraphicBufferProducerEEE(
+extern "C" void _ZN7android21SurfaceComposerClient17setDisplaySurfaceERKNS_2spINS_7IBinderEEERKNS1_INS_22IGraphicBufferProducerEEE(
     const sp<IBinder>& token, const sp<IGraphicBufferProducer>& bufferProducer) {
   // setDisplaySurface is a static method, call it directly
-  return android::SurfaceComposerClient::setDisplaySurface(token, bufferProducer);
+  t->setDisplaySurface(token, bufferProducer);
 }
 
 // sp<SurfaceControl> createSurface(const String8& name, uint32_t w, uint32_t h,
@@ -83,11 +86,13 @@ extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8
     uint32_t flags, SurfaceControl* parent, uint32_t windowType,
     uint32_t ownerUid);
 
-extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8Ejjij(
+extern sp<android::SurfaceControl> ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8Ejjij(
     const android::String8& name, uint32_t w, uint32_t h, PixelFormat format,
     uint32_t flags) {
-  return _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlEjj(
-      name, w, h, format, flags, nullptr, 0, 0);
+  sp<SurfaceControl> s;
+  s->getClient()->createSurfaceChecked(
+      name, w, h, format, &s, flags, nullptr, 0, 0);
+  return s;
 }
 
 // status_t setLayer(int32_t layer);
@@ -103,3 +108,22 @@ extern "C" void _ZN7android5FenceD1Ev() {
   // no-op, the explicit destructor was replaced with = default;
 }
 
+extern "C" void _ZN7android21SurfaceComposerClient21openGlobalTransactionEv() {
+  t = new(android::SurfaceComposerClient::Transaction);
+}
+extern "C" void _ZN7android21SurfaceComposerClient20setDisplayProjectionERKNS_2spINS_7IBinderEEEjRKNS_4RectES8_(
+    const sp<IBinder>& token,
+    uint32_t orientation,
+    const android::Rect& layerStackRect,
+    const android::Rect& displayRect) {
+  t->setDisplayProjection(token, orientation, layerStackRect, displayRect);
+}
+
+extern "C" void _ZN7android21SurfaceComposerClient20setDisplayLayerStackERKNS_2spINS_7IBinderEEEj(
+    const sp<IBinder>& token, uint32_t layerStack){
+  t->setDisplayLayerStack(token, layerStack);
+}
+
+extern "C" void _ZN7android21SurfaceComposerClient22closeGlobalTransactionEb(){
+  t->apply();
+}
