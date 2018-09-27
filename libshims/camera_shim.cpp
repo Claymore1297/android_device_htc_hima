@@ -124,4 +124,12 @@ extern "C" void _ZN7android21SurfaceComposerClient20setDisplayLayerStackERKNS_2s
 
 extern "C" void _ZN7android21SurfaceComposerClient22closeGlobalTransactionEb(){
   t->apply();
+  delete t;
+}
+
+extern "C" void* _ZN7android25IPermissionControllerShim11asInterfaceERKNS_2spINS_7IBinderEEE(const sp<IBinder>&);
+extern "C" void* _ZN7android21IPermissionController11asInterfaceERKNS_2spINS_7IBinderEEE(
+    const sp<IBinder>& remote){
+  //android::IPermissionControllerShim::asInterface(remote);
+  return _ZN7android25IPermissionControllerShim11asInterfaceERKNS_2spINS_7IBinderEEE(remote);
 }
