@@ -230,9 +230,11 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1-service \
+    android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
     NfcNci \
+    nfc_nci.msm8994 \
     Tag
 
 PRODUCT_COPY_FILES += \

@@ -146,6 +146,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # NFC
 BOARD_NFC_CHIPSET := pn547
+BOARD_NFC_HAL_SUFFIX := msm8994
 
 # Lineage Hardware
 JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
