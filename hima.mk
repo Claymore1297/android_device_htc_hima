@@ -37,7 +37,7 @@ TARGET_SCREEN_WIDTH := 1080
 TARGET_BOOTANIMATION_HALF_RES := true
 
 # Add WiFi Config files
-$(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
+$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4356/device-bcm.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
