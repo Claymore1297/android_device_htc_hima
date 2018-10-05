@@ -1,0 +1,14 @@
+allow cameraserver apk_data_file:dir search;
+allow cameraserver block_device:dir search;
+allow cameraserver camera_data_file:dir r_dir_perms;
+allow cameraserver cameraproxy_service:service_manager {find add};
+allow cameraserver debugfs_heaps_system:file r_file_perms;
+allow cameraserver hal_camera_hwservice:hwservice_manager find;
+allow cameraserver mm-qcamera-daemon:unix_dgram_socket sendto;
+allow cameraserver proc:file {open read getattr};
+allow cameraserver proc_version:file r_file_perms;
+allow cameraserver sysfs_camera_awb_cal:file r_file_perms;
+allow cameraserver sysfs_camera_awb_cal:dir search;
+allow cameraserver sysfs_camera_sensor:file r_file_perms;
+allow cameraserver sysfs_graphics:dir r_dir_perms;
+allow cameraserver sysfs_graphics:file r_file_perms;

@@ -1,1 +1,5 @@
 allow mm-pp-daemon surfaceflinger:binder {call};
+allow mm-pp-daemon sysfs_class_leds:file r_file_perms;
+allow mm-pp-daemon sysfs_class_leds:lnk_file r_file_perms;
+allow mm-pp-daemon sysfs_class_leds:dir r_dir_perms;
+allow mm-pp-daemon sysfs_graphics:lnk_file r_file_perms;

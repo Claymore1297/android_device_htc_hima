@@ -5,9 +5,10 @@ init_daemon_domain(pm-service)
 allowxperm pm-service self:socket ioctl msm_sock_ipc_ioctls;
 allow pm-service self:socket {create bind ioctl read write};
 
-allow pm-service self:socket {create bind read write};
-allow pm-service self:capability net_raw;
-allow pm-service servicemanager:binder {call transfer};
-allow pm-service pm-proxy:binder {call transfer};
-allow pm-service ssr_device:chr_file {open read getattr};
 allow pm-service binder_per_mgr_service:service_manager {add};
+allow pm-service pm-proxy:binder {call transfer};
+allow pm-service rild:binder {call};
+allow pm-service self:capability net_raw;
+allow pm-service self:socket {create bind read write};
+allow pm-service servicemanager:binder {call transfer};
+allow pm-service ssr_device:chr_file {open read getattr};

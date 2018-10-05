@@ -2,8 +2,8 @@ type msm_irqbalance, domain;
 type msm_irqbalance_exec, exec_type, file_type;
 init_daemon_domain(msm_irqbalance)
 
-allow msm_irqbalance self:capability {setuid setgid dac_override};
-allow msm_irqbalance proc_stat:file {open read getattr};
-allow msm_irqbalance proc_interrupts:file {read getattr open};
 allow msm_irqbalance proc:file {write open read getattr};
+allow msm_irqbalance proc_interrupts:file {read getattr open};
+allow msm_irqbalance proc_stat:file {open read getattr};
+allow msm_irqbalance self:capability {setuid setgid dac_override};
 allow msm_irqbalance sysfs_devices_system_cpu:file {write read};

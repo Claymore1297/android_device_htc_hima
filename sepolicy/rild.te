@@ -1,3 +1,2 @@
 allow rild pm-service:binder {call transfer};
-allow pm-service rild:binder {call};
 allow rild qmux:unix_stream_socket {connectto};

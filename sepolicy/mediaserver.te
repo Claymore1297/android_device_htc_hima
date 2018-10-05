@@ -1,9 +1,6 @@
-allow mediaserver sensorservice_service:service_manager find;
-allow mediaserver system_server:unix_stream_socket rw_socket_perms;
-allow mediaserver mm-qcamera-daemon:unix_dgram_socket sendto;
-allow mediaserver block_device:dir search;
 allow mediaserver apk_data_file:dir search;
-allow mediaserver debugfs_heaps_system:file r_file_perms;
-allow mediaserver proc:file {open read getattr};
+allow mediaserver block_device:dir search;
 allow mediaserver dts_data_file:dir rw_dir_perms;
 allow mediaserver dts_data_file:file create_file_perms;
+allow mediaserver sensorservice_service:service_manager find;
+allow mediaserver system_server:unix_stream_socket rw_socket_perms;

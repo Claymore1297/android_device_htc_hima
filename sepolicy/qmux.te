@@ -2,11 +2,11 @@ type qmux, domain;
 type qmux_exec, exec_type, file_type;
 init_daemon_domain(qmux)
 
-allow qmux self:capability {setgid setpcap setuid};
-allow qmux self:capability2 {block_suspend};
-allow qmux rpmb_device:blk_file {open read getattr write ioctl};
 allow qmux qmuxd_socket:dir {search open write add_name remove_name};
 allow qmux qmuxd_socket:sock_file {create write setattr getattr open read unlink};
-allow qmux sysfs_wake_lock:file {append open read write};
-allow qmux sysfs_smd_open_timeout:file {open read getattr write};
+allow qmux rpmb_device:blk_file {open read getattr write ioctl};
+allow qmux self:capability {setgid setpcap setuid};
+allow qmux self:capability2 {block_suspend};
 allow qmux smd_device:chr_file {read write open ioctl};
+allow qmux sysfs_smd_open_timeout:file {open read getattr write};
+allow qmux sysfs_wake_lock:file {append open read write};
