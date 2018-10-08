@@ -1,5 +1,0 @@
-subdirs = [
-    "device",
-    "parameters",
-    "provider",
-]
