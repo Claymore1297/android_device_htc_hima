@@ -8,3 +8,4 @@ allow init sysfs_class_leds:file {setattr};
 allow init sysfs_class_leds:lnk_file r_file_perms;
 allow init sysfs_graphics:file setattr;
 allow init sysfs_scheduler:file { open setattr write };
+allow init sysfs:file { setattr write open };
