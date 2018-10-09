@@ -130,6 +130,7 @@ on post-fs-data
     # Create directory for NFC
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
 
     # Create directoy for PERFD
     mkdir /data/misc/perfd 0755 root system
