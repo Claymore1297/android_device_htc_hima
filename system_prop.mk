@@ -36,7 +36,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-   ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
+   ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress \
+   ro.bluetooth.hfp.ver=1.6
 
 # Dalvik heap
 PRODUCT_PROPERTY_OVERRIDES += \
