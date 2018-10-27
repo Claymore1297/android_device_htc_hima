@@ -73,6 +73,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     mm.enable.smoothstreaming=true
 
+#system props for the MM modules
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-scan=true \
+    mmp.enable.3g2=true \
+    av.debug.disable.pers.cache=true
+
+#3379827: Decimal sum after adding WAV parser flag
+#37491 is decimal sum of supported codecs in AAL
+#codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
+PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.qcom_parser=3379827
+
+# Print clip name being played
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.log-uri=1
+
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.nfc.fw_download=true \
