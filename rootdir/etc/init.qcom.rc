@@ -474,7 +474,7 @@ service ppd /system/vendor/bin/mm-pp-daemon
 
 # WPA
 service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
-    -puse_p2p_group_interface=1p2p_device=1 \
+    -puse_p2p_group_interface \
     -O/data/vendor/wifi/wpa/sockets/ \
     -g@android:wpa_wlan0
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
