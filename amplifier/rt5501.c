@@ -31,7 +31,7 @@ static struct rt55xx_config rt55xx_playback_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1A, }, // gain  2dB
+        { 0x01, 0x1D, }, // gain  +1dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
@@ -43,8 +43,119 @@ static struct rt55xx_config rt55xx_playback_config = {
     },
 };
 
+static struct rt55xx_config rt55xx_playback_8_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
+
+static struct rt55xx_config rt55xx_playback_16_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
+
+static struct rt55xx_config rt55xx_playback_32_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
+
+static struct rt55xx_config rt55xx_playback_64_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
 
 static struct rt55xx_config rt55xx_playback_128_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
+
+static struct rt55xx_config rt55xx_playback_256_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
+
+static struct rt55xx_config rt55xx_playback_512_config = {
+    .reg_len = 10,
+    .reg = {
+        { 0x00, 0xC0, },
+        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x02, 0x80, }, // noise gate on
+        { 0x08, 0x37, }, // noise gate on
+        { 0x07, 0x7F, }, // noise gate setting
+        { 0x09, 0x02, }, // noise gate setting
+        { 0x0A, 0x03, }, // noise gate setting
+        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x93, 0xAD, }, // pop noise enlarge CP freq
+        { 0x90, 0x93, }, // fix 1X mode
+    },
+};
+
+static struct rt55xx_config rt55xx_playback_1024_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
@@ -99,14 +210,14 @@ int rt55xx_open()
 
     cfg.mode_num = RT55XX_MAX_MODE;
     cfg.cmd_data[RT55XX_MODE_PLAYBACK].config = rt55xx_playback_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK8OH].config = rt55xx_playback_8_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK16OH].config = rt55xx_playback_16_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK32OH].config = rt55xx_playback_32_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK64OH].config = rt55xx_playback_64_config
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK8OH].config = rt55xx_playback_8_config;
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK16OH].config = rt55xx_playback_16_config;
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK32OH].config = rt55xx_playback_32_config;
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK64OH].config = rt55xx_playback_64_config;
     cfg.cmd_data[RT55XX_MODE_PLAYBACK128OH].config = rt55xx_playback_128_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK256OH].config = rt55xx_playback_256_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK500OH].config = rt55xx_playback_512_config;
-    //cfg.cmd_data[RT55XX_MODE_PLAYBACK1KOH].config = rt55xx_playback_1024_config;
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK256OH].config = rt55xx_playback_256_config;
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK500OH].config = rt55xx_playback_512_config;
+    cfg.cmd_data[RT55XX_MODE_PLAYBACK1KOH].config = rt55xx_playback_1024_config;
     cfg.cmd_data[RT55XX_MODE_VOICE].config = rt55xx_voice_config;
     //cfg.cmd_data[RT55XX_MODE_TTY].config = rt55xx_tty_config;
     //cfg.cmd_data[RT55XX_MODE_FM].config = rt55xx_fm_config;
