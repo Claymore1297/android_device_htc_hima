@@ -26,7 +26,6 @@ cc_library_shared {
     name: "libshim_camera_hima",
 
     compile_multilib: "32",
-    proprietary: true,
 
 }
 
@@ -36,8 +35,6 @@ cc_library_shared {
 
     name: "libshim_gps_hima",
 
-    proprietary: true,
-
 }
 
 cc_library_shared {
@@ -45,7 +42,5 @@ cc_library_shared {
     srcs: ["ril_shim.cpp"],
 
     name: "libshim_ril_hima",
-
-    proprietary: true,
 
 }
