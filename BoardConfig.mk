@@ -125,9 +125,6 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
-# Extended filesystem support
-TARGET_EXFAT_DRIVER := sdfat
-
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
