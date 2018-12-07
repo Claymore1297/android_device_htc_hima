@@ -174,7 +174,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.power</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.1</version>
         <interface>
             <name>IPower</name>
