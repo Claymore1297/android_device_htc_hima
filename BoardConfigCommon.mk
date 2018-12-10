@@ -137,6 +137,9 @@ DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
+# IPA
+USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
