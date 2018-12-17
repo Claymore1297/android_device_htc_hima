@@ -18,8 +18,6 @@ on boot
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler "bfq"
-   # Set perfd properties
-    setprop ro.qualcomm.perf.cores_online 2
 
     # Disable retention on HTC
     write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 0
