@@ -54,7 +54,6 @@ on property:sys.boot_completed=1
 
     # online CPU4
     write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 1
 
     # configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "elementalx"
@@ -88,27 +87,6 @@ on property:sys.boot_completed=1
 
     # Restore CPU 4 max freq from msm_performance
     write /sys/module/msm_performance/parameters/cpu_max_freq "4:4294967295 5:4294967295 6:4294967295 7:4294967295"
-
-    # configure core_ctl module parameters
-    write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-    write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 0
-    write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 0
-    write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
-    write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
-    write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 4
-    chown system:system /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
-    chown system:system /sys/devices/system/cpu/cpu0/core_ctl/max_cpus
-    #
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 72
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 28
-    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
-    chown system:system /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
-    chown system:system /sys/devices/system/cpu/cpu4/core_ctl/max_cpus
 
     # android background processes are set to nice 10. Never schedule these on the a57s.
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
