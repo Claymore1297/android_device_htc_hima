@@ -17,7 +17,7 @@ on boot
     write /dev/cpuset/camera-daemon/cpus 0-3
 
 on property:sys.boot_completed=1
-    setprop sys.io.scheduler "bfq"
+    setprop sys.io.scheduler "fiops"
 
     # Disable retention on HTC
     write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 0
