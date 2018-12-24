@@ -51,6 +51,7 @@ on property:sys.boot_completed=1
     # must restore after elementalx
     restorecon -R /sys/devices/system/cpu
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1344000
 
     # online CPU4
     write /sys/devices/system/cpu/cpu4/online 1
@@ -60,6 +61,7 @@ on property:sys.boot_completed=1
     # must restore after elementalx
     restorecon -R /sys/devices/system/cpu
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1248000
 
     # re-enable thermal and BCL hotplug
     write /sys/module/msm_thermal/core_control/enabled 1
@@ -77,16 +79,10 @@ on property:sys.boot_completed=1
     # set GPU default governor to msm-adreno-tz
     write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor msm-adreno-tz
 
-    # restore A57's max
-    copy /sys/devices/system/cpu/cpu4/cpufreq/cpuinfo_max_freq /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
-
     # plugin remaining A57s
     write /sys/devices/system/cpu/cpu5/online 1
     write /sys/devices/system/cpu/cpu6/online 1
     write /sys/devices/system/cpu/cpu7/online 1
-
-    # Restore CPU 4 max freq from msm_performance
-    write /sys/module/msm_performance/parameters/cpu_max_freq "4:4294967295 5:4294967295 6:4294967295 7:4294967295"
 
     # android background processes are set to nice 10. Never schedule these on the a57s.
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
