@@ -693,9 +693,6 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscale.so
 vendor/lib64/libuiblur.so
 
-# IPA
-bin/ipacm-diag:vendor/bin/ipacm-diag
-
 # IR
 bin/cir_fw_update:vendor/bin/cir_fw_update
 etc/cir.img:vendor/etc/cir.img
