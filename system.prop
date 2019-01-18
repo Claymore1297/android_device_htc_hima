@@ -49,7 +49,6 @@ debug.sf.latch_unsignaled=1
 persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196610
 ro.qualcomm.cabl=0
-ro.sf.lcd_density=420
 
 # Factory Reset Protection
 ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/frp
