@@ -1,5 +1,5 @@
 allow init { domain -lmkd -crash_dump }:process noatsecure;
-set_prop(init, vendor_wifi_prop)
+
 allow init debugfs:file w_file_perms;
 allow init debugfs_rmt:dir relabelfrom;
 allow init debugfs_rmt:file relabelfrom;
