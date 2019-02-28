@@ -31,13 +31,13 @@ static struct rt55xx_config rt55xx_playback_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -47,13 +47,13 @@ static struct rt55xx_config rt55xx_playback_8_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -63,13 +63,13 @@ static struct rt55xx_config rt55xx_playback_16_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -79,13 +79,13 @@ static struct rt55xx_config rt55xx_playback_32_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -95,13 +95,13 @@ static struct rt55xx_config rt55xx_playback_64_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -111,13 +111,13 @@ static struct rt55xx_config rt55xx_playback_128_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -127,13 +127,13 @@ static struct rt55xx_config rt55xx_playback_256_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -143,13 +143,13 @@ static struct rt55xx_config rt55xx_playback_512_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
@@ -159,13 +159,13 @@ static struct rt55xx_config rt55xx_playback_1024_config = {
     .reg_len = 10,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain  +1dB
+        { 0x01, 0x22, }, // gain  +6dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate -4dB
+        { 0x0B, 0xD9, }, // noise gate setting
         { 0x93, 0xAD, }, // pop noise enlarge CP freq
         { 0x90, 0x93, }, // fix 1X mode
     },
