@@ -1,3 +1,4 @@
 allow netd priv_app:unix_stream_socket {read write};
 allow netd sys_virtual_rmnet:dir rw_dir_perms;
 allow netd sys_virtual_rmnet:file rw_file_perms;
+

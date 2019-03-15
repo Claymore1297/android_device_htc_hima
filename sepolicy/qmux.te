@@ -10,3 +10,4 @@ allow qmux self:capability2 {block_suspend};
 allow qmux smd_device:chr_file {read write open ioctl};
 allow qmux sysfs_smd_open_timeout:file {open read getattr write};
 allow qmux sysfs_wake_lock:file {append open read write};
+

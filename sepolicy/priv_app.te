@@ -6,3 +6,4 @@ allow priv_app sysfs_android_usb:file r_file_perms;
 allow priv_app sys_virtual_rmnet:file r_file_perms;
 allow priv_app sys_virtual_wifi:file r_file_perms;
 allow priv_app sys_virtual_net:file r_file_perms;
+

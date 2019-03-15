@@ -30,3 +30,4 @@ allow hal_memtrack_default system_app:dir {search};
 allow hal_memtrack_default system_app:file {open read getattr};
 allow hal_memtrack_default vndservicemanager:dir {search};
 allow hal_memtrack_default vndservicemanager:file {open read getattr};
+

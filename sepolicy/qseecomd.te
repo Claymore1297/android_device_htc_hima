@@ -14,3 +14,4 @@ allow qseecomd ssd_device:blk_file {read write open};
 allow qseecomd self:capability {setuid setgid sys_rawio};
 allow qseecomd sysfs:file {open read getattr};
 allow qseecomd system_prop:property_service set;
+

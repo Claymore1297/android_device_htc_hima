@@ -12,3 +12,4 @@ allow cameraserver sysfs_camera_awb_cal:dir search;
 allow cameraserver sysfs_camera_sensor:file r_file_perms;
 allow cameraserver sysfs_graphics:dir r_dir_perms;
 allow cameraserver sysfs_graphics:file r_file_perms;
+

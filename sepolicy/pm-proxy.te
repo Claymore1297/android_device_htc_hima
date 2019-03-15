@@ -5,3 +5,4 @@ init_daemon_domain(pm-proxy)
 allow pm-proxy binder_per_mgr_service:service_manager {find};
 allow pm-proxy pm-service:binder {call transfer};
 allow pm-proxy servicemanager:binder {call};
+

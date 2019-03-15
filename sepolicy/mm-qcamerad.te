@@ -26,3 +26,4 @@ allow mm-qcamera-daemon untrusted_app:fd {use};
 allow mm-qcamera-daemon untrusted_app_25:fd {use};
 allow mm-qcamera-daemon untrusted_app_27:fd {use};
 allow mm-qcamera-daemon video_device:chr_file {ioctl write open read};
+

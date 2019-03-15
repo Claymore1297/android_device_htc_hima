@@ -1,1 +1,2 @@
 allow init rtc_device:chr_file ioctl;
+

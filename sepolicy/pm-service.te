@@ -12,3 +12,4 @@ allow pm-service self:capability net_raw;
 allow pm-service self:socket {create bind read write};
 allow pm-service servicemanager:binder {call transfer};
 allow pm-service ssr_device:chr_file {open read getattr};
+

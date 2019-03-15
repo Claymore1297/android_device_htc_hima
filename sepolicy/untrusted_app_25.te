@@ -1,2 +1,3 @@
 dontaudit untrusted_app_25 proc:file {getattr open read};
 allow untrusted_app_25 debugfs_wakeup_sources:file {read};
+

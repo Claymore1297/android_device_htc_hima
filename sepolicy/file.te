@@ -16,3 +16,4 @@ type sysfs_vibeamp, fs_type, sysfs_type;
 type sys_virtual_net, fs_type, sysfs_type;
 type sys_virtual_rmnet, fs_type, sysfs_type;
 type sys_virtual_wifi, fs_type, sysfs_type;
+

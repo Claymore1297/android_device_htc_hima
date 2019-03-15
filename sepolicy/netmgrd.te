@@ -1,1 +1,2 @@
 allow netmgrd qmux:unix_stream_socket connectto;
+
