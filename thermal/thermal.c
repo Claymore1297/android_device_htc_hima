@@ -32,7 +32,7 @@
 #define TEMPERATURE_FILE_FORMAT       "/sys/class/thermal/thermal_zone%d/temp"
 #define CPU_ONLINE_FILE_FORMAT        "/sys/devices/system/cpu/cpu%d/online"
 
-#define BATTERY_SENSOR_NUM            23
+#define BATTERY_SENSOR_NUM            0
 #define GPU_SENSOR_NUM                13
 #define SKIN_SENSOR_NUM               18
 
