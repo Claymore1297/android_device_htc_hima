@@ -32,7 +32,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hpx_send_params=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.audio.spkr.cal.duration=0
+    persist.vendor.audio.spkr.cal.duration=10 \
+    persist.vendor.audio.speaker.prot.enable=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.media_vol_steps=25 \
