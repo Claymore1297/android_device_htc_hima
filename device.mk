@@ -131,6 +131,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-hima \
     libshim_camera_hima \
+    libshim_stillmore \
     Snap \
     cameraserver_hima
 
