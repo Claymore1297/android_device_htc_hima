@@ -48,7 +48,6 @@
 
 # HALs
 /system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.hima                   u:object_r:hal_light_default_exec:s0
-/system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service\.hima                u:object_r:hal_vibrator_default_exec:s0
 
 # Heaps
 /sys/kernel/debug/ion/heaps/system                             u:object_r:debugfs_heaps_system:s0
