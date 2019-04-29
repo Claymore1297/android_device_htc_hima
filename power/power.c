@@ -619,7 +619,7 @@ static int extract_stats(uint64_t *list, char *file,
     fp = fopen(file, "r");
     if (fp == NULL) {
         ret = -errno;
-        ALOGE("%s: failed to open: %s", __func__, strerror(errno));
+        ALOGE("%s: failed to open: %s - %s", __func__, file, strerror(errno));
         return ret;
     }
 
