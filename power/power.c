@@ -49,7 +49,7 @@
 #include "performance.h"
 #include "power-common.h"
 
-#define BUS_SPEED_PATH "/sys/class/devfreq/qcom,gpubw.70/min_freq"
+#define BUS_SPEED_PATH "/sys/class/devfreq/qcom,gpubw.75/min_freq"
 #define GPU_MAX_FREQ_PATH "/sys/class/kgsl/kgsl-3d0/devfreq/max_freq"
 #define GPU_MIN_FREQ_PATH "/sys/class/kgsl/kgsl-3d0/devfreq/min_freq"
 #define CPU4_ONLINE_PATH "/sys/devices/system/cpu/cpu4/online"
