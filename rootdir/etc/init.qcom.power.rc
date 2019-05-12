@@ -51,7 +51,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "0 600000:19000 672000:20000 960000:24000 1248000:38000"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 93
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 40000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 150000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 90000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 672000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "29 384000:88 600000:90 672000:92 864000:22 960000:93 1248000:98"
@@ -72,7 +72,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay "20000 864000:30000 960000:40000 1248000:30000"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 99
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 40000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack 150000
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack 90000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 960000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "70 864000:75 960000:90 1248000:99"
