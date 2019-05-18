@@ -369,12 +369,6 @@ service cir_fw_update /system/vendor/bin/cir_fw_update -u cir.img
     group system
     oneshot
 
-service energy-awareness /system/vendor/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
-
 service ipacm /system/vendor/bin/ipacm
     class main
     user net_admin

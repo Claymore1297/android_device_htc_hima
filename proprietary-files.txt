@@ -732,7 +732,6 @@ etc/firmware/venus.mdt:vendor/firmware/venus.mdt
 vendor/firmware/libpn547_fw.so
 
 # Perf
-bin/energy-awareness:vendor/bin/energy-awareness
 bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
 vendor/lib64/libqti-perfd-client.so
