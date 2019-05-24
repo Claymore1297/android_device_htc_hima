@@ -78,7 +78,7 @@ on post-fs-data
     mkdir /persist/tee 0700 system system
 
     # Create directory for audio
-    mkdir /data/misc/audio 0770 audio audio
+    mkdir /data/vendor/misc/audio 0770 audio audio
 
     # Create directory for dts
     mkdir /data/misc/dts 0770 media audio
