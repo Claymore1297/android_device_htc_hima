@@ -136,4 +136,5 @@
         <value>0.2</value>
         <value>2</value>
     </array>
+	<item name="battery.capacity">2800</item>
 </device>
