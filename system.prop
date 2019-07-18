@@ -61,7 +61,9 @@ ro.qc.sdk.izat.service_mask=0x0
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
 
-system props for the MM modules
+# system props for the MM modules
+debug.stagefright.omx_default_rank.sw-audio=1
+debug.stagefright.omx_default_rank=0
 media.stagefright.enable-player=true
 media.stagefright.enable-http=true
 media.stagefright.enable-aac=true
