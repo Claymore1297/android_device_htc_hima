@@ -347,22 +347,6 @@ service adsprpcd /system/vendor/bin/adsprpcd
    user media
    group media
 
-# Charger
-service charger /charger
-    class charger
-    group log
-    seclabel u:r:healthd:s0
-
-service qbcharger /charger -m 1
-    disabled
-    oneshot
-
-on property:sys.qbcharger.enable=true
-    start qbcharger
-
-on property:sys.qbcharger.enable=false
-    stop qbcharger
-
 service cir_fw_update /system/vendor/bin/cir_fw_update -u cir.img
     class main
     user system
