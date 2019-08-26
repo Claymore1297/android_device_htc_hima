@@ -205,7 +205,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/synaptics_dsx.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/synaptics_dsx.idc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/AK8789_HALL_SENSOR.kl \
     $(LOCAL_PATH)/keylayout/projector-Keypad.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/projector-Keypad.kl \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl
 
