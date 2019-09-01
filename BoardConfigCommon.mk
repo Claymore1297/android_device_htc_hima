@@ -93,7 +93,6 @@ BOARD_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMER
 # Charger
 BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
 BOARD_CHARGING_CMDLINE_VALUE := "chargerlogo"
-WITH_LINEAGE_CHARGER := false
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
