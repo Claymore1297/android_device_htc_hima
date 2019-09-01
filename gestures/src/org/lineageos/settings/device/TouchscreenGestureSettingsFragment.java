@@ -19,8 +19,8 @@ package org.lineageos.settings.device;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
 import android.view.MenuItem;
+import androidx.preference.PreferenceFragment;
 
 public class TouchscreenGestureSettingsFragment extends PreferenceFragment {
 
