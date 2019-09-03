@@ -43,6 +43,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
    ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress \
    ro.bluetooth.hfp.ver=1.6 \
    bluetooth.hfp.client=1 \
+   persist.bluetooth.bluetooth_audio_hal.disabled=true \
    vendor.qcom.bluetooth.soc=rome \
    ro.boot.btmacaddr=00:00:00:00:00:00
 
