@@ -31,12 +31,6 @@ import /vendor/etc/init/hw/init.qcom.usb.rc
 on early-init
     symlink /data/tombstones /tombstones
 
-    mkdir /firmware 0771 system system
-    mkdir /firmware/adsp 0771 system system
-    mkdir /firmware/cpe 0771 system system
-    mkdir /firmware/image 0771 system system
-    mkdir /firmware/radio 0771 system system
-
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
@@ -44,9 +38,6 @@ on early-init
 
 on init
     export LD_PRELOAD "liblog_htc.so"
-
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
 
     # ZRAM setup
     write /sys/block/zram0/comp_algorithm lz4
@@ -59,13 +50,6 @@ on fs
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
-    mkdir /persist/data/sfs 0700 system system
-    mkdir /persist/data/tz 0700 system system
-    mkdir /persist/tee 0700 system system
 
     # Create directory for audio
     mkdir /data/vendor/misc/audio 0770 audio audio

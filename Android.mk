@@ -49,6 +49,46 @@ $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
+
+FIRMWARE_SUB_DIRS := \
+    adsp cpe radio
+
+FIRMWARE_DIR := $(addprefix $(TARGET_ROOT_OUT)/firmware/,$(notdir $(FIRMWARE_SUB_DIRS)))
+$(FIRMWARE_DIR): $(LOCAL_INSTALLED_MODULE)
+	@echo "Firmware sub dirs: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) mkdir -p $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_DIR)
+
+
+ROOTDIR_SUB_DIRS := \
+    persist tombstones
+
+ROOTDIR_DIRS := $(addprefix $(TARGET_ROOT_OUT)/,$(notdir $(ROOTDIR_SUB_DIRS)))
+$(ROOTDIR_DIRS): $(LOCAL_INSTALLED_MODULE)
+	@echo "rootdir sub dirs: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) mkdir -p $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(ROOTDIR_DIRS)
+
+
+TOMBSTONES_SUB_DIRS := \
+    modem lpass wcnss dsps
+
+TOMBSTONES_DIRS := $(addprefix $(TARGET_ROOT_OUT)/tombstones/,$(notdir $(TOMBSTONES_SUB_DIRS)))
+$(TOMBSTONES_DIRS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Tombstones sub dirs: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) mkdir -p $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(TOMBSTONES_DIRS)
+
+
 ADSP_IMAGES := \
     adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 adsp.b07 \
     adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.b13 adsp.b14 adsp.b15 adsp.mdt
