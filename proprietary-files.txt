@@ -823,7 +823,7 @@ vendor/firmware/libpn547_fw.so
 
 # Perf
 vendor/bin/msm_irqbalance
-vendor/bin/perfd
+vendor/bin/perfd | 0731e1733c94d1751511f9396f81bb2e
 vendor/lib/libqti-iop-client.so
 vendor/lib/libqti-perfd-client.so
 vendor/lib64/libqti-iop-client.so
@@ -883,7 +883,7 @@ vendor/lib64/libqmiservices.so
 vendor/lib64/libsmemlog.so
 
 # RIL
-vendor/bin/netmgrd
+vendor/bin/netmgrd | 4b3147922edd8f63da3479d5ad524cb8
 vendor/bin/qmuxd
 vendor/bin/radish
 vendor/bin/rmt_storage
