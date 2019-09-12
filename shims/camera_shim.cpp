@@ -16,9 +16,12 @@
 
 #include <gui/BufferQueue.h>
 #include <gui/SurfaceComposerClient.h>
+#include <gui/ISurfaceComposer.h>
 #include <utils/Errors.h>
 #include <utils/String8.h>
 #include <utils/StrongPointer.h>
+
+#include <private/gui/ComposerService.h>
 
 #include <string>
 
@@ -71,46 +74,30 @@ extern "C" void _ZN7android13GraphicBufferC1Ejjij(
       inWidth, inHeight, inFormat, inUsage);
 }
 
-extern "C" void _ZN7android21SurfaceComposerClient17setDisplaySurfaceERKNS_2spINS_7IBinderEEERKNS1_INS_22IGraphicBufferProducerEEE(
-    const sp<IBinder>& token, const sp<IGraphicBufferProducer>& bufferProducer) {
-  t->setDisplaySurface(token, bufferProducer);
-}
-
-
-// sp<SurfaceControl> createSurface(const String8& name, uint32_t w, uint32_t h,
-//                                  PixelFormat format, uint32_t flags = 0,
-//                                  SurfaceControl* parent = nullptr,
-//                                  uint32_t windowType = 0,
-//                                  uint32_t ownerUid = 0);
-/*
-extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlEjj(
-    const android::String8& name, uint32_t w, uint32_t h, PixelFormat format,
-    uint32_t flags, SurfaceControl* parent, uint32_t windowType,
-    uint32_t ownerUid);
-*/
-
-extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlEii(
+//sp<SurfaceControl> SurfaceComposerClient::createSurface(const String8& name, uint32_t w, uint32_t h,
+//                                                        PixelFormat format, uint32_t flags,
+//                                                        SurfaceControl* parent,
+//                                                        LayerMetadata metadata);
+extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlENS_13LayerMetadataE(
     const android::String8& name,// name of the surface
     uint32_t w,         // width in pixel
     uint32_t h,         // height in pixel
     PixelFormat format, // pixel-format desired
-    uint32_t flags = 0, // usage flags
-    SurfaceControl* parent = nullptr, // parent
-    int32_t windowType = -1, // from WindowManager.java (STATUS_BAR, INPUT_METHOD, etc.)
-    int32_t ownerUid = -1 // UID of the task
+    uint32_t flags,     // usage flags
+    SurfaceControl* parent, // parent
+    android::LayerMetadata metadata
 );
+
 
 extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8Ejjij(
     const android::String8& name, uint32_t w, uint32_t h, PixelFormat format,
     uint32_t flags) {
-  sc = _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlEii(name, w, h, format, flags, nullptr, -1, -1);
+  android::LayerMetadata metadata;
+  sc = _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlENS_13LayerMetadataE(name, w, h, format, flags, nullptr, metadata);
   return sc;
 }
 
-// status_t setLayer(int32_t layer);
-// needed for N-libs
-//extern "C" status_t _ZN7android14SurfaceControl8setLayerEi(int32_t layer);
-
+// status_t setLayer(uint32_t layer);
 extern "C" status_t _ZN7android14SurfaceControl8setLayerEj(uint32_t layer) {
   t->setLayer((SurfaceControl*)sc, layer);
   return android::NO_ERROR;
@@ -124,6 +111,12 @@ extern "C" void _ZN7android5FenceD1Ev() {
 extern "C" void _ZN7android21SurfaceComposerClient21openGlobalTransactionEv() {
   t = new(android::SurfaceComposerClient::Transaction);
 }
+
+extern "C" void _ZN7android21SurfaceComposerClient17setDisplaySurfaceERKNS_2spINS_7IBinderEEERKNS1_INS_22IGraphicBufferProducerEEE(
+    const sp<IBinder>& token, const sp<IGraphicBufferProducer>& bufferProducer) {
+  t->setDisplaySurface(token, bufferProducer);
+}
+
 extern "C" void _ZN7android21SurfaceComposerClient20setDisplayProjectionERKNS_2spINS_7IBinderEEEjRKNS_4RectES8_(
     const sp<IBinder>& token,
     uint32_t orientation,
@@ -137,22 +130,6 @@ extern "C" void _ZN7android21SurfaceComposerClient20setDisplayLayerStackERKNS_2s
   t->setDisplayLayerStack(token, layerStack);
 }
 
-extern "C" void _ZN7android21SurfaceComposerClient22closeGlobalTransactionEb(){
-  t->apply();
-  delete t;
-  t = nullptr;
-}
-
-//Needed for M-libs on Pie
-/*
-extern "C" void* _ZN7android25IPermissionControllerShim11asInterfaceERKNS_2spINS_7IBinderEEE(const sp<IBinder>&);
-extern "C" void* _ZN7android21IPermissionController11asInterfaceERKNS_2spINS_7IBinderEEE(
-    const sp<IBinder>& remote){
-  //android::IPermissionControllerShim::asInterface(remote);
-  return _ZN7android25IPermissionControllerShim11asInterfaceERKNS_2spINS_7IBinderEEE(remote);
-}
-*/
-
 extern "C" status_t _ZN7android14SurfaceControl7setSizeEjj(uint32_t w, uint32_t h){
   t->setSize((SurfaceControl*)sc, w, h);
   return android::NO_ERROR;
@@ -162,3 +139,35 @@ extern "C" status_t _ZN7android14SurfaceControl11setPositionEff(float x, float y
   t->setPosition((SurfaceControl*)sc, x, y);
   return android::NO_ERROR;
 }
+
+extern "C" void _ZN7android21SurfaceComposerClient22closeGlobalTransactionEb(){
+  t->apply();
+  delete t;
+  t = nullptr;
+}
+
+//<sp<IBinder> SurfaceComposerClient::getPhysicalDisplayToken(unsigned long long)
+extern "C" void *_ZN7android21SurfaceComposerClient23getPhysicalDisplayTokenEy(unsigned long long);
+
+//sp<IBinder> SurfaceComposerClient::getBuiltInDisplay(int32_t id); 
+extern "C" void* _ZN7android21SurfaceComposerClient17getBuiltInDisplayEi(int32_t id){
+  return _ZN7android21SurfaceComposerClient23getPhysicalDisplayTokenEy(static_cast<uint64_t>(id));
+}
+
+extern "C" void _ZN7android14SurfaceControl7destroyEv(void);
+
+extern "C" void _ZN7android14SurfaceControl5clearEv(void){
+  _ZN7android14SurfaceControl7destroyEv();
+}
+
+//android::GraphicBuffer::lock(uint32_t inUsage, void** vaddr, int32_t* outBytesPerPixel,
+//                             int32_t* outBytesPerStride);
+extern "C" status_t _ZN7android13GraphicBuffer4lockEjPPvPiS3_(uint32_t inUsage, void** vaddr, int32_t* outBytesPerPixel,
+                             int32_t* outBytesPerStride);
+
+//status_t GraphicBuffer::lock(uint32_t inUsage, void** vaddr)
+extern "C" status_t _ZN7android13GraphicBuffer4lockEjPPv(uint32_t inUsage, void** vaddr){
+  return _ZN7android13GraphicBuffer4lockEjPPvPiS3_(inUsage, vaddr, nullptr, nullptr);
+}
+
+
