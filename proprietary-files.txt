@@ -832,8 +832,8 @@ vendor/lib64/libqti-perfd-client.so
 # Peripheral manager
 vendor/bin/pm-proxy
 vendor/bin/pm-service
-vendor/lib/libperipheral_client.so
-vendor/lib64/libperipheral_client.so
+vendor/lib/libperipheral_client.so | c53cdbff2b34ddb8bbac00bd59bd2317
+vendor/lib64/libperipheral_client.so | a300741eaa9d7664869794ddc8bb9750
 
 # Postprocessing
 vendor/bin/mm-pp-daemon
