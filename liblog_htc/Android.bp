@@ -20,6 +20,4 @@ cc_library_shared {
     srcs: ["htc_log.c"],
 
     name: "liblog_htc",
-
-    vendor: true,
 }
