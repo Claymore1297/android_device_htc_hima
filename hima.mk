@@ -253,6 +253,7 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-service \
+    android.hardware.nfc@1.0-impl-hima \
     com.android.nfc_extras \
     NfcNci \
     SecureElement \
