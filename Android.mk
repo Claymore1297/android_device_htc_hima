@@ -125,7 +125,7 @@ $(MCV2_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "MCV2 firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /system/vendor/etc/firmware/$(notdir $@) $@
+	$(hide) ln -sf /vendor/etc/firmware/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MCV2_SYMLINKS)
 
@@ -137,7 +137,7 @@ $(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Keymaster firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /system/vendor/firmware/keymaster/$(notdir $@)  $(TARGET_ROOT_OUT)/firmware/image/keymaste$(suffix $@)
+	$(hide) ln -sf /vendor/firmware/keymaster/$(notdir $@)  $(TARGET_ROOT_OUT)/firmware/image/keymaste$(suffix $@)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
 

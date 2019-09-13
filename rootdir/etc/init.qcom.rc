@@ -311,46 +311,46 @@ on boot
 
 # Services start here
 
-service vendor.adsprpcd /system/vendor/bin/adsprpcd
+service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service vendor.cir_fw_update /system/vendor/bin/cir_fw_update -u cir.img
+service vendor.cir_fw_update /vendor/bin/cir_fw_update -u cir.img
     class main
     user system
     group system
     oneshot
 
-service vendor.ipacm /system/vendor/bin/ipacm
+service vendor.ipacm /vendor/bin/ipacm
     class main
     user net_admin
     group net_admin inet
 
-service vendor.irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
+service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service vendor.msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     class main
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.netmgrd /system/vendor/bin/netmgrd
+service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.per_mgr /system/vendor/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class late_start
     user system
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.per_proxy /system/vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class late_start
     user system
     group system net_raw
@@ -363,38 +363,38 @@ on property:init.svc.vendor.per_mgr=running
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
 
-service vendor.perfd /system/vendor/bin/perfd
+service vendor.perfd /vendor/bin/perfd
     class main
     user root
     group root readproc
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
 
-service vendor.qmuxd /system/vendor/bin/qmuxd
+service vendor.qmuxd /vendor/bin/qmuxd
     class core
     user root
     group radio audio bluetooth gps nfc oem_2950
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.qseecomd /system/vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.rmt_storage /system/vendor/bin/rmt_storage
+service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.thermal-engine /system/vendor/bin/thermal-engine -c /system/vendor/etc/thermal-engine.conf
+service vendor.thermal-engine /vendor/bin/thermal-engine -c /vendor/etc/thermal-engine.conf
     class main
     user root
     socket thermal-send-client stream 0660 system system
@@ -403,20 +403,20 @@ service vendor.thermal-engine /system/vendor/bin/thermal-engine -c /system/vendo
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.time_daemon /system/vendor/bin/time_daemon
+service vendor.time_daemon /vendor/bin/time_daemon
     class late_start
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service ppd /system/vendor/bin/mm-pp-daemon
+service ppd /vendor/bin/mm-pp-daemon
     class hal
     user system
     socket pps stream 0660 system system
     group system graphics
 
 # WPA
-service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -puse_p2p_group_interface \
     -O/data/vendor/wifi/wpa/sockets/ \
     -g@android:wpa_wlan0
