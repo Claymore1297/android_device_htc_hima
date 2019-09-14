@@ -183,7 +183,6 @@ TARGET_LD_SHIM_LIBS := \
     /vendor/lib/hw/camera.msm8994.so|libshim_camera_hima.so \
     /vendor/lib/libizat_core.so|libshim_gps_hima.so \
     /vendor/lib64/libizat_core.so|libshim_gps_hima.so \
-    /vendor/lib64/libril.so|libshim_ril_hima.so \
     /system/lib/liblog.so|liblog_htc.so \
     /system/lib64/liblog.so|liblog_htc.so
 

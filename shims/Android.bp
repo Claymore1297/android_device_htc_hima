@@ -37,10 +37,3 @@ cc_library_shared {
 
 }
 
-cc_library_shared {
-
-    srcs: ["ril_shim.cpp"],
-
-    name: "libshim_ril_hima",
-
-}
