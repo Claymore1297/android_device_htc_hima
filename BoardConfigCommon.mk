@@ -195,6 +195,9 @@ PRODUCT_SOONG_NAMESPACES += \
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
+# Security Patch Level
+VENDOR_SECURITY_PATCH := 2017-04-01
+
 # Wifi
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := bcmdhd
