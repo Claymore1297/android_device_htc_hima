@@ -6,7 +6,7 @@ $(call inherit-product, device/htc/hima/full_hima.mk)
 PRODUCT_NAME := lineage_hima
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_DEVICE="htc_himaulatt" \
+    PRODUCT_DEVICE="htc_hima" \
     PRODUCT_NAME="himaulatt_na_gen_unlock" \
     PRIVATE_BUILD_DESC="4.30.617.12 CL894012 release-keys"
 
