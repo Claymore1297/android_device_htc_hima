@@ -932,6 +932,11 @@ vendor/lib/libdrmdecrypt.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
+# 1.1 from mata PQ1A.190105.112
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine|e1b17503a744cca89fa983ee8048b84e9513c359
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc|5a01d337c1d375ee24a6c8992ba91f54afb7637e
+vendor/lib64/libwvhidl.so|c9a1691b18f589ad3ff0a98ff2de1f8965dc1b16
+
 # Wifi
 etc/calibration
 etc/firmware/fw_bcm4356.bin
