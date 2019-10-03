@@ -938,7 +938,7 @@ vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc|5a01d337c1d375ee24a
 vendor/lib64/libwvhidl.so|c9a1691b18f589ad3ff0a98ff2de1f8965dc1b16
 
 # Wifi
-etc/calibration
-etc/firmware/fw_bcm4356.bin
-etc/firmware/fw_bcm4356_apsta.bin
+vendor/etc/calibration
+vendor/etc/firmware/fw_bcm4356.bin
+vendor/etc/firmware/fw_bcm4356_apsta.bin
 
