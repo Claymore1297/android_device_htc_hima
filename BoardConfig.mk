@@ -56,7 +56,7 @@ TARGET_KERNEL_SOURCE := kernel/htc/msm8994
 TARGET_KERNEL_CONFIG := lineageos_hima_defconfig
 
 # Device Asserts
-TARGET_OTA_ASSERT_DEVICE := htc_himaul,htc_himauhl,htc_himaulatt,himaul,himauhl,himaulatt,htc_himawl,himawl,htc_himawhl,himawhl
+TARGET_OTA_ASSERT_DEVICE := htc_himaul,htc_himauhl,htc_himaulatt,htc_himawhl,htc_himawl
 
 # Audio
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
