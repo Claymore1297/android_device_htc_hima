@@ -6,11 +6,11 @@ $(call inherit-product, device/htc/hima/full_hima.mk)
 PRODUCT_NAME := lineage_hima
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_DEVICE="htc_hima" \
-    PRODUCT_NAME="himaulatt_na_gen_unlock" \
-    PRIVATE_BUILD_DESC="4.30.617.12 CL894012 release-keys"
+    PRODUCT_DEVICE="htc_himauhl" \
+    PRODUCT_NAME="himauhl_htc_europe" \
+    PRIVATE_BUILD_DESC="4.28.401.3 CL869604 release-keys"
 
-BUILD_FINGERPRINT="htc/himaulatt_na_gen_unlock/htc_himaulatt:7.0/NRD90M/894012.12:user/release-keys"
+BUILD_FINGERPRINT="htc/himauhl_htc_europe/htc_himauhl:7.0/NRD90M/869604.3:user/release-keys"
 
 # AICP Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
