@@ -53,7 +53,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000 -
 BOARD_RAMDISK_OFFSET := 0x02000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/htc/msm8994
-TARGET_KERNEL_CONFIG := lineageos_hima_defconfig
+TARGET_KERNEL_CONFIG := hima_defconfig
 
 # Device Asserts
 TARGET_OTA_ASSERT_DEVICE := htc_himaul,htc_himauhl,htc_himaulatt,htc_himawhl,htc_himawl
