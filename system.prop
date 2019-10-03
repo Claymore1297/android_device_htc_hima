@@ -145,9 +145,6 @@ ro.ril.ltefgi.rel9=2147483648
 # SurfaceFlinger
 ro.surface_flinger.protected_contents=true
 
-# Vendor security patch level
-ro.aicp.build.vendor_security_patch=2017-04-01
-
 # Wifi
 wifi.interface=wlan0
 wifi.direct.interface=p2p-dev-wlan0
