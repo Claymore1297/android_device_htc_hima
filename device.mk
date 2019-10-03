@@ -258,9 +258,9 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:system/etc/libnfc-nci.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
+    $(LOCAL_PATH)/configs/nfc/nfcee_access.xml:$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml \
     $(LOCAL_PATH)/prebuilts/nfc/lib/nfc_nci.msm8994.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/nfc_nci.msm8994.so \
     $(LOCAL_PATH)/prebuilts/nfc/lib64/nfc_nci.msm8994.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/nfc_nci.msm8994.so
 
