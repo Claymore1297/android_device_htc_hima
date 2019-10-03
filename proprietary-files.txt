@@ -929,6 +929,7 @@ vendor/lib64/hw/vulkan.msm8994.so
 
 # Widevine
 vendor/lib/libdrmdecrypt.so
+vendor/lib/liboemcrypto.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
