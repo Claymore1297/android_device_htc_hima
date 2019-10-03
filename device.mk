@@ -180,6 +180,7 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    fstab.qcom_first_stage \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
