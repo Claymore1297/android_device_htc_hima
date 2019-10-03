@@ -103,6 +103,17 @@ void vendor_load_properties() {
         property_override_dual("ro.product.device", "ro.vendor.product.device", "htc_himaulatt");
         property_override_dual("ro.product.model", "ro.vendor.product.model", "HTC One M9");
         property_override_dual("ro.product.name", "ro.vendor.product.name", "himaulatt_na_gen_unlock");
+    } else if (bootmid == "0PJA12000") {
+        /* himaul */
+        gsm_properties("9");
+        property_override("ro.build.description", "4.27.531.6 CL869604 release-keys");
+        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "htc/himaul_tmous/htc_himaul:7.0/NRD90M/869604.6:user/release-keys");
+        property_override("ro.build.changelist", "869604");
+        property_override("ro.build.product", "htc_himaul");
+        property_override("ro.build.sense.version", "8.0");
+        property_override_dual("ro.product.device", "ro.vendor.product.device", "htc_himaul");
+        property_override_dual("ro.product.model", "ro.vendor.product.model", "HTC One M9");
+        property_override_dual("ro.product.name", "ro.vendor.product.name", "himaul_tmous");
     } else if (bootmid == "0PJA20000") {
         /* himawhl */
         cdma_properties("1", "8");
