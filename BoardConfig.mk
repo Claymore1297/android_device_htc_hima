@@ -172,7 +172,7 @@ TARGET_SYSTEM_PROP :=  $(PLATFORM_PATH)/system.prop
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/system/etc/recovery.fstab
 
 # Sensors
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
