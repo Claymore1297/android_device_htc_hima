@@ -100,7 +100,7 @@ void vendor_load_properties() {
         property_override("ro.build.changelist", "894012");
         property_override("ro.build.product", "htc_himaulatt");
         property_override("ro.build.sense.version", "8.0");
-        property_override_dual("ro.product.device", "ro.vendor.product.device", "htc_hiaeulatt");
+        property_override_dual("ro.product.device", "ro.vendor.product.device", "htc_himaulatt");
         property_override_dual("ro.product.model", "ro.vendor.product.model", "HTC One M9");
         property_override_dual("ro.product.name", "ro.vendor.product.name", "himaulatt_na_gen_unlock");
     } else if (bootmid == "0PJA20000") {
