@@ -138,6 +138,8 @@
                 </devicePort>
                 <devicePort tagName="BT SCO Car Kit" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT" role="sink">
                 </devicePort>
+                <devicePort tagName="HDMI Out" type="AUDIO_DEVICE_OUT_AUX_DIGITAL" role="sink">
+                </devicePort>
                 <devicePort tagName="Telephony Tx" type="AUDIO_DEVICE_OUT_TELEPHONY_TX" role="sink">
                 </devicePort>
 
@@ -176,6 +178,8 @@
                        sources="primary output,low_latency,voip_rx,direct_pcm,compressed_offload"/>
                 <route type="mix" sink="BT SCO Car Kit"
                        sources="primary output,low_latency,voip_rx,direct_pcm,compressed_offload"/>
+		<route type="mix" sink="HDMI Out"
+                       sources="primary output,low_latency"/>
                 <route type="mix" sink="Telephony Tx"
                        sources="voice_tx"/>
                 <route type="mix" sink="primary input"
