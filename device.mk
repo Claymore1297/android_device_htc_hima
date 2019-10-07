@@ -165,7 +165,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-service \
-    libshim_gps_hima
+    libshim_gps_hima \
+    PRODUCT_PACKAGES += \
+    gps.msm8994 \
+    flp.conf \
+    gps.conf \
+    izat.conf \
+    sap.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf
