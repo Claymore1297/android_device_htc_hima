@@ -31,14 +31,6 @@ cc_library_shared {
 
 cc_library_shared {
 
-    srcs: ["gps_shim.cpp"],
-
-    name: "libshim_gps_hima",
-
-}
-
-cc_library_shared {
-
     srcs: ["drm_shim.cpp"],
 
     shared_libs: [
