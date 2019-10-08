@@ -34,7 +34,9 @@ LOCAL_SRC_FILES += \
 
 LOCAL_CFLAGS += \
     -fno-short-enums \
-    -D_ANDROID_
+    -D_ANDROID_ \
+    -DGPS_CONF_FILE=\"/vendor/etc/gps.conf\" \
+    -DSAP_CONF_FILE=\"/vendor/etc/sap.conf\"
 
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
