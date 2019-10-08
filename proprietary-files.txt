@@ -721,23 +721,14 @@ vendor/firmware/widevine.b02
 vendor/firmware/widevine.b03
 vendor/firmware/widevine.mdt
 
-# GPS
-vendor/lib/hw/gps.default.so
-vendor/lib/libgps.utils.so
-vendor/lib/libloc_api_v02.so
-vendor/lib/libloc_core.so
-vendor/lib/libloc_ds_api.so
-vendor/lib/libloc_eng.so
-vendor/lib/liblocationservice.so
-vendor/lib64/hw/gps.default.so
-vendor/lib64/libgeofence.so
-vendor/lib64/libgps.utils.so
-vendor/lib64/libizat_core.so
-vendor/lib64/liblbs_core.so
-vendor/lib64/libloc_api_v02.so
-vendor/lib64/libloc_core.so
-vendor/lib64/libloc_ds_api.so
-vendor/lib64/libloc_eng.so
+# GPS - blobs taken from OP2
+lib64/libloc_ds_api.so | e511ce8baa673482a61b196ecff973ae
+lib64/libloc_api_v02.so | e511ce8baa673482a61b196ecff973ae
+vendor/lib/libloc_api_v02.so | c49e1be0a964ea50fd3b62648b5ffbff
+vendor/lib64/libgeofence.so | 22bb04e3369fbe03efa9f8d967a1a1ff
+vendor/lib64/libizat_core.so | 799c5a92bd0cf6b8b85586c2dff3dfc3
+vendor/lib64/liblbs_core.so | aa1bac552b3dece61545be075bde5756
+vendor/lib64/liblocationservice.so | 2ca80f60200037ef9daa0be442f0ed9c
 
 # Graphics
 vendor/firmware/a420_pfp.fw
