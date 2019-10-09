@@ -676,7 +676,7 @@ vendor/lib/libmmcamera_vd6869.so
 vendor/lib/libmmcamera_vpu_module.so
 
 # DRM
-vendor/bin/qseecomd
+vendor/bin/qseecomd|59ad87c1160d92c20d525f0e1c2ed88c10fdbd59
 vendor/lib/libQSEEComAPI.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libdrmfs.so
@@ -920,7 +920,7 @@ vendor/lib64/hw/vulkan.msm8994.so
 
 # Widevine
 vendor/lib/libdrmdecrypt.so
-vendor/lib/liboemcrypto.so
+vendor/lib/liboemcrypto.so|105c50eadaf77b9a6b0058d7b8a07034930c9002
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 

@@ -40,7 +40,7 @@ MODEM_IMAGES := \
     modem.b14 modem.b15 modem.b16 modem.b17 modem.b18 modem.b19 modem.b20 modem.b21 \
     modem.b22 modem.b23 modem.b24 modem.b25 modem.b26 modem.b27 modem.b28 modem.mdt
 
-MODEM_SYMLINKS := $(addprefix $(TARGET_ROOT_OUT)/firmware/image/,$(notdir $(MODEM_IMAGES)))
+MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(MODEM_IMAGES)))
 $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Modem firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -93,7 +93,7 @@ ADSP_IMAGES := \
     adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 adsp.b07 \
     adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.b13 adsp.b14 adsp.b15 adsp.mdt
 
-ADSP_SYMLINKS := $(addprefix $(TARGET_ROOT_OUT)/firmware/image/,$(notdir $(ADSP_IMAGES)))
+ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(ADSP_IMAGES)))
 $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "ADSP firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -108,7 +108,7 @@ CPE_IMAGES := \
     cpe.b12 cpe.b13 cpe.b14 cpe.b15 cpe.b16 cpe.b17 \
     cpe.b18 cpe.b19 cpe.b20 cpe.b21 cpe.b22 cpe.mdt
 
-CPE_SYMLINKS := $(addprefix $(TARGET_ROOT_OUT)/firmware/image/,$(notdir $(CPE_IMAGES)))
+CPE_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(CPE_IMAGES)))
 $(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "CPE firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -120,7 +120,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
 MCV2_IMAGES := \
     mc_v2.b00 mc_v2.b01 mc_v2.b02 mc_v2.b03 mc_v2.mdt
 
-MCV2_SYMLINKS := $(addprefix $(TARGET_ROOT_OUT)/firmware/image/,$(notdir $(MCV2_IMAGES)))
+MCV2_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(MCV2_IMAGES)))
 $(MCV2_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "MCV2 firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -132,12 +132,12 @@ ALL_DEFAULT_INSTALLED_MODULES += $(MCV2_SYMLINKS)
 KM_IMAGES := \
     keymaster.b00 keymaster.b01 keymaster.b02 keymaster.b03 keymaster.mdt
 
-KM_SYMLINKS := $(addprefix $(TARGET_ROOT_OUT)/firmware/image/,$(notdir $(KM_IMAGES)))
+KM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(KM_IMAGES)))
 $(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Keymaster firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware/keymaster/$(notdir $@)  $(TARGET_ROOT_OUT)/firmware/image/keymaste$(suffix $@)
+	$(hide) ln -sf /vendor/firmware/keymaster/$(notdir $@)  $(TARGET_OUT_VENDOR)/fwimage/keymaste$(suffix $@)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
 
