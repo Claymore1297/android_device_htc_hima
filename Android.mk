@@ -45,7 +45,7 @@ $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Modem firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware/radio/$(notdir $@) $@
+	$(hide) ln -sf /vendor/firmware_mnt/radio/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
@@ -53,7 +53,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 FIRMWARE_SUB_DIRS := \
     adsp cpe radio
 
-FIRMWARE_DIR := $(addprefix $(TARGET_ROOT_OUT)/firmware/,$(notdir $(FIRMWARE_SUB_DIRS)))
+FIRMWARE_DIR := $(addprefix $(TARGET_OUT_VENDOR)/firmware_mnt/,$(notdir $(FIRMWARE_SUB_DIRS)))
 $(FIRMWARE_DIR): $(LOCAL_INSTALLED_MODULE)
 	@echo "Firmware sub dirs: $@"
 	@mkdir -p $(dir $@)
@@ -98,7 +98,7 @@ $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "ADSP firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware/adsp/$(notdir $@) $@
+	$(hide) ln -sf /vendor/firmware_mnt/adsp/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ADSP_SYMLINKS)
 
@@ -113,7 +113,7 @@ $(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "CPE firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware/cpe/$(notdir $@) $@
+	$(hide) ln -sf /vendor/firmware_mnt/cpe/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
 
