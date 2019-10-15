@@ -40,6 +40,10 @@
 # Diag
 /dev/htc_diag                                u:object_r:diag_device:s0
 
+# DRM
+/vendor/bin/hw/android.hardware.configstore@1\.1-service       u:object_r:hal_configstore_default_exec:s0
+/vendor/bin/hw/android.hardware.drm@1\.2-service\.clearkey     u:object_r:hal_drm_default_exec:s0
+
 # Encryption
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/extra         u:object_r:metadata_block_device:s0
 /cache/recovery/uncrypt_file        u:object_r:cache_recovery_file:s0
@@ -70,6 +74,9 @@
 /sys/devices/virtual/net/lo(/.*)?                                   u:object_r:sys_virtual_net:s0
 /sys/devices/virtual/net/dummy[0-9](/.*)?                           u:object_r:sys_virtual_net:s0
 
+# Tombstones
+/tombstones(/.*)?                                                   u:object_r:tombstone_data_file:s0
+
 # Vibrator control
 /sys/devices/virtual/timed_output/vibrator/voltage_level            u:object_r:sysfs_vibeamp:s0
 
@@ -84,6 +91,7 @@
 /vendor/bin/pm-service          u:object_r:pm-service_exec:s0
 /vendor/bin/pm-proxy            u:object_r:pm-proxy_exec:s0
 /vendor/bin/msm_irqbalance      u:object_r:msm_irqbalance_exec:s0
+/vendor/bin/mm-pp-daemon        u:object_r:mm-pp-daemon_exec:s0
 
 # Wifi
 /sys/devices/virtual/net/wlan0(/.*)?   u:object_r:sys_virtual_wifi:s0

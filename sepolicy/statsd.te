@@ -1,0 +1,3 @@
+allow statsd system_data_file:dir rw_dir_perms;
+allow statsd system_data_file:file { create rw_file_perms setattr unlink };
+

@@ -176,7 +176,7 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/system/etc/recovery.fstab
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 
 # SELinux
-#include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # We modify several neverallows, so let the build proceed

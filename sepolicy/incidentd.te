@@ -1,0 +1,2 @@
+allow incidentd system_data_file:file r_file_perms;
+

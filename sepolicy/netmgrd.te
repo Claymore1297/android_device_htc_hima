@@ -1,2 +1,5 @@
+allow netmgrd dnsresolver_service:service_manager find;
 allow netmgrd qmux:unix_stream_socket connectto;
+allow netmgrd servicemanager:binder call;
+allow netmgrd netd_service:service_manager find;
 

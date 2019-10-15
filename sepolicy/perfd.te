@@ -3,4 +3,7 @@ allow perfd hal_power_default:process {signull};
 allow perfd sysfs_graphics:dir r_dir_perms;
 allow perfd sysfs_graphics:file r_file_perms;
 allow perfd sysfs_graphics:lnk_file r_file_perms;
+allow perfd system_data_file:dir rw_dir_perms;
+allow perfd system_data_file:file create;
+allow perfd system_data_file:sock_file { create unlink write };
 

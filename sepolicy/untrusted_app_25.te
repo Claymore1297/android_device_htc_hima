@@ -1,3 +1,4 @@
 dontaudit untrusted_app_25 proc:file {getattr open read};
 allow untrusted_app_25 debugfs_wakeup_sources:file r_file_perms;
+allow untrusted_app_25 net_dns_prop:file r_file_perms;
 

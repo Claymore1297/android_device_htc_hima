@@ -1,2 +1,5 @@
 allow platform_app sysfs_graphics:lnk_file r_file_perms;
 
+binder_call(platform_app, hal_drm_default)
+binder_call(platform_app, init)
+

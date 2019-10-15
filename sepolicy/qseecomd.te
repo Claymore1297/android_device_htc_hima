@@ -7,6 +7,9 @@ allow qseecomd firmware_file:dir {open read search};
 allow qseecomd firmware_file:file {open read getattr};
 allow qseecomd ion_device:chr_file {ioctl read open};
 allow qseecomd init:unix_stream_socket connectto;
+allow qseecomd persist_drm_file:dir rw_dir_perms;
+allow qseecomd persist_drm_file:file rw_file_perms;
+allow qseecomd persist_file:dir r_dir_perms;
 allow qseecomd property_socket:sock_file {write};
 allow qseecomd rpmb_device:blk_file {open read getattr write ioctl};
 allow qseecomd tee_device:chr_file {ioctl read write open};
@@ -14,4 +17,7 @@ allow qseecomd ssd_device:blk_file {read write open};
 allow qseecomd self:capability {setuid setgid sys_rawio};
 allow qseecomd sysfs:file {open read getattr};
 allow qseecomd system_prop:property_service set;
+allow qseecomd time_daemon:unix_stream_socket connectto;
+
+allowxperm qseecomd rpmb_device:blk_file ioctl { MMC_IOC_CMD };
 
