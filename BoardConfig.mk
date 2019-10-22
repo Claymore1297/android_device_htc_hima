@@ -90,7 +90,6 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/bin/cameraserver=24 \
     /vendor/bin/mm-qcamera-daemon=24
 
-USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'
 
 # Charger
@@ -146,9 +145,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 BOARD_USES_VENDORIMAGE := true
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_ROOT_EXTRA_FOLDERS := vendor
-
-# GPS
-USE_DEVICE_SPECIFIC_GPS := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
