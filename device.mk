@@ -206,9 +206,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl
 
 # IPACM
-#PRODUCT_PACKAGES += \
-#    IPACM_cfg.xml \
-#    ipacm
+PRODUCT_PACKAGES += \
+    IPACM_cfg.xml \
+    ipacm
 
 # HIDL
 PRODUCT_PACKAGES += \
