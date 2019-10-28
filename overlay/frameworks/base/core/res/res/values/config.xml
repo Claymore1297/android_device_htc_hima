@@ -284,6 +284,11 @@
         <item>8</item>
     </integer-array>
 
+    <!-- The list of components which should be automatically disabled for a specific device. -->
+    <string-array name="config_deviceDisabledComponents" translatable="false">
+        <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
+    </string-array>
+
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
         <item>25</item>
