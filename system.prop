@@ -23,7 +23,6 @@ persist.vendor.audio.speaker.prot.enable=true
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=7
 dmid=-1286820014
-audio.ds1.metainfo.key=273
 
 # Bluetooth
 ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
@@ -94,9 +93,6 @@ persist.rild.nitz_short_ons_0=""
 persist.rild.nitz_short_ons_1=""
 persist.rild.nitz_short_ons_2=""
 persist.rild.nitz_short_ons_3=""
-
-# OMX
-persist.media.treble_omx=false
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
