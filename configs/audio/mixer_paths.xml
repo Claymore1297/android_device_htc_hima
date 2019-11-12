@@ -1271,7 +1271,6 @@
     </path>
 
     <path name="spkr-vi-record">
-        <ctl name="SLIM0_RX_VI_FB_LCH_MUX"  value="SLIM4_TX" />
     </path>
 
     <path name="qchat-call">
