@@ -165,8 +165,6 @@ void * write_dummy_data(void *param)
         }
     } while (amp->initializing);
 
-err_free:
-    free(buffer);
 err_close_pcm:
     pcm_close(pcm);
 err_disable_i2s:
@@ -262,10 +260,6 @@ static int tfa9887_read_reg(struct tfa9887_amp_t *amp, uint8_t reg,
 {
     int ret = 0;
     struct tfa9895_i2c_buffer cmd_buf;
-
-    /* kernel uses unsigned int */
-    unsigned int reg_val[2];
-    uint8_t buf[2];
 
     if (!amp) {
         return -ENODEV;
@@ -690,7 +684,6 @@ static int tfa9887_load_patch(struct tfa9887_amp_t *amp, uint8_t *bytes, int len
     int size;
     int index = 0;
     uint8_t buffer[MAX_I2C_LENGTH];
-    uint32_t value = 0;
     uint16_t status;
     uint16_t status_ok = TFA9887_STATUS_VDDS | TFA9887_STATUS_PLLS | TFA9887_STATUS_CLKS;
 
