@@ -1,4 +1,5 @@
-allow rild pm-service:binder {call transfer};
 allow rild proc_qtaguid_stat:file r_file_perms;
 allow rild qmux:unix_stream_socket {connectto};
+
+binder_call(rild, pm-service)
 

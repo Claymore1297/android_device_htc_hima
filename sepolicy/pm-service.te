@@ -6,10 +6,11 @@ allowxperm pm-service self:socket ioctl msm_sock_ipc_ioctls;
 allow pm-service self:socket {create bind ioctl read write};
 
 allow pm-service binder_per_mgr_service:service_manager {add};
-allow pm-service pm-proxy:binder {call transfer};
-allow pm-service rild:binder {call};
 allow pm-service self:capability net_raw;
 allow pm-service self:socket {create bind read write};
-allow pm-service servicemanager:binder {call transfer};
 allow pm-service ssr_device:chr_file {open read getattr};
+
+binder_call(pm-service, pm-proxy)
+binder_call(pm-service, rild)
+binder_call(pm-service, servicemanager)
 
