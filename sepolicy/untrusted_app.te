@@ -2,5 +2,6 @@ dontaudit untrusted_app proc:file rw_file_perms;
 allow untrusted_app kgsl_debugfs: file r_file_perms;
 allow untrusted_app proc_stat:file r_file_perms;
 allow untrusted_app proc_version:file r_file_perms;
-allow untrusted_app color_display_service:service_manager {add find};
+
+add_service(untrusted_app, color_display_service)
 

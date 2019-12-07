@@ -5,8 +5,6 @@ allow init debugfs_rmt:dir relabelfrom;
 allow init debugfs_rmt:file relabelfrom;
 allow init firmware_file:dir mounton;
 allow init firmware_file:filesystem { relabelto relabelfrom associate mount };
-allow init hal_configstore_ISurfaceFlingerConfigs:hwservice_manager add;
-allow init hidl_base_hwservice:hwservice_manager add;
 allow init proc:file {setattr};
 allow init sysfs_class_leds:file {setattr};
 allow init sysfs_class_leds:lnk_file r_file_perms;
@@ -14,5 +12,7 @@ allow init sysfs_graphics:file setattr;
 allow init sysfs_scheduler:file { open setattr write relabelfrom };
 allow init sysfs:file { setattr write open };
 
+add_service(init, hal_configstore_ISurfaceFlingerConfigs)
+add_service(init, hidl_base_hwservice)
 binder_call(init, hwservicemanager)
 

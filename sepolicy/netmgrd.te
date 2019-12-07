@@ -1,6 +1,6 @@
-allow netmgrd dnsresolver_service:service_manager find;
 allow netmgrd qmux:unix_stream_socket connectto;
-allow netmgrd netd_service:service_manager find;
 
+add_service(netmgrd, dnsresolver_service)
+add_service(netmgrd, netd_service)
 binder_call(netmgrd, servicemanager)
 

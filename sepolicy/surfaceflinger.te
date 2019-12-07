@@ -1,5 +1,5 @@
-allow surfaceflinger default_android_service:service_manager {add find};
 allow surfaceflinger sysfs_graphics:lnk_file r_file_perms;
 
+add_service(surfaceflinger, default_android_service)
 binder_call(surfaceflinger, init)
 
