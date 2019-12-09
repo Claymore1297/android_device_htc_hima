@@ -122,7 +122,6 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
-TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
 # Extended filesystem support
 TARGET_EXFAT_DRIVER := sdfat
