@@ -55,6 +55,15 @@ void property_override_dual(char const system_prop[], char const vendor_prop[],
     property_override(vendor_prop, value);
 }
 
+void property_override_fingerprints(char const value[])
+{
+    property_override("ro.build.fingerprint", value);
+    property_override("ro.vendor.build.fingerprint", value);
+    property_override("ro.bootimage.build.fingerprint", value);
+    property_override("ro.odm.build.fingerprint", value);
+    property_override("ro.system.build.fingerprint", value);
+}
+
 void cdma_properties(char const default_cdma_sub[], char const default_network[]) {
     property_set("ril.subscription.types", "NV,RUIM");
     property_set("ro.ril.enable.sdr", "0");
@@ -85,7 +94,7 @@ void vendor_load_properties() {
         /* himauhl */
         gsm_properties("9");
         property_override("ro.build.description", "4.28.401.3 CL869604 release-keys");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "htc/himauhl_htc_europe/htc_himauhl:7.0/NRD90M/869604.3:user/release-keys");
+        property_override_fingerprints("htc/himauhl_htc_europe/htc_himauhl:7.0/NRD90M/869604.3:user/release-keys");
         property_override("ro.build.changelist", "869604");
         property_override("ro.build.product", "htc_himauhl");
         property_override("ro.build.sense.version", "8.0");
@@ -96,7 +105,7 @@ void vendor_load_properties() {
         /* himaul */
         gsm_properties("9");
         property_override("ro.build.description", "4.30.617.12 CL894012 release-keys");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "htc/himaulatt_na_gen_unlock/htc_himaulatt:7.0/NRD90M/894012.12:user/release-keys");
+        property_override_fingerprints("htc/himaulatt_na_gen_unlock/htc_himaulatt:7.0/NRD90M/894012.12:user/release-keys");
         property_override("ro.build.changelist", "894012");
         property_override("ro.build.product", "htc_himaulatt");
         property_override("ro.build.sense.version", "8.0");
@@ -107,7 +116,7 @@ void vendor_load_properties() {
         /* himaul */
         gsm_properties("9");
         property_override("ro.build.description", "4.27.531.6 CL869604 release-keys");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "htc/himaul_tmous/htc_himaul:7.0/NRD90M/869604.6:user/release-keys");
+        property_override_fingerprints("htc/himaul_tmous/htc_himaul:7.0/NRD90M/869604.6:user/release-keys");
         property_override("ro.build.changelist", "869604");
         property_override("ro.build.product", "htc_himaul");
         property_override("ro.build.sense.version", "8.0");
@@ -118,7 +127,7 @@ void vendor_load_properties() {
         /* himawhl */
         cdma_properties("1", "8");
         property_override("ro.build.description", "4.27.651.4 CL870580 release-keys");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "htc/himawhl_sprint_wwe/htc_himawhl:7.0/NRD90M/870580.4:user/release-keys");
+        property_override_fingerprints("htc/himawhl_sprint_wwe/htc_himawhl:7.0/NRD90M/870580.4:user/release-keys");
         property_override("ro.build.changelist", "870580");
         property_override("ro.build.product", "htc_himawhl");
         property_override("ro.build.sense.version", "8.0");
@@ -129,7 +138,7 @@ void vendor_load_properties() {
         /* himawl */
         cdma_properties("1", "8");
         property_override("ro.build.description", "4.49.605.11 CL947620 release-keys");
-        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "htc/HTCOneM9vzw/htc_himawl:7.0/NRD90M/947620.11:user/release-keys");
+        property_override_fingerprints("htc/HTCOneM9vzw/htc_himawl:7.0/NRD90M/947620.11:user/release-keys");
         property_override("ro.build.changelist", "947620");
         property_override("ro.build.product", "htc_himawl");
         property_override("ro.build.sense.version", "8.0");
