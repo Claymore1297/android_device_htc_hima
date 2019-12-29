@@ -92,6 +92,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_ext_hima
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/bin/cameraserver=24 \
+    /system/bin/cameraserver_hima=24 \
     /vendor/bin/mm-qcamera-daemon=24
 
 BOARD_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'

@@ -21,6 +21,7 @@
 /sys/android_camera_awb_cal(/.*)?           u:object_r:sysfs_camera_awb_cal:s0
 /sys/android_camera/sensor                  u:object_r:sysfs_camera_sensor:s0
 /sys/android_camera2/sensor                 u:object_r:sysfs_camera_sensor:s0
+/system/bin/cameraserver_hima               u:object_r:cameraserver_exec:s0
 
 # CIR
 /dev/ttyHSL2                                u:object_r:cir_device:s0

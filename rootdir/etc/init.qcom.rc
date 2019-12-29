@@ -426,6 +426,16 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
+service cameraserver_hima /system/bin/cameraserver_hima
+    disabled
+    class main
+    user cameraserver
+    group audio camera input drmrpc
+    ioprio rt 4
+    writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+    rlimit rtprio 10 10
+
+
 # Properties start here
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
@@ -436,6 +446,8 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk1/queue/read_ahead_kb 128
     # Tune LMK
     write /sys/module/lowmemorykiller/parameters/minfree "18432,23040,27648,32256,55296,80640"
+    stop cameraserver
+    start cameraserver_hima
 
 on property:persist.sys.ssr.enable_ramdumps=1
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
