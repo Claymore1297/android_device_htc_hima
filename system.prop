@@ -19,6 +19,7 @@ vendor.audio.use.dts_eagle=true
 hpx_send_params=1
 persist.vendor.audio.spkr.cal.duration=10
 persist.vendor.audio.speaker.prot.enable=true
+audio.deep_buffer.media=true
 # Media
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=7
