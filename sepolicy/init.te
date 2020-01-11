@@ -3,7 +3,7 @@ allow init { domain -lmkd -crash_dump }:process noatsecure;
 allow init debugfs:file w_file_perms;
 allow init debugfs_rmt:dir relabelfrom;
 allow init debugfs_rmt:file relabelfrom;
-allow init firmware_file:dir mounton;
+allow init firmware_file:dir {mounton setattr};
 allow init firmware_file:filesystem { relabelto relabelfrom associate mount };
 allow init proc:file {setattr};
 allow init socket_device:sock_file {create setattr unlink};
