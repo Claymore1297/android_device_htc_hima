@@ -34,21 +34,6 @@ $(WCD9320_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCD9320_SYMLINKS)
 
-MODEM_IMAGES := \
-    mba.b00 mba.mbn mba.mdt modem.b00 modem.b01 modem.b02 modem.b03 modem.b04 modem.b05 \
-    modem.b06 modem.b07 modem.b08 modem.b09 modem.b10 modem.b11 modem.b12 modem.b13 \
-    modem.b14 modem.b15 modem.b16 modem.b17 modem.b18 modem.b19 modem.b20 modem.b21 \
-    modem.b22 modem.b23 modem.b24 modem.b25 modem.b26 modem.b27 modem.b28 modem.mdt
-
-MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(MODEM_IMAGES)))
-$(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Modem firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware_mnt/radio/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
-
 
 FIRMWARE_SUB_DIRS := \
     adsp cpe radio
@@ -61,6 +46,19 @@ $(FIRMWARE_DIR): $(LOCAL_INSTALLED_MODULE)
 	$(hide) mkdir -p $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_DIR)
+
+
+VENDOR_SUB_DIRS := \
+    fwimage
+
+VENDOR_DIRS := $(addprefix $(TARGET_OUT_VENDOR)/,$(notdir $(VENDOR_SUB_DIRS)))
+$(VENDOR_DIRS): $(LOCAL_INSTALLED_MODULE)
+	@echo "vendor sub dirs: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) mkdir -p $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(VENDOR_DIRS)
 
 
 ROOTDIR_SUB_DIRS := \
@@ -88,57 +86,5 @@ $(TOMBSTONES_DIRS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(TOMBSTONES_DIRS)
 
-
-ADSP_IMAGES := \
-    adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 adsp.b07 \
-    adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.b13 adsp.b14 adsp.b15 adsp.mdt
-
-ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(ADSP_IMAGES)))
-$(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "ADSP firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware_mnt/adsp/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(ADSP_SYMLINKS)
-
-CPE_IMAGES := \
-    cpe.b00 cpe.b01 cpe.b02 cpe.b03 cpe.b04 cpe.b05 \
-    cpe.b06 cpe.b07 cpe.b08 cpe.b09 cpe.b10 cpe.b11 \
-    cpe.b12 cpe.b13 cpe.b14 cpe.b15 cpe.b16 cpe.b17 \
-    cpe.b18 cpe.b19 cpe.b20 cpe.b21 cpe.b22 cpe.mdt
-
-CPE_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(CPE_IMAGES)))
-$(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "CPE firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware_mnt/cpe/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
-
-MCV2_IMAGES := \
-    mc_v2.b00 mc_v2.b01 mc_v2.b02 mc_v2.b03 mc_v2.mdt
-
-MCV2_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(MCV2_IMAGES)))
-$(MCV2_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "MCV2 firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/etc/firmware/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(MCV2_SYMLINKS)
-
-KM_IMAGES := \
-    keymaster.b00 keymaster.b01 keymaster.b02 keymaster.b03 keymaster.mdt
-
-KM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/fwimage/,$(notdir $(KM_IMAGES)))
-$(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Keymaster firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware/keymaster/$(notdir $@)  $(TARGET_OUT_VENDOR)/fwimage/keymaste$(suffix $@)
-
-ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
 
 endif
