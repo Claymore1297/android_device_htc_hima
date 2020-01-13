@@ -12,6 +12,7 @@ allow init sysfs_class_leds:lnk_file r_file_perms;
 allow init sysfs_graphics:file setattr;
 allow init sysfs_scheduler:file { open setattr write relabelfrom };
 allow init sysfs:file { setattr write open };
+allow init vendor_file:filesystem { mount relabelfrom relabelto remount };
 
 add_service(init, hal_configstore_ISurfaceFlingerConfigs)
 add_service(init, hidl_base_hwservice)

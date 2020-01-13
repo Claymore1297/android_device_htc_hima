@@ -1,0 +1,1 @@
+allow vendor_file self:filesystem associate;
