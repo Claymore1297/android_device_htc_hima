@@ -60,31 +60,4 @@ $(VENDOR_DIRS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(VENDOR_DIRS)
 
-
-ROOTDIR_SUB_DIRS := \
-    persist tombstones
-
-ROOTDIR_DIRS := $(addprefix $(TARGET_ROOT_OUT)/,$(notdir $(ROOTDIR_SUB_DIRS)))
-$(ROOTDIR_DIRS): $(LOCAL_INSTALLED_MODULE)
-	@echo "rootdir sub dirs: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) mkdir -p $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(ROOTDIR_DIRS)
-
-
-TOMBSTONES_SUB_DIRS := \
-    modem lpass wcnss dsps
-
-TOMBSTONES_DIRS := $(addprefix $(TARGET_ROOT_OUT)/tombstones/,$(notdir $(TOMBSTONES_SUB_DIRS)))
-$(TOMBSTONES_DIRS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Tombstones sub dirs: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) mkdir -p $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(TOMBSTONES_DIRS)
-
-
 endif

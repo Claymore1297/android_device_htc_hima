@@ -75,9 +75,6 @@
 /sys/devices/virtual/net/lo(/.*)?                                   u:object_r:sys_virtual_net:s0
 /sys/devices/virtual/net/dummy[0-9](/.*)?                           u:object_r:sys_virtual_net:s0
 
-# Tombstones
-/tombstones(/.*)?                                                   u:object_r:tombstone_data_file:s0
-
 # Vibrator control
 /sys/devices/virtual/timed_output/vibrator/voltage_level            u:object_r:sysfs_vibeamp:s0
 
