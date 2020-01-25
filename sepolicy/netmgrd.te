@@ -1,6 +1,2 @@
 allow netmgrd qmux:unix_stream_socket connectto;
 
-add_service(netmgrd, dnsresolver_service)
-add_service(netmgrd, netd_service)
-binder_call(netmgrd, servicemanager)
-
