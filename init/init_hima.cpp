@@ -70,7 +70,37 @@ void cdma_properties(char const default_cdma_sub[], char const default_network[]
     property_set("ro.telephony.default_cdma_sub", default_cdma_sub);
     property_set("ro.telephony.default_network", default_network);
     property_set("telephony.lteOnCdmaDevice", "1");
+    property_set("persist.radio.sib16_support", "1");
+    property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,60000,120000,480000,900000");
+    property_set("ro.config.svlte1x", "true");
+    property_set("ro.gsm.2nd_data_retry_config", "max_retries=infinite,0,0,60000,120000,480000,900000");
+    property_set("ro.gsm.data_retry_config", "max_retries=infinite,0,0,60000,120000,480000,900000");
+    property_set("ro.ril.air.enabled", "0");
+    property_set("ro.ril.att.feature", "0");
+    property_set("ro.ril.def.agps.mode", "1");
+    property_set("ro.ril.disable.fd.plmn.prefix", "23402,23410,23411,23420,23594,27202,27205");
+    property_set("ro.ril.enable.a52", "0");
+    property_set("ro.ril.enable.dtm", "0");
+    property_set("ro.ril.enable.gea3", "1");
+    property_set("ro.ril.enable.sdr", "0");
+    property_set("ro.ril.gprsclass", "12");
+    property_set("ro.ril.gsm.to.lte.blind.redir", "0");
+    property_set("ro.ril.oem.ecclist", "911,*911,#911");
+    property_set("ro.ril.oem.show.act", "0");
+    property_set("ro.ril.roaming_lte.plmn", "302220,302610,45400,45402,45410,45418");
+    property_set("ro.ril.set.mtusize", "1428");
+    property_set("ro.ril.vzw.feature", "1");
+    property_set("ro.ril.wp.feature", "1");
+    property_set("ro.telephony.get_imsi_from_sim", "true");
+    property_set("ro.cdma.home.operator.numeric", "311480");
+    property_set("ro.cdma.home.operator.alpha", "Verizon");
+    property_set("gsm.sim.operator.alpha", "Verizon");
+    property_set("gsm.sim.operator.numeric", "311480");
+    property_set("gsm.operator.alpha", "Verizon");
+    property_set("gsm.operator.numeric", "311480");
+}
 
+void cdma_sprint_properties() {
     property_set("ro.cdma.home.operator.numeric", "310120");
     property_set("ro.cdma.home.operator.alpha", "Sprint");
     property_set("gsm.sim.operator.alpha", "Sprint");
@@ -82,6 +112,20 @@ void cdma_properties(char const default_cdma_sub[], char const default_network[]
 void gsm_properties(char const default_network[]) {
     property_set("ro.telephony.default_network", default_network);
     property_set("telephony.lteOnGsmDevice", "1");
+    property_set("persist.radio.process_sups_ind", "1");
+    property_set("ro.ril.disable.cpc", "1");
+    property_set("ro.ril.enable.amr.wideband", "0");
+    property_set("ro.ril.enable.dtm", "1");
+    property_set("ro.ril.enable.pre_r8fd", "1");
+    property_set("ro.ril.enable.sdr", "1");
+    property_set("ro.ril.fd.pre_r8_tout.scr_off", "2");
+    property_set("ro.ril.fd.pre_r8_tout.scr_on", "3");
+    property_set("ro.ril.fd.r8_tout.scr_off", "2");
+    property_set("ro.ril.fd.r8_tout.scr_on", "3");
+    property_set("ro.ril.ltefgi.rel9", "2147483648");
+    property_set("ro.ril.ltefgi", "1561328784");
+    property_set("ro.ril.oem.ecclist", "911");
+    property_set("ro.ril.oem.nosim.ecclist", "911");
 }
 
 void vendor_load_properties() {
@@ -125,7 +169,8 @@ void vendor_load_properties() {
         property_override_dual("ro.product.name", "ro.vendor.product.name", "himaul_tmous");
     } else if (bootmid == "0PJA20000") {
         /* himawhl */
-        cdma_properties("1", "8");
+        cdma_properties("0", "10");
+        cdma_sprint_properties();
         property_override("ro.build.description", "4.27.651.4 CL870580 release-keys");
         property_override_fingerprints("htc/himawhl_sprint_wwe/htc_himawhl:7.0/NRD90M/870580.4:user/release-keys");
         property_override("ro.build.changelist", "870580");
@@ -136,7 +181,7 @@ void vendor_load_properties() {
         property_override_dual("ro.product.name", "ro.vendor.product.name", "himawhl_sprint_wwe");
     } else if (bootmid == "0PJA30000") {
         /* himawl */
-        cdma_properties("1", "8");
+        cdma_properties("0", "10");
         property_override("ro.build.description", "4.49.605.11 CL947620 release-keys");
         property_override_fingerprints("htc/HTCOneM9vzw/htc_himawl:7.0/NRD90M/947620.11:user/release-keys");
         property_override("ro.build.changelist", "947620");
