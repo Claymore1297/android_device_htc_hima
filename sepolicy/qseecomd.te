@@ -19,5 +19,3 @@ allow qseecomd sysfs:file {open read getattr};
 allow qseecomd system_prop:property_service set;
 allow qseecomd time_daemon:unix_stream_socket connectto;
 
-allowxperm qseecomd rpmb_device:blk_file ioctl { MMC_IOC_CMD };
-
