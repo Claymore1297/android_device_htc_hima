@@ -1,9 +1,10 @@
 # Audio
 vendor.audio.offload.buffer.size.kb=1024
-vendor.audio.offload.gapless.enabled=true
+vendor.audio.offload.gapless.enabled=false
 vendor.audio.offload.multiple.enabled=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
+audio.offload.track.enable=false
 av.offload.enable=true
 av.streaming.offload.enable=true
 ro.vendor.audio.sdk.fluencetype=fluence
@@ -20,8 +21,9 @@ hpx_send_params=1
 persist.vendor.audio.spkr.cal.duration=10
 persist.vendor.audio.speaker.prot.enable=true
 audio.deep_buffer.media=true
+
 # Media
-ro.config.media_vol_steps=25
+ro.config.media_vol_steps=100
 ro.config.vc_call_vol_steps=7
 dmid=-1286820014
 
@@ -122,6 +124,11 @@ ro.ril.enable.r8fd=1
 ro.ril.hsdpa.category=14
 ro.ril.hsupa.category=6
 ro.ril.hsxpa=4
+
+#resampling
+AF.resampler.quality=255
+persist.AF.resampler.quality=255
+persist.dev.pm.dym.sampling rate=1
 
 # SurfaceFlinger
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3

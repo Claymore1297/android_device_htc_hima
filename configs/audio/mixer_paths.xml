@@ -1410,14 +1410,14 @@
 
     <path name="headphones">
         <path name="headphones-generic" />
-        <ctl name="RX3 Digital Volume" value="84" />
-        <ctl name="RX4 Digital Volume" value="84" />
-        <ctl name="RX5 Digital Volume" value="84" />
-        <ctl name="RX6 Digital Volume" value="84" />
-        <ctl name="LINEOUT1 Volume" value="16" />
-        <ctl name="LINEOUT2 Volume" value="16" />
-        <ctl name="LINEOUT3 Volume" value="16" />
-        <ctl name="LINEOUT4 Volume" value="16" />
+        <ctl name="RX3 Digital Volume" value="83" />
+        <ctl name="RX4 Digital Volume" value="83" />
+        <ctl name="RX5 Digital Volume" value="83" />
+        <ctl name="RX6 Digital Volume" value="83" />
+        <ctl name="LINEOUT1 Volume" value="17" />
+        <ctl name="LINEOUT2 Volume" value="17" />
+        <ctl name="LINEOUT3 Volume" value="17" />
+        <ctl name="LINEOUT4 Volume" value="17" />
     </path>
 
     <path name="adc1">
@@ -1534,7 +1534,7 @@
 
     <path name="sidetone-headphones">
         <path name="sidetone-iir" />
-        <ctl name="IIR1 INP1 Volume" value="54" />
+        <ctl name="IIR1 INP1 Volume" value="82" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
     </path>
