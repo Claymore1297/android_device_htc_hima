@@ -179,6 +179,9 @@ PRODUCT_PACKAGES += \
     izat.conf \
     sap.conf
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps_debug.conf
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
