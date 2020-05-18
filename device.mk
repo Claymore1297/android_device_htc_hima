@@ -169,8 +169,8 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service \
+    android.hardware.gnss@1.0-impl.htc_hima \
+    android.hardware.gnss@1.0-service.htc_hima \
     libshim_gps_hima \
     gps.msm8994 \
     flp.conf \
