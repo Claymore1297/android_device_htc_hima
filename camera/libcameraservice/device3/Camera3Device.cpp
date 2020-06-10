@@ -606,9 +606,6 @@ ssize_t Camera3Device::getJpegBufferSize(uint32_t width, uint32_t height) const 
             (maxJpegResolution.width * maxJpegResolution.height);
     ssize_t jpegBufferSize = scaleFactor * (maxJpegBufferSize - kMinJpegBufferSize) +
             kMinJpegBufferSize;
-    if (jpegBufferSize > maxJpegBufferSize) {
-        jpegBufferSize = maxJpegBufferSize;
-    }
 
     return jpegBufferSize;
 }
@@ -3529,6 +3526,8 @@ void Camera3Device::sendCaptureResult(CameraMetadata &pendingMetadata,
                 frameNumber);
         return;
     }
+    nsecs_t sensorTimestamp = timestamp.data.i64[0];
+
     for (auto& physicalMetadata : captureResult.mPhysicalMetadatas) {
         camera_metadata_entry timestamp =
                 physicalMetadata.mPhysicalCameraMetadata.find(ANDROID_SENSOR_TIMESTAMP);
@@ -3583,7 +3582,7 @@ void Camera3Device::sendCaptureResult(CameraMetadata &pendingMetadata,
                 CameraMetadata(m.mPhysicalCameraMetadata));
     }
     mTagMonitor.monitorMetadata(TagMonitor::RESULT,
-            frameNumber, timestamp.data.i64[0], captureResult.mMetadata,
+            frameNumber, sensorTimestamp, captureResult.mMetadata,
             monitoredPhysicalMetadata);
 
     insertResultLocked(&captureResult, frameNumber);
