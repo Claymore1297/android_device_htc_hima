@@ -3,4 +3,5 @@ cc_library_static {
     recovery_available: true,
     include_dirs: ["system/core/base/include", "system/core/init"],
     srcs: ["init_hima.cpp"],
+    whole_static_libs: ["libbase"],
 }
