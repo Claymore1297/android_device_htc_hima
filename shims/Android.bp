@@ -27,6 +27,20 @@ cc_library_shared {
 
     compile_multilib: "32",
 
+    target: {
+        android_arm: {
+            srcs: ["arch-arm/memset32.S"],
+            sanitize: {
+                misc_undefined: ["integer"],
+            },
+        },
+        android_arm64: {
+            srcs: ["arch-arm64/android_memset.S"],
+            sanitize: {
+                misc_undefined: ["integer"],
+            },
+        }
+    }
 }
 
 cc_library_shared {
