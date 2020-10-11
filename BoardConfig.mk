@@ -190,7 +190,8 @@ TARGET_LD_SHIM_LIBS := \
     /vendor/lib/hw/camera.msm8994.so|libshim_camera_hima.so \
     /system/lib/liblog.so|liblog_htc.so \
     /system/lib64/liblog.so|liblog_htc.so \
-    /vendor/bin/hw/android.hardware.drm@1.0-service.widevine|libshim_drm.so
+    /vendor/bin/hw/android.hardware.drm@1.0-service.widevine|libshim_drm.so \
+    /vendor/lib64/libril-qc-qmi-1.so|libshim_ril.so
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
