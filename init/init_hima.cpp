@@ -36,7 +36,6 @@
 #include "vendor_init.h"
 
 using android::base::GetProperty;
-using android::init::property_set;
 
 void property_override(char const prop[], char const value[]) {
     prop_info *pi;
@@ -46,6 +45,18 @@ void property_override(char const prop[], char const value[]) {
         __system_property_update(pi, value, strlen(value));
     else
         __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+void property_set(char const prop[], char const value[]) {
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi && strncmp(prop, "ro.", 3))
+        __system_property_update(pi, value, strlen(value));
+    else if(!pi)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+    else
+        LOG(ERROR) << "Unable to set property '" << prop << "' from vendor_init: Read-only property was already set\n";
 }
 
 void property_override_dual(char const system_prop[], char const vendor_prop[],
