@@ -92,6 +92,9 @@ void cdma_properties(char const default_cdma_sub[], char const default_network[]
     property_set("ro.ril.vzw.feature", "1");
     property_set("ro.ril.wp.feature", "1");
     property_set("ro.telephony.get_imsi_from_sim", "true");
+}
+
+void cdma_verizon_properties() {
     property_set("ro.cdma.home.operator.numeric", "311480");
     property_set("ro.cdma.home.operator.alpha", "Verizon");
     property_set("gsm.sim.operator.alpha", "Verizon");
@@ -182,6 +185,7 @@ void vendor_load_properties() {
     } else if (bootmid == "0PJA30000") {
         /* himawl */
         cdma_properties("0", "10");
+        cdma_verizon_properties();
         property_override("ro.build.description", "4.49.605.11 CL947620 release-keys");
         property_override_fingerprints("htc/HTCOneM9vzw/htc_himawl:7.0/NRD90M/947620.11:user/release-keys");
         property_override("ro.build.changelist", "947620");
