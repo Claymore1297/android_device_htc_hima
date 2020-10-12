@@ -17,6 +17,10 @@ cc_binary {
 
     srcs: ["main_cameraserver.cpp"],
 
+    header_libs: [
+        "libmedia_headers",
+    ],
+
     shared_libs: [
         "libcameraservice_hima",
         "liblog",
@@ -28,6 +32,7 @@ cc_binary {
         "android.hardware.camera.common@1.0",
         "android.hardware.camera.provider@2.4",
         "android.hardware.camera.provider@2.5",
+        "android.hardware.camera.provider@2.6",
         "android.hardware.camera.device@1.0",
         "android.hardware.camera.device@3.2",
         "android.hardware.camera.device@3.4",
@@ -39,5 +44,6 @@ cc_binary {
         "-Werror",
         "-Wno-unused-parameter",
     ],
+
 
 }

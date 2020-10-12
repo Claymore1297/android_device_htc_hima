@@ -34,11 +34,11 @@ namespace android {
 
 CameraClient::CameraClient(const sp<CameraService>& cameraService,
         const sp<hardware::ICameraClient>& cameraClient,
-        const String16& clientPackageName,
+        const String16& clientPackageName, const std::unique_ptr<String16>& clientFeatureId,
         int cameraId, int cameraFacing,
         int clientPid, int clientUid,
         int servicePid):
-        Client(cameraService, cameraClient, clientPackageName,
+        Client(cameraService, cameraClient, clientPackageName, clientFeatureId,
                 String8::format("%d", cameraId), cameraId, cameraFacing, clientPid,
                 clientUid, servicePid)
 {
@@ -55,6 +55,9 @@ CameraClient::CameraClient(const sp<CameraService>& cameraService,
     mPreviewCallbackFlag = CAMERA_FRAME_CALLBACK_FLAG_NOOP;
     mOrientation = getOrientation(0, mCameraFacing == CAMERA_FACING_FRONT);
     mPlayShutterSound = true;
+
+    mLongshotEnabled = false;
+    mBurstCnt = 0;
     LOG1("CameraClient::CameraClient X (pid %d, id %d)", callingPid, cameraId);
 }
 
@@ -534,7 +537,7 @@ void CameraClient::releaseRecordingFrameHandle(native_handle_t *handle) {
     }
 
     if (mHardware != nullptr) {
-        VideoNativeHandleMetadata *metadata = (VideoNativeHandleMetadata*)(dataPtr->pointer());
+        VideoNativeHandleMetadata *metadata = (VideoNativeHandleMetadata*)(dataPtr->unsecurePointer());
         metadata->eType = kMetadataBufferTypeNativeHandleSource;
         metadata->pHandle = handle;
         mHardware->releaseRecordingFrame(dataPtr);
@@ -573,7 +576,7 @@ void CameraClient::releaseRecordingFrameHandleBatch(const std::vector<native_han
         }
 
         if (!disconnected) {
-            VideoNativeHandleMetadata *metadata = (VideoNativeHandleMetadata*)(dataPtr->pointer());
+            VideoNativeHandleMetadata *metadata = (VideoNativeHandleMetadata*)(dataPtr->unsecurePointer());
             metadata->eType = kMetadataBufferTypeNativeHandleSource;
             metadata->pHandle = handle;
             frames.push_back(dataPtr);
@@ -672,6 +675,11 @@ status_t CameraClient::takePicture(int msgType) {
                            CAMERA_MSG_COMPRESSED_IMAGE);
 
     enableMsgType(picMsgType);
+// causes our protectorstack crash
+//    mBurstCnt = mHardware->getParameters().getInt("num-snaps-per-shutter");
+//    if(mBurstCnt <= 0)
+//        mBurstCnt = 1;
+//    LOG1("mBurstCnt = %d", mBurstCnt);
 
     return mHardware->takePicture();
 }
@@ -755,6 +763,20 @@ status_t CameraClient::sendCommand(int32_t cmd, int32_t arg1, int32_t arg2) {
     } else if (cmd == CAMERA_CMD_PING) {
         // If mHardware is 0, checkPidAndHardware will return error.
         return OK;
+    } else if (cmd == CAMERA_CMD_HISTOGRAM_ON) {
+        enableMsgType(CAMERA_MSG_STATS_DATA);
+    } else if (cmd == CAMERA_CMD_HISTOGRAM_OFF) {
+        disableMsgType(CAMERA_MSG_STATS_DATA);
+    } else if (cmd == CAMERA_CMD_METADATA_ON) {
+        enableMsgType(CAMERA_MSG_META_DATA);
+    } else if (cmd == CAMERA_CMD_METADATA_OFF) {
+        disableMsgType(CAMERA_MSG_META_DATA);
+    } else if ( cmd == CAMERA_CMD_LONGSHOT_ON ) {
+        mLongshotEnabled = true;
+    } else if ( cmd == CAMERA_CMD_LONGSHOT_OFF ) {
+        mLongshotEnabled = false;
+        disableMsgType(CAMERA_MSG_SHUTTER);
+        disableMsgType(CAMERA_MSG_COMPRESSED_IMAGE);
     }
 
     return mHardware->sendCommand(cmd, arg1, arg2);
@@ -916,8 +938,12 @@ void CameraClient::handleCallbackTimestampBatch(
                 ALOGE("%s: dataPtr does not contain VideoNativeHandleMetadata!", __FUNCTION__);
                 return;
             }
+            // TODO: Using unsecurePointer() has some associated security pitfalls
+            //       (see declaration for details).
+            //       Either document why it is safe in this case or address the
+            //       issue (e.g. by copying).
             VideoNativeHandleMetadata *metadata =
-                (VideoNativeHandleMetadata*)(msg.dataPtr->pointer());
+                (VideoNativeHandleMetadata*)(msg.dataPtr->unsecurePointer());
             if (metadata->eType == kMetadataBufferTypeNativeHandleSource) {
                 handle = metadata->pHandle;
             }
@@ -950,7 +976,9 @@ void CameraClient::handleShutter(void) {
         c->notifyCallback(CAMERA_MSG_SHUTTER, 0, 0);
         if (!lockIfMessageWanted(CAMERA_MSG_SHUTTER)) return;
     }
-    disableMsgType(CAMERA_MSG_SHUTTER);
+    if ( !mLongshotEnabled ) {
+        disableMsgType(CAMERA_MSG_SHUTTER);
+    }
 
     // Shutters only happen in response to takePicture, so mark device as
     // idle now, until preview is restarted
@@ -1036,7 +1064,13 @@ void CameraClient::handleRawPicture(const sp<IMemory>& mem) {
 
 // picture callback - compressed picture ready
 void CameraClient::handleCompressedPicture(const sp<IMemory>& mem) {
-    disableMsgType(CAMERA_MSG_COMPRESSED_IMAGE);
+    if (mBurstCnt)
+        mBurstCnt--;
+
+    if (!mBurstCnt && !mLongshotEnabled) {
+        LOG1("handleCompressedPicture mBurstCnt = %d", mBurstCnt);
+        disableMsgType(CAMERA_MSG_COMPRESSED_IMAGE);
+    }
 
     sp<hardware::ICameraClient> c = mRemoteCallback;
     mLock.unlock();
@@ -1073,8 +1107,12 @@ void CameraClient::handleGenericDataTimestamp(nsecs_t timestamp,
 
         // Check if dataPtr contains a VideoNativeHandleMetadata.
         if (dataPtr->size() == sizeof(VideoNativeHandleMetadata)) {
+            // TODO: Using unsecurePointer() has some associated security pitfalls
+            //       (see declaration for details).
+            //       Either document why it is safe in this case or address the
+            //       issue (e.g. by copying).
             VideoNativeHandleMetadata *metadata =
-                (VideoNativeHandleMetadata*)(dataPtr->pointer());
+                (VideoNativeHandleMetadata*)(dataPtr->unsecurePointer());
             if (metadata->eType == kMetadataBufferTypeNativeHandleSource) {
                 handle = metadata->pHandle;
             }
@@ -1169,6 +1207,32 @@ status_t CameraClient::setVideoTarget(const sp<IGraphicBufferProducer>& bufferPr
     (void)bufferProducer;
     ALOGE("%s: %d: CameraClient doesn't support setting a video target.", __FUNCTION__, __LINE__);
     return INVALID_OPERATION;
+}
+
+status_t CameraClient::setAudioRestriction(int mode) {
+    if (!isValidAudioRestriction(mode)) {
+        ALOGE("%s: invalid audio restriction mode %d", __FUNCTION__, mode);
+        return BAD_VALUE;
+    }
+
+    Mutex::Autolock lock(mLock);
+    if (checkPidAndHardware() != NO_ERROR) {
+        return INVALID_OPERATION;
+    }
+    return BasicClient::setAudioRestriction(mode);
+}
+
+int32_t CameraClient::getGlobalAudioRestriction() {
+    Mutex::Autolock lock(mLock);
+    if (checkPidAndHardware() != NO_ERROR) {
+        return INVALID_OPERATION;
+    }
+    return BasicClient::getServiceAudioRestriction();
+}
+
+// API1->Device1 does not support this feature
+status_t CameraClient::setRotateAndCropOverride(uint8_t /*rotateAndCrop*/) {
+    return OK;
 }
 
 }; // namespace android
