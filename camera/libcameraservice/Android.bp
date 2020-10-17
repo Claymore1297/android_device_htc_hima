@@ -18,6 +18,10 @@
 
 cc_library_shared {
     name: "libcameraservice_hima",
+    defaults: [
+        "no_cameraserver_defaults",
+        "qti_camera_device_defaults",
+    ],
 
     // Camera service source
 
@@ -157,18 +161,6 @@ cc_library_shared {
         "-Werror",
         "-Wno-ignored-qualifiers",
     ],
-
-    product_variables: {
-        lineage: {
-            uses_qti_camera_device: {
-                cppflags: ["-DQTI_CAMERA_DEVICE"],
-                shared_libs: ["vendor.qti.hardware.camera.device@1.0"],
-            },
-            has_legacy_camera_hal1: {
-                cflags: ["-DNO_CAMERA_SERVER"],
-            },
-        },
-    },
 
 }
 
