@@ -163,6 +163,11 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     libshim_drm
 
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
+
 # Gesture Handler
 PRODUCT_PACKAGES += \
     GestureHandler
