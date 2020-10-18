@@ -934,3 +934,7 @@ vendor/etc/calibration
 vendor/etc/firmware/fw_bcm4356.bin
 vendor/etc/firmware/fw_bcm4356_apsta.bin
 
+# Gatekeeper
+vendor/lib/hw/gatekeeper.msm8994.so
+vendor/lib64/hw/gatekeeper.msm8994.so
+vendor/lib64/hw/keystore.msm8994.so
