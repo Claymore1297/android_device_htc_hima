@@ -19,7 +19,7 @@ audio.ds1.metainfo.key=273
 vendor.audio.use.dts_eagle=true
 hpx_send_params=1
 persist.vendor.audio.spkr.cal.duration=10
-persist.vendor.audio.speaker.prot.enable=true
+persist.vendor.audio.speaker.prot.enable=false
 audio.deep_buffer.media=true
 
 # Media
