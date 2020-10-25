@@ -1522,6 +1522,13 @@ static int tfa9887_hw_init(struct tfa9887_amp_t *amp, int sample_rate)
     }
     ALOGI("%s: Reset AGC after config load\n", __func__);
 
+    //HACK: fix volume-scaling issues
+    rc = tfa9887_force_coldboot(amp);
+    if (rc) {
+        ALOGE("%s: Failed to force coldboot: %d\n", __func__, rc);
+        goto priv_init_err;
+    }
+
     ALOGI("%s: Initialized hardware", __func__);
 
 priv_init_err:
