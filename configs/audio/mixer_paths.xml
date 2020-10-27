@@ -1493,27 +1493,6 @@
     </path>
 
     <path name="speaker">
-    <!-- HPF -->
-    <ctl name="TX1 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX2 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX3 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX4 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX5 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX6 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX7 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX8 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX9 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX10 HPF cut off" value="MIN_3DB_75Hz" />
-    <ctl name="TX1 HPF Switch" value="1" />
-    <ctl name="TX2 HPF Switch" value="1" />
-    <ctl name="TX3 HPF Switch" value="1" />
-    <ctl name="TX4 HPF Switch" value="1" />
-    <ctl name="TX5 HPF Switch" value="1" />
-    <ctl name="TX6 HPF Switch" value="1" />
-    <ctl name="TX7 HPF Switch" value="1" />
-    <ctl name="TX8 HPF Switch" value="1" />
-    <ctl name="TX9 HPF Switch" value="1" />
-    <ctl name="TX10 HPF Switch" value="1" />
     </path>
 
     <path name="speaker-fm">
