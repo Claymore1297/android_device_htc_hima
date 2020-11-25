@@ -1,7 +1,7 @@
 allow vendor_init {
   audio_data_file
-  camera_data_file
   bluetooth_data_file
+  camera_data_file
   radio_data_file
   system_data_file
   tombstone_data_file

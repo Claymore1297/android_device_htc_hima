@@ -1,0 +1,7 @@
+allow gmscore_app adbd_prop:file r_file_perms;
+allow gmscore_app alarm_instance_prop:file r_file_perms;
+allow gmscore_app sys_virtual_net:file r_file_perms;
+allow gmscore_app sys_virtual_rmnet:file r_file_perms;
+allow gmscore_app sys_virtual_wifi:file r_file_perms;
+allow gmscore_app vendor_file:filesystem { getattr };
+

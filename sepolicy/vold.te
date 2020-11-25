@@ -2,3 +2,5 @@ allow vold default_android_hwservice:hwservice_manager find;
 allow vold hal_bootctl_hwservice:hwservice_manager find;
 allow vold persist_file:dir {read open getattr ioctl};
 allow vold system_data_file:file {read open getattr};
+allow vold sysfs_mmc_host:file rw_file_perms;
+
