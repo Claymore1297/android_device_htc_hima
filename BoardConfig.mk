@@ -165,9 +165,6 @@ TARGET_HAS_MEMFD_BACKPORT := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# LMKD stats logging
-TARGET_LMKD_STATS_LOG := true
-
 # Power
 TARGET_RPM_SYSTEM_STAT := /d/rpm_stats
 TARGET_USES_INTERACTION_BOOST := true
