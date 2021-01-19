@@ -302,7 +302,7 @@
         <item>"/system/product/priv-app/SystemUI/SystemUI.apk"</item>
         <item>"/data/dalvik-cache/arm64/system@product@priv-app@SystemUI@SystemUI.apk@classes.dex"</item>
         <item>"/data/dalvik-cache/arm64/system@product@priv-app@SystemUI@SystemUI.apk@classes.vdex"</item>
-        <item>"/system/lib64/libsurfaceflinger.so"</item>
+        <item>"/system/bin/libsurfaceflinger"</item>
     </string-array>
 
     <!-- Keep chosen default camera app pinned in memory for faster launching -->
