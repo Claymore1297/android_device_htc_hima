@@ -197,7 +197,8 @@ TARGET_LD_SHIM_LIBS := \
     /vendor/bin/hw/android.hardware.drm@1.0-service.widevine|libshim_drm.so \
     /vendor/lib64/libril-qc-qmi-1.so|libshim_ril.so \
     /vendor/lib64/libsettings.so|/vendor/lib64/libprotobuf-cpp-full.so \
-    /vendor/lib/libwvhidl.so|/vendor/lib/libprotobuf-cpp-lite.so
+    /vendor/lib/libwvhidl.so|/vendor/lib/libprotobuf-cpp-lite.so \
+    /vendor/lib/mediadrm/libwvdrmengine.so|/vendor/lib/libprotobuf-cpp-lite.so
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
