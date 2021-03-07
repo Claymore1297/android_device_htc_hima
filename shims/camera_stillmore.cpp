@@ -17,3 +17,6 @@
 #include <string>
 
 extern "C" void _Z20stillMore_jmf9K6K5NQff() {}
+
+extern "C" void _Z20stillMore_uf6H4LqsSkffjjffffbjffffbffffhfbbfffbb() {}
+extern "C" void _Z20stillMore_yPGmb6U2btPKPKhS2_jjjjjPKPKiPhS7_jjRiS8_S8_S8_() {}
