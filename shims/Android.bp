@@ -1,4 +1,5 @@
 // Copyright (C) 2018 The LineageOS Project
+// Copyright (C) 2021 Android Ice Cold Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -46,6 +47,13 @@ cc_library_shared {
 cc_library_shared {
     srcs: ["camera_stillmore.cpp"],
     name: "libshim_stillmore",
+    shared_libs: ["libutils","libui"],
+    proprietary: true,
+}
+
+cc_library_shared {
+    srcs: ["camera_chromaflash.cpp"],
+    name: "libshim_chromaflash",
     shared_libs: ["libutils","libui"],
     proprietary: true,
 }
