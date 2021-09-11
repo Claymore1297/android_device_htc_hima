@@ -323,10 +323,6 @@ PRODUCT_PACKAGES += \
     netmgr_config.xml \
     qmi_config.xml
 
-# Renderscript
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
-
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
