@@ -22,6 +22,9 @@ persist.vendor.audio.spkr.cal.duration=10
 persist.vendor.audio.speaker.prot.enable=false
 audio.deep_buffer.media=true
 
+# BPF
+ro.kernel.ebpf.supported=false
+
 # Media
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=6
