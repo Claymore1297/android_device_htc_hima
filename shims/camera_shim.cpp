@@ -76,12 +76,12 @@ extern "C" void _ZN7android13GraphicBufferC1Ejjij(
 
 //sp<SurfaceControl> SurfaceComposerClient::createSurface(const String8& name, uint32_t w, uint32_t h,
 //                                                        PixelFormat format, uint32_t flags,
-//                                                        SurfaceControl* parent,
+//                                                        const sp<IBinder>& parentHandle,
 //                                                        LayerMetadata metadata,
 //                                                        uint32_t* outTransformHint)
-extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlENS_13LayerMetadataEPj(const android::String8& name, uint32_t w, uint32_t h,
+extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijRKNS_2spINS_7IBinderEEENS_13LayerMetadataEPj(const android::String8& name, uint32_t w, uint32_t h,
                                                         PixelFormat format, uint32_t flags,
-                                                        SurfaceControl* parent,
+                                                        const sp<IBinder>& parentHandle,
                                                         android::LayerMetadata metadata,
                                                         uint32_t* outTransformHint);
 
@@ -91,7 +91,7 @@ extern "C" void* _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8
     const android::String8& name, uint32_t w, uint32_t h, PixelFormat format,
     uint32_t flags) {
   android::LayerMetadata metadata;
-  sc = _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijPNS_14SurfaceControlENS_13LayerMetadataEPj(name, w, h, format, flags, nullptr, metadata, nullptr);
+  sc = _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8EjjijRKNS_2spINS_7IBinderEEENS_13LayerMetadataEPj(name, w, h, format, flags, nullptr, metadata, nullptr);
   return sc;
 }
 
@@ -144,14 +144,13 @@ extern "C" void _ZN7android21SurfaceComposerClient22closeGlobalTransactionEb(){
   t = nullptr;
 }
 
-//<sp<IBinder> SurfaceComposerClient::getPhysicalDisplayToken(unsigned long long)
-extern "C" void *_ZN7android21SurfaceComposerClient23getPhysicalDisplayTokenEy(unsigned long long);
+//sp<IBinder> SurfaceComposerClient::getInternalDisplayToken();
+extern "C" void _ZN7android21SurfaceComposerClient23getInternalDisplayTokenEv(void);
 
-//sp<IBinder> SurfaceComposerClient::getBuiltInDisplay(int32_t id); 
-extern "C" void* _ZN7android21SurfaceComposerClient17getBuiltInDisplayEi(int32_t id){
-  return _ZN7android21SurfaceComposerClient23getPhysicalDisplayTokenEy(static_cast<uint64_t>(id));
+//sp<IBinder> SurfaceComposerClient::getBuiltInDisplay(int32_t id);
+extern "C" void _ZN7android21SurfaceComposerClient17getBuiltInDisplayEi(int32_t id){
+    _ZN7android21SurfaceComposerClient23getInternalDisplayTokenEv();
 }
-
 
 extern "C" void _ZN7android14SurfaceControlD0Ev(void);
 extern "C" void _ZN7android14SurfaceControlD1Ev(void);
