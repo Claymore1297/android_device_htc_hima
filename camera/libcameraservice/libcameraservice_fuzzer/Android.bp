@@ -21,16 +21,16 @@
 package {
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "frameworks_av_services_camera_libcameraservice_license"
+    // all of the 'license_kinds' from "frameworks_av_services_camera_libcameraservice_license_hima"
     // to get the below license kinds:
     //   SPDX-license-identifier-Apache-2.0
     default_applicable_licenses: [
-        "frameworks_av_services_camera_libcameraservice_license",
+        "frameworks_av_services_camera_libcameraservice_license_hima",
     ],
 }
 
 cc_fuzz {
-    name: "camera_service_fuzzer",
+    name: "camera_service_fuzzer_hima",
     srcs: [
         "camera_service_fuzzer.cpp",
     ],
