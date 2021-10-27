@@ -85,3 +85,20 @@ cc_library_shared {
     compile_multilib: "64",
 
 }
+
+
+cc_library_shared {
+
+    srcs: ["sensor.cpp"],
+
+    shared_libs: [
+	"libsensor",
+	"libutils"
+    ],
+
+    name: "libshim_sensor",
+
+    proprietary: true,
+
+}
+

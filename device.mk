@@ -133,6 +133,7 @@ PRODUCT_PACKAGES += \
     libshim_camera_hima \
     libshim_chromaflash \
     libshim_stillmore \
+    libshim_sensor \
     Snap \
     cameraserver_hima
 
