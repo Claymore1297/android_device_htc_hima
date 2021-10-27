@@ -170,6 +170,15 @@ extern "C" status_t _ZN7android13GraphicBuffer4lockEjPPv(uint32_t inUsage, void*
   return _ZN7android13GraphicBuffer4lockEjPPvPiS3_(inUsage, vaddr, nullptr, nullptr);
 }
 
+extern "C" void _ZN7android21SurfaceComposerClient20getStaticDisplayInfoERKNS_2spINS_7IBinderEEEPNS_2ui17StaticDisplayInfoE(void);
 
+extern "C" void _ZN7android21SurfaceComposerClient14getDisplayInfoERKNS_2spINS_7IBinderEEEPNS_11DisplayInfoE(void) {
+  _ZN7android21SurfaceComposerClient20getStaticDisplayInfoERKNS_2spINS_7IBinderEEEPNS_2ui17StaticDisplayInfoE();
+ }
 
+extern "C" void _ZN7android14SurfaceControl10getSurfaceEv(void);
+
+extern "C" void _ZNK7android14SurfaceControl10getSurfaceEv(void) {
+  _ZN7android14SurfaceControl10getSurfaceEv();
+ }
 
