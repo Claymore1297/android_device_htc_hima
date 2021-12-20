@@ -186,8 +186,9 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+#include device/qcom/sepolicy-legacy/qcom/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy-minimal
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Shims
 TARGET_LD_SHIM_LIBS := \

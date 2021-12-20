@@ -13,9 +13,9 @@
 /dev/block/bootdevice/by-name/persist                          /persist                      ext4    nosuid,nodev,barrier=1,errors=panic                                                             wait,check,formattable
 /dev/block/bootdevice/by-name/misc                             /misc                         emmc    defaults                                                                                        defaults
 
-/dev/block/bootdevice/by-name/radio                            /vendor/firmware_mnt/radio    vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0    wait
-/dev/block/bootdevice/by-name/adsp                             /vendor/firmware_mnt/adsp     vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0    wait
-/dev/block/bootdevice/by-name/cpe                              /vendor/firmware_mnt/cpe      vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0    wait
+/dev/block/bootdevice/by-name/radio                            /vendor/firmware_mnt/radio    vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337    wait
+/dev/block/bootdevice/by-name/adsp                             /vendor/firmware_mnt/adsp     vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337    wait
+/dev/block/bootdevice/by-name/cpe                              /vendor/firmware_mnt/cpe      vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337    wait
 
 /dev/block/bootdevice/by-name/frp                              /persistent                   emmc    defaults                                                                                        defaults
 
