@@ -25,9 +25,6 @@
 
 #include <android/hardware/camera/device/3.2/ICameraDevice.h>
 
-// TODO: remove legacy camera3.h references
-#include "hardware/camera3.h"
-
 #include <device3/Camera3OutputInterface.h>
 
 namespace android {
@@ -107,7 +104,7 @@ namespace camera3 {
 
         // Return the removed buffer ID if input cache is found.
         // Otherwise return BUFFER_ID_NO_BUFFER
-        uint64_t removeOneBufferCache(int streamId, const native_handle_t* handle);
+        uint64_t removeOneBufferCache(int streamId, const native_handle_t* handle) override;
 
         // Clear all caches for input stream, but do not remove the stream
         // Removed buffers' ID are returned
@@ -158,7 +155,7 @@ namespace camera3 {
 
     static const uint64_t BUFFER_ID_NO_BUFFER = 0;
 
-    camera3_buffer_status_t mapHidlBufferStatus(
+    camera_buffer_status_t mapHidlBufferStatus(
             hardware::camera::device::V3_2::BufferStatus status);
 } // namespace camera3
 

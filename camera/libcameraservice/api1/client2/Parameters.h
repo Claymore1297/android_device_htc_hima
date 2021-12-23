@@ -56,7 +56,7 @@ struct Parameters {
     int previewTransform; // set by CAMERA_CMD_SET_DISPLAY_ORIENTATION
 
     int pictureWidth, pictureHeight;
-    // Store the picture size before they are overriden by video snapshot
+    // Store the picture size before they are overridden by video snapshot
     int pictureWidthLastSet, pictureHeightLastSet;
     bool pictureSizeOverriden;
 
@@ -205,7 +205,7 @@ struct Parameters {
     static const int MAX_INITIAL_PREVIEW_WIDTH = 1920;
     static const int MAX_INITIAL_PREVIEW_HEIGHT = 1080;
     // Aspect ratio tolerance
-    static const CONSTEXPR float ASPECT_RATIO_TOLERANCE = 0.001;
+    static const CONSTEXPR float ASPECT_RATIO_TOLERANCE = 0.01;
     // Threshold for slow jpeg mode
     static const int64_t kSlowJpegModeThreshold = 33400000LL; // 33.4 ms
     // Margin for checking FPS
@@ -248,6 +248,7 @@ struct Parameters {
         bool useFlexibleYuv;
         Size maxJpegSize;
         Size maxZslSize;
+        Size usedZslSize;
         bool supportsPreferredConfigs;
     } fastInfo;
 
@@ -425,6 +426,11 @@ private:
     // Helper function to get minimum frame duration for a jpeg size
     // return -1 if input jpeg size cannot be found in supported size list
     int64_t getJpegStreamMinFrameDurationNs(Parameters::Size size);
+
+    // Helper function to get minimum frame duration for a
+    // IMPLEMENTATION_DEFINED stream of size 'size'
+    // return -1 if input size cannot be found in supported size list
+    int64_t getZslStreamMinFrameDurationNs(Parameters::Size size);
 
     // Helper function to get minimum frame duration for a size/format combination
     // return -1 if input size/format combination cannot be found.

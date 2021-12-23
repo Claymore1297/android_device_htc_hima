@@ -26,6 +26,7 @@
 #include "device1/CameraHardwareInterface.h"
 #include "CameraService.h"
 #include "utils/CameraThreadState.h"
+#include "utils/CameraServiceProxyWrapper.h"
 
 namespace android {
 
@@ -34,12 +35,12 @@ namespace android {
 
 CameraClient::CameraClient(const sp<CameraService>& cameraService,
         const sp<hardware::ICameraClient>& cameraClient,
-        const String16& clientPackageName, const std::unique_ptr<String16>& clientFeatureId,
-        int cameraId, int cameraFacing,
+        const String16& clientPackageName, const std::optional<String16>& clientFeatureId,
+        int cameraId, int cameraFacing, int sensorOrientation,
         int clientPid, int clientUid,
         int servicePid):
         Client(cameraService, cameraClient, clientPackageName, clientFeatureId,
-                String8::format("%d", cameraId), cameraId, cameraFacing, clientPid,
+                String8::format("%d", cameraId), cameraId, cameraFacing, sensorOrientation, clientPid,
                 clientUid, servicePid)
 {
     int callingPid = CameraThreadState::getCallingPid();
@@ -55,9 +56,6 @@ CameraClient::CameraClient(const sp<CameraService>& cameraService,
     mPreviewCallbackFlag = CAMERA_FRAME_CALLBACK_FLAG_NOOP;
     mOrientation = getOrientation(0, mCameraFacing == CAMERA_FACING_FRONT);
     mPlayShutterSound = true;
-
-    mLongshotEnabled = false;
-    mBurstCnt = 0;
     LOG1("CameraClient::CameraClient X (pid %d, id %d)", callingPid, cameraId);
 }
 
@@ -240,6 +238,7 @@ static void disconnectWindow(const sp<ANativeWindow>& window) {
 }
 
 binder::Status CameraClient::disconnect() {
+    nsecs_t startTime = systemTime();
     int callingPid = CameraThreadState::getCallingPid();
     LOG1("disconnect E (pid %d)", callingPid);
     Mutex::Autolock lock(mLock);
@@ -261,10 +260,12 @@ binder::Status CameraClient::disconnect() {
     // Turn off all messages.
     disableMsgType(CAMERA_MSG_ALL_MSGS);
     mHardware->stopPreview();
+    /*
     sCameraService->updateProxyDeviceState(
-            hardware::ICameraServiceProxy::CAMERA_STATE_IDLE,
+            hardware::CameraSessionStats::CAMERA_STATE_IDLE,
             mCameraIdStr, mCameraFacing, mClientPackageName,
-            hardware::ICameraServiceProxy::CAMERA_API_LEVEL_1);
+            hardware::CameraSessionStats::CAMERA_API_LEVEL_1);
+    */
     mHardware->cancelPicture();
     // Release the hardware resources.
     mHardware->release();
@@ -280,7 +281,8 @@ binder::Status CameraClient::disconnect() {
     CameraService::Client::disconnect();
 
     LOG1("disconnect X (pid %d)", callingPid);
-
+    int32_t closeLatencyMs = ns2ms(systemTime() - startTime);
+    CameraServiceProxyWrapper::logClose(mCameraIdStr, closeLatencyMs);
     return res;
 }
 
@@ -424,10 +426,12 @@ status_t CameraClient::startPreviewMode() {
     mHardware->setPreviewWindow(mPreviewWindow);
     result = mHardware->startPreview();
     if (result == NO_ERROR) {
+/*
         sCameraService->updateProxyDeviceState(
-            hardware::ICameraServiceProxy::CAMERA_STATE_ACTIVE,
+            hardware::CameraSessionStats::CAMERA_STATE_ACTIVE,
             mCameraIdStr, mCameraFacing, mClientPackageName,
-            hardware::ICameraServiceProxy::CAMERA_API_LEVEL_1);
+            hardware::CameraSessionStats::CAMERA_API_LEVEL_1);
+*/
     }
     return result;
 }
@@ -468,10 +472,12 @@ void CameraClient::stopPreview() {
 
     disableMsgType(CAMERA_MSG_PREVIEW_FRAME);
     mHardware->stopPreview();
+    /*
     sCameraService->updateProxyDeviceState(
-        hardware::ICameraServiceProxy::CAMERA_STATE_IDLE,
+        hardware::CameraSessionStats::CAMERA_STATE_IDLE,
         mCameraIdStr, mCameraFacing, mClientPackageName,
-        hardware::ICameraServiceProxy::CAMERA_API_LEVEL_1);
+        hardware::CameraSessionStats::CAMERA_API_LEVEL_1);
+    */
     mPreviewBuffer.clear();
 }
 
@@ -675,11 +681,6 @@ status_t CameraClient::takePicture(int msgType) {
                            CAMERA_MSG_COMPRESSED_IMAGE);
 
     enableMsgType(picMsgType);
-// causes our protectorstack crash
-//    mBurstCnt = mHardware->getParameters().getInt("num-snaps-per-shutter");
-//    if(mBurstCnt <= 0)
-//        mBurstCnt = 1;
-//    LOG1("mBurstCnt = %d", mBurstCnt);
 
     return mHardware->takePicture();
 }
@@ -763,20 +764,6 @@ status_t CameraClient::sendCommand(int32_t cmd, int32_t arg1, int32_t arg2) {
     } else if (cmd == CAMERA_CMD_PING) {
         // If mHardware is 0, checkPidAndHardware will return error.
         return OK;
-    } else if (cmd == CAMERA_CMD_HISTOGRAM_ON) {
-        enableMsgType(CAMERA_MSG_STATS_DATA);
-    } else if (cmd == CAMERA_CMD_HISTOGRAM_OFF) {
-        disableMsgType(CAMERA_MSG_STATS_DATA);
-    } else if (cmd == CAMERA_CMD_METADATA_ON) {
-        enableMsgType(CAMERA_MSG_META_DATA);
-    } else if (cmd == CAMERA_CMD_METADATA_OFF) {
-        disableMsgType(CAMERA_MSG_META_DATA);
-    } else if ( cmd == CAMERA_CMD_LONGSHOT_ON ) {
-        mLongshotEnabled = true;
-    } else if ( cmd == CAMERA_CMD_LONGSHOT_OFF ) {
-        mLongshotEnabled = false;
-        disableMsgType(CAMERA_MSG_SHUTTER);
-        disableMsgType(CAMERA_MSG_COMPRESSED_IMAGE);
     }
 
     return mHardware->sendCommand(cmd, arg1, arg2);
@@ -976,16 +963,16 @@ void CameraClient::handleShutter(void) {
         c->notifyCallback(CAMERA_MSG_SHUTTER, 0, 0);
         if (!lockIfMessageWanted(CAMERA_MSG_SHUTTER)) return;
     }
-    if ( !mLongshotEnabled ) {
-        disableMsgType(CAMERA_MSG_SHUTTER);
-    }
+    disableMsgType(CAMERA_MSG_SHUTTER);
 
     // Shutters only happen in response to takePicture, so mark device as
     // idle now, until preview is restarted
+    /*
     sCameraService->updateProxyDeviceState(
-        hardware::ICameraServiceProxy::CAMERA_STATE_IDLE,
+        hardware::CameraSessionStats::CAMERA_STATE_IDLE,
         mCameraIdStr, mCameraFacing, mClientPackageName,
-        hardware::ICameraServiceProxy::CAMERA_API_LEVEL_1);
+        hardware::CameraSessionStats::CAMERA_API_LEVEL_1);
+    */
 
     mLock.unlock();
 }
@@ -1064,13 +1051,7 @@ void CameraClient::handleRawPicture(const sp<IMemory>& mem) {
 
 // picture callback - compressed picture ready
 void CameraClient::handleCompressedPicture(const sp<IMemory>& mem) {
-    if (mBurstCnt)
-        mBurstCnt--;
-
-    if (!mBurstCnt && !mLongshotEnabled) {
-        LOG1("handleCompressedPicture mBurstCnt = %d", mBurstCnt);
-        disableMsgType(CAMERA_MSG_COMPRESSED_IMAGE);
-    }
+    disableMsgType(CAMERA_MSG_COMPRESSED_IMAGE);
 
     sp<hardware::ICameraClient> c = mRemoteCallback;
     mLock.unlock();
@@ -1232,6 +1213,14 @@ int32_t CameraClient::getGlobalAudioRestriction() {
 
 // API1->Device1 does not support this feature
 status_t CameraClient::setRotateAndCropOverride(uint8_t /*rotateAndCrop*/) {
+    return OK;
+}
+
+bool CameraClient::supportsCameraMute() {
+    return false;
+}
+
+status_t CameraClient::setCameraMute(bool /*enabled*/) {
     return OK;
 }
 

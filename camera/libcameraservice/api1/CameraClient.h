@@ -64,13 +64,17 @@ public:
 
     virtual status_t        setRotateAndCropOverride(uint8_t override);
 
+    virtual bool            supportsCameraMute();
+    virtual status_t        setCameraMute(bool enabled);
+
     // Interface used by CameraService
     CameraClient(const sp<CameraService>& cameraService,
             const sp<hardware::ICameraClient>& cameraClient,
             const String16& clientPackageName,
-            const std::unique_ptr<String16>& clientFeatureId,
+            const std::optional<String16>& clientFeatureId,
             int cameraId,
             int cameraFacing,
+            int sensorOrientation,
             int clientPid,
             int clientUid,
             int servicePid);
@@ -183,9 +187,6 @@ private:
     // This function keeps trying to grab mLock, or give up if the message
     // is found to be disabled. It returns true if mLock is grabbed.
     bool                    lockIfMessageWanted(int32_t msgType);
-
-    bool                 mLongshotEnabled;
-    int                  mBurstCnt;
 };
 
 }
