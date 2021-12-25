@@ -1282,9 +1282,9 @@ Status CameraService::validateClientPermissionsLocked(const String8& cameraId,
         ALOGE("CameraService::connect X (PID %d) rejected (cannot connect from "
                 "device user %d, currently allowed device users: %s)", callingPid, clientUserId,
                 toString(mAllowedUsers).string());
-        return STATUS_ERROR_FMT(ERROR_PERMISSION_DENIED,
+     /*   return STATUS_ERROR_FMT(ERROR_PERMISSION_DENIED,
                 "Callers from device user %d are not currently allowed to connect to camera \"%s\"",
-                clientUserId, cameraId.string());
+                clientUserId, cameraId.string());*/
     }
 
     return Status::ok();
