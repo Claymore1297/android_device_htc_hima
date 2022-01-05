@@ -329,7 +329,8 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
     libshim_ril \
-    android.hardware.radio@1.2-radio-service
+    android.hardware.radio@1.2-radio-service \
+    android.hardware.radio.config@1.0-service
 
 # Seccomp
 PRODUCT_COPY_FILES += \
