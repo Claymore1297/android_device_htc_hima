@@ -111,8 +111,16 @@ public:
     virtual void        onDeviceStatusChanged(const String8 &cameraId,
             const String8 &physicalCameraId,
             hardware::camera::common::V1_0::CameraDeviceStatus newHalStatus) override;
+    // This method may hold CameraProviderManager::mInterfaceMutex as a part
+    // of calling getSystemCameraKind() internally. Care should be taken not to
+    // directly / indirectly call this from callers who also hold
+    // mInterfaceMutex.
     virtual void        onTorchStatusChanged(const String8& cameraId,
             hardware::camera::common::V1_0::TorchModeStatus newStatus) override;
+    // Does not hold CameraProviderManager::mInterfaceMutex.
+    virtual void        onTorchStatusChanged(const String8& cameraId,
+            hardware::camera::common::V1_0::TorchModeStatus newStatus,
+            SystemCameraKind kind) override;
     virtual void        onNewProviderRegistered() override;
 
     /////////////////////////////////////////////////////////////////////
@@ -570,7 +578,7 @@ private:
          * returned in the HAL's camera_info struct for each device.
          */
         CameraState(const String8& id, int cost, const std::set<String8>& conflicting,
-                SystemCameraKind deviceKind);
+                SystemCameraKind deviceKind, const std::vector<std::string>& physicalCameras);
         virtual ~CameraState();
 
         /**
@@ -628,6 +636,12 @@ private:
         SystemCameraKind getSystemCameraKind() const;
 
         /**
+         * Return whether this camera is a logical multi-camera and has a
+         * particular physical sub-camera.
+         */
+        bool containsPhysicalCamera(const std::string& physicalCameraId) const;
+
+        /**
          * Add/Remove the unavailable physical camera ID.
          */
         bool addUnavailablePhysicalId(const String8& physicalId);
@@ -648,6 +662,7 @@ private:
         mutable Mutex mStatusLock;
         CameraParameters mShimParams;
         const SystemCameraKind mSystemCameraKind;
+        const std::vector<std::string> mPhysicalCameras; // Empty if not a logical multi-camera
     }; // class CameraState
 
     // Observer for UID lifecycle enforcing that UIDs in idle

@@ -364,16 +364,18 @@ void CameraService::addStates(const String8 id) {
     std::string cameraId(id.c_str());
     hardware::camera::common::V1_0::CameraResourceCost cost;
     status_t res = mCameraProviderManager->getResourceCost(cameraId, &cost);
-    SystemCameraKind deviceKind = SystemCameraKind::PUBLIC;
     if (res != OK) {
         ALOGE("Failed to query device resource cost: %s (%d)", strerror(-res), res);
         return;
     }
+    SystemCameraKind deviceKind = SystemCameraKind::PUBLIC;
     res = mCameraProviderManager->getSystemCameraKind(cameraId, &deviceKind);
     if (res != OK) {
         ALOGE("Failed to query device kind: %s (%d)", strerror(-res), res);
         return;
     }
+    std::vector<std::string> physicalCameraIds;
+    mCameraProviderManager->isLogicalCamera(cameraId, &physicalCameraIds);
     std::set<String8> conflicting;
     for (size_t i = 0; i < cost.conflictingDevices.size(); i++) {
         conflicting.emplace(String8(cost.conflictingDevices[i].c_str()));
@@ -382,7 +384,7 @@ void CameraService::addStates(const String8 id) {
     {
         Mutex::Autolock lock(mCameraStatesLock);
         mCameraStates.emplace(id, std::make_shared<CameraState>(id, cost.resourceCost,
-                                                                conflicting, deviceKind));
+                conflicting, deviceKind, physicalCameraIds));
     }
 
     if (mFlashlight->hasFlashUnit(id)) {
@@ -557,6 +559,13 @@ void CameraService::onTorchStatusChanged(const String8& cameraId,
                 cameraId.string());
         return;
     }
+    Mutex::Autolock al(mTorchStatusMutex);
+    onTorchStatusChangedLocked(cameraId, newStatus, systemCameraKind);
+}
+
+
+void CameraService::onTorchStatusChanged(const String8& cameraId,
+        TorchModeStatus newStatus, SystemCameraKind systemCameraKind) {
     Mutex::Autolock al(mTorchStatusMutex);
     onTorchStatusChangedLocked(cameraId, newStatus, systemCameraKind);
 }
@@ -1282,7 +1291,7 @@ Status CameraService::validateClientPermissionsLocked(const String8& cameraId,
         ALOGE("CameraService::connect X (PID %d) rejected (cannot connect from "
                 "device user %d, currently allowed device users: %s)", callingPid, clientUserId,
                 toString(mAllowedUsers).string());
-     /*   return STATUS_ERROR_FMT(ERROR_PERMISSION_DENIED,
+        /*return STATUS_ERROR_FMT(ERROR_PERMISSION_DENIED,
                 "Callers from device user %d are not currently allowed to connect to camera \"%s\"",
                 clientUserId, cameraId.string());*/
     }
@@ -1751,6 +1760,12 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const String8&
 
     int originalClientPid = 0;
 
+    // If the upper layer does not assign HAL version with API 1, then set HAL1 by default
+    if (strcmp(clientName8.string(), String8("com.oneplus.camera")) == 0 && 
+            effectiveApiLevel == API_1 && halVersion== CAMERA_HAL_API_VERSION_UNSPECIFIED) {
+        halVersion = CAMERA_DEVICE_API_VERSION_1_0;
+    }
+
     ALOGI("CameraService::connect call (PID %d \"%s\", camera ID %s) for HAL version %s and "
             "Camera API version %d", clientPid, clientName8.string(), cameraId.string(),
             (halVersion == -1) ? "default" : std::to_string(halVersion).c_str(),
@@ -1896,9 +1911,11 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const String8&
         // Set rotate-and-crop override behavior
         if (mOverrideRotateAndCropMode != ANDROID_SCALER_ROTATE_AND_CROP_AUTO) {
             client->setRotateAndCropOverride(mOverrideRotateAndCropMode);
-        } else if (CameraServiceProxyWrapper::isRotateAndCropOverrideNeeded(clientPackageName,
-                    orientation, facing)) {
-            client->setRotateAndCropOverride(ANDROID_SCALER_ROTATE_AND_CROP_90);
+        } else if (effectiveApiLevel == API_2) {
+
+          client->setRotateAndCropOverride(
+              CameraServiceProxyWrapper::getRotateAndCropOverride(
+                  clientPackageName, facing, multiuser_get_user_id(clientUid)));
         }
 
         // Set camera muting behavior
@@ -2245,7 +2262,6 @@ Status CameraService::notifyDeviceStateChange(int64_t newState) {
     newDeviceState |= vendorBits;
 
     ALOGV("%s: New device state 0x%" PRIx64, __FUNCTION__, newDeviceState);
-    Mutex::Autolock l(mServiceLock);
     mCameraProviderManager->notifyDeviceStateChange(newDeviceState);
 
     return Status::ok();
@@ -2279,14 +2295,12 @@ Status CameraService::notifyDisplayConfigurationChange() {
     for (auto& current : clients) {
         if (current != nullptr) {
             const auto basicClient = current->getValue();
-            if (basicClient.get() != nullptr) {
-                if (CameraServiceProxyWrapper::isRotateAndCropOverrideNeeded(
-                            basicClient->getPackageName(), basicClient->getCameraOrientation(),
-                            basicClient->getCameraFacing())) {
-                    basicClient->setRotateAndCropOverride(ANDROID_SCALER_ROTATE_AND_CROP_90);
-                } else {
-                    basicClient->setRotateAndCropOverride(ANDROID_SCALER_ROTATE_AND_CROP_NONE);
-                }
+            if (basicClient.get() != nullptr && basicClient->canCastToApiClient(API_2)) {
+              basicClient->setRotateAndCropOverride(
+                  CameraServiceProxyWrapper::getRotateAndCropOverride(
+                      basicClient->getPackageName(),
+                      basicClient->getCameraFacing(),
+                      multiuser_get_user_id(basicClient->getClientUid())));
             }
         }
     }
@@ -2696,7 +2710,8 @@ bool CameraService::evictClientIdByRemote(const wp<IBinder>& remote) {
                 ret = true;
             }
         }
-
+        //clear the evicted client list before acquring service lock again.
+        evicted.clear();
         // Reacquire mServiceLock
         mServiceLock.lock();
 
@@ -3745,9 +3760,10 @@ bool CameraService::SensorPrivacyPolicy::hasCameraPrivacyFeature() {
 // ----------------------------------------------------------------------------
 
 CameraService::CameraState::CameraState(const String8& id, int cost,
-        const std::set<String8>& conflicting, SystemCameraKind systemCameraKind) : mId(id),
+        const std::set<String8>& conflicting, SystemCameraKind systemCameraKind,
+        const std::vector<std::string>& physicalCameras) : mId(id),
         mStatus(StatusInternal::NOT_PRESENT), mCost(cost), mConflicting(conflicting),
-        mSystemCameraKind(systemCameraKind) {}
+        mSystemCameraKind(systemCameraKind), mPhysicalCameras(physicalCameras) {}
 
 CameraService::CameraState::~CameraState() {}
 
@@ -3784,6 +3800,11 @@ String8 CameraService::CameraState::getId() const {
 
 SystemCameraKind CameraService::CameraState::getSystemCameraKind() const {
     return mSystemCameraKind;
+}
+
+bool CameraService::CameraState::containsPhysicalCamera(const std::string& physicalCameraId) const {
+    return std::find(mPhysicalCameras.begin(), mPhysicalCameras.end(), physicalCameraId)
+            != mPhysicalCameras.end();
 }
 
 bool CameraService::CameraState::addUnavailablePhysicalId(const String8& physicalId) {
@@ -4416,18 +4437,9 @@ std::list<String16> CameraService::getLogicalCameras(
     std::list<String16> retList;
     Mutex::Autolock lock(mCameraStatesLock);
     for (const auto& state : mCameraStates) {
-        std::vector<std::string> physicalCameraIds;
-        if (!mCameraProviderManager->isLogicalCamera(state.first.c_str(), &physicalCameraIds)) {
-            // This is not a logical multi-camera.
-            continue;
+        if (state.second->containsPhysicalCamera(physicalCameraId.c_str())) {
+            retList.emplace_back(String16(state.first));
         }
-        if (std::find(physicalCameraIds.begin(), physicalCameraIds.end(), physicalCameraId.c_str())
-                == physicalCameraIds.end()) {
-            // cameraId is not a physical camera of this logical multi-camera.
-            continue;
-        }
-
-        retList.emplace_back(String16(state.first));
     }
     return retList;
 }

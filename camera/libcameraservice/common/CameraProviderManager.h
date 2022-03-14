@@ -40,7 +40,6 @@
 #include <camera/VendorTagDescriptor.h>
 
 namespace android {
-
 /**
  * The vendor tag descriptor class that takes HIDL vendor tag information as
  * input. Not part of VendorTagDescriptor class because that class is used
@@ -155,6 +154,9 @@ public:
         virtual void onDeviceStatusChanged(const String8 &cameraId,
                 const String8 &physicalCameraId,
                 hardware::camera::common::V1_0::CameraDeviceStatus newStatus) = 0;
+        virtual void onTorchStatusChanged(const String8 &cameraId,
+                hardware::camera::common::V1_0::TorchModeStatus newStatus,
+                SystemCameraKind kind) = 0;
         virtual void onTorchStatusChanged(const String8 &cameraId,
                 hardware::camera::common::V1_0::TorchModeStatus newStatus) = 0;
         virtual void onNewProviderRegistered() = 0;
@@ -289,12 +291,6 @@ public:
             sp<hardware::camera::device::V1_0::ICameraDevice> *session);
 
     /**
-     * Save the ICameraProvider while it is being used by a camera or torch client
-     */
-    void saveRef(DeviceMode usageType, const std::string &cameraId,
-            sp<hardware::camera::provider::V2_4::ICameraProvider> provider);
-
-    /**
      * Notify that the camera or torch is no longer being used by a camera client
      */
     void removeRef(DeviceMode usageType, const std::string &cameraId);
@@ -341,8 +337,6 @@ private:
     // All private members, unless otherwise noted, expect mInterfaceMutex to be locked before use
     mutable std::mutex mInterfaceMutex;
 
-    // the status listener update callbacks will lock mStatusMutex
-    mutable std::mutex mStatusListenerMutex;
     wp<StatusListener> mListener;
     ServiceInteractionProxy* mServiceProxy;
 
@@ -439,12 +433,25 @@ private:
 
         /**
          * Notify provider about top-level device physical state changes
+         *
+         * Note that 'mInterfaceMutex' should not be held when calling this method.
+         * It is possible for camera providers to add/remove devices and try to
+         * acquire it.
          */
         status_t notifyDeviceStateChange(
                 hardware::hidl_bitfield<hardware::camera::provider::V2_5::DeviceState>
                     newDeviceState);
 
         std::vector<std::unordered_set<std::string>> getConcurrentCameraIdCombinations();
+
+        /**
+         * Notify 'DeviceInfo' instanced about top-level device physical state changes
+         *
+         * Note that 'mInterfaceMutex' should be held when calling this method.
+         */
+        void notifyDeviceInfoStateChangeLocked(
+               hardware::hidl_bitfield<hardware::camera::provider::V2_5::DeviceState>
+                   newDeviceState);
 
         /**
          * Query the camera provider for concurrent stream configuration support
@@ -498,6 +505,9 @@ private:
                 return INVALID_OPERATION;
             }
             virtual status_t filterSmallJpegSizes() = 0;
+            virtual void notifyDeviceStateChange(
+                    hardware::hidl_bitfield<hardware::camera::provider::V2_5::DeviceState>
+                        /*newState*/) {}
 
             template<class InterfaceT>
             sp<InterfaceT> startDeviceInterface();
@@ -580,6 +590,9 @@ private:
                     bool *status /*out*/)
                     override;
             virtual status_t filterSmallJpegSizes() override;
+            virtual void notifyDeviceStateChange(
+                    hardware::hidl_bitfield<hardware::camera::provider::V2_5::DeviceState>
+                        newState) override;
 
             DeviceInfo3(const std::string& name, const metadata_vendor_id_t tagId,
                     const std::string &id, uint16_t minorVersion,
@@ -589,6 +602,8 @@ private:
             virtual ~DeviceInfo3();
         private:
             CameraMetadata mCameraCharacteristics;
+            // Map device states to sensor orientations
+            std::unordered_map<int64_t, int32_t> mDeviceStateOrientationMap;
             // A copy of mCameraCharacteristics without performance class
             // override
             std::unique_ptr<CameraMetadata> mCameraCharNoPCOverride;
@@ -688,6 +703,12 @@ private:
         status_t getConcurrentCameraIdsInternalLocked(
                 sp<hardware::camera::provider::V2_6::ICameraProvider> &interface2_6);
     };
+
+    /**
+     * Save the ICameraProvider while it is being used by a camera or torch client
+     */
+    void saveRef(DeviceMode usageType, const std::string &cameraId,
+            sp<hardware::camera::provider::V2_4::ICameraProvider> provider);
 
     // Utility to find a DeviceInfo by ID; pointer is only valid while mInterfaceMutex is held
     // and the calling code doesn't mutate the list of providers or their lists of devices.
