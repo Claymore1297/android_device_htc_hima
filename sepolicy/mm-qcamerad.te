@@ -12,6 +12,7 @@ allow mm-qcamera-daemon camera_data_file:sock_file {unlink create};
 allow mm-qcamera-daemon camera_data_file:dir {search write open read remove_name add_name};
 allow mm-qcamera-daemon camera_data_file:file {read open getattr write create};
 allow mm-qcamera-daemon camera_socket:sock_file {unlink};
+allow mm-qcamera-daemon default_prop:file r_file_perms;
 allow mm-qcamera-daemon hal_graphics_allocator_default:fd use;
 allow mm-qcamera-daemon ion_device:chr_file {ioctl read open};
 allow mm-qcamera-daemon init:unix_stream_socket connectto;

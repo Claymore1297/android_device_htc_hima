@@ -1,2 +1,4 @@
+allow thermal-engine default_prop:file r_file_perms;
 allow thermal-engine qmux:unix_stream_socket {connectto};
+allow thermal-engine radio_prop:file r_file_perms;
 

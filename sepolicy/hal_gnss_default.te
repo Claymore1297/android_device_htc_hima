@@ -1,3 +1,7 @@
-allow hal_gnss_default vndbinder_device:chr_file { open read write ioctl };
+allow hal_gnss_default default_prop:file r_file_perms;
+allow hal_gnss_default radio_prop:file r_file_perms;
+allow hal_gnss_default ssr_device:chr_file r_file_perms;
 allow hal_gnss_default sysfs:file r_file_perms;
+allow hal_gnss_default system_prop:file r_file_perms;
+allow hal_gnss_default vndbinder_device:chr_file { open read write ioctl };
 

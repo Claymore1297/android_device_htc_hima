@@ -43,7 +43,7 @@
 
 # DRM
 /vendor/bin/hw/android.hardware.configstore@1\.1-service       u:object_r:hal_configstore_default_exec:s0
-/vendor/bin/hw/android.hardware.drm@1\.3-service\.clearkey     u:object_r:hal_drm_default_exec:s0
+/vendor/bin/hw/android.hardware.drm@1\.4-service\.clearkey     u:object_r:hal_drm_default_exec:s0
 
 # Encryption
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/extra         u:object_r:metadata_block_device:s0
@@ -60,6 +60,9 @@
 
 # FRP partition
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/frp           u:object_r:frp_block_device:s0
+
+# misc
+/system/bin/clean_scratch_files                         u:object_r:clean_scratch_files_exec:s0
 
 # Modem partitions
 /dev/block/platform/soc.0/f9824900.sdhci/by-name/cdma_record   u:object_r:modem_efs_partition_device:s0

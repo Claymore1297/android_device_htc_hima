@@ -1,2 +1,4 @@
 allow netmgrd qmux:unix_stream_socket connectto;
+allow netmgrd default_prop:file r_file_perms;
+allow netmgrd radio_prop:file r_file_perms;
 
