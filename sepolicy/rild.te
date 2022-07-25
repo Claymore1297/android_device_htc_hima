@@ -1,3 +1,4 @@
+allow rild default_android_vndservice:service_manager find;
 allow rild default_prop:file r_file_perms;
 allow rild default_prop:property_service { set };
 allow rild proc_qtaguid_stat:file r_file_perms;
